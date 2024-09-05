@@ -36,6 +36,6 @@ coding!
 
 - Tochi,ProductOwner #1: [GitHub](https://github.com/Osira01) / [LinkedIn](https://www.linkedin.com/in/tochi-nkole-09525132/)
 - Teammate name #2: [GitHub](https://github.com/ghaccountname) / [LinkedIn](https://linkedin.com/in/liaccountname)
-
+- Mandla (Cash), Developer: [GitHub](https://github.com/Mandla-tech) / [LinkedIn](https://www.linkedin.com/in/mandla-m/)
    ...
 - Teammate name #n: [GitHub](https://github.com/ghaccountname) / [LinkedIn](https://linkedin.com/in/liaccountname)
