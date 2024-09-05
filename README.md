@@ -35,7 +35,7 @@ your repo access and to practice PR'ing with your team *before* you start
 coding!
 
 - Tochi,ProductOwner #1: [GitHub](https://github.com/Osira01) / [LinkedIn](https://www.linkedin.com/in/tochi-nkole-09525132/)
-- Teammate name #2: [GitHub](https://github.com/ghaccountname) / [LinkedIn](https://linkedin.com/in/liaccountname)
+- Predrag (Peter), Developer: [GitHub](https://github.com/Predrag-Jandric) / [LinkedIn](https://www.linkedin.com/in/predrag-jandric/)
 - Mandla (Cash), Developer: [GitHub](https://github.com/Mandla-tech) / [LinkedIn](https://www.linkedin.com/in/mandla-m/)
    ...
 - Teammate name #n: [GitHub](https://github.com/ghaccountname) / [LinkedIn](https://linkedin.com/in/liaccountname)
