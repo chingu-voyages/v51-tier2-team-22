@@ -1,9 +1,16 @@
+import Sidebar from "./components/Sidebar";
+import MainWindow from './components/MainWindow.jsx'
+import TopBar from "./components/TopBar.jsx";
+
 function App() {
+  
   return (
-    <section className="bg-slate-700 h-dvh flex items-center justify-center text-center">
-      <p className="text-5xl font-bold text-white">
-        React + Vite <br /> Expense splitter{" "}
-      </p>
+    <section className="border border-red-500 flex h-screen p-5">
+      <Sidebar/>
+      <div className="flex flex-col flex-grow">
+      <TopBar/>
+      <MainWindow/>
+      </div>
     </section>
   );
 }
