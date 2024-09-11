@@ -1,18 +1,22 @@
-import Sidebar from "./components/Sidebar";
-import MainWindow from './components/MainWindow.jsx'
-import TopBar from "./components/TopBar.jsx";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Layout from "./components/Layout";
+import Home from "./pages/Home";
 
 function App() {
   
   return (
-    <section className="border-4 border-red-500 flex h-screen p-5">
-      <Sidebar/>
-      <div className="flex flex-col flex-grow">
-      <TopBar/>
-      <MainWindow/>
-      </div>
-    </section>
-  );
+    // <section className="border-4 border-red-500 flex h-screen p-5">
+      <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<Home />} />
+          {/* <Route path="members" element={<Members />} /> */}
+          {/* <Route path="product" element={<Product />} /> */}
+        </Route>
+      </Routes>
+    </BrowserRouter>
+    /* </section> */
+  )
 }
 
 export default App;
