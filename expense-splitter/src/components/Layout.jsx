@@ -1,5 +1,5 @@
 import Sidebar from "./Sidebar";
-// import Header from "./Header";
+import Header from "./Header";
 import { Outlet } from "react-router-dom";
 
 function Layout() {
@@ -7,7 +7,7 @@ function Layout() {
     <div className="flex">
       <Sidebar />
       <div className="w-full ml-16 md:ml-56">
-        {/* <Header /> */}
+        <Header />
         <Outlet />
       </div>
     </div>

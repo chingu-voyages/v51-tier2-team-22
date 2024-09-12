@@ -1,22 +1,22 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+// components
 import Layout from "./components/Layout";
 import Home from "./pages/Home";
+import Groups from "./pages/Groups";
+import Product from "./pages/Product";
 
 function App() {
-  
   return (
-    // <section className="border-4 border-red-500 flex h-screen p-5">
-      <BrowserRouter>
+    <BrowserRouter>
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
-          {/* <Route path="members" element={<Members />} /> */}
-          {/* <Route path="product" element={<Product />} /> */}
+          <Route path="groups" element={<Groups />} />
+          <Route path="product" element={<Product />} />
         </Route>
       </Routes>
     </BrowserRouter>
-    /* </section> */
-  )
+  );
 }
 
 export default App;
