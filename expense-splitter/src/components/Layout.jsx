@@ -1,13 +1,22 @@
-import Sidebar from "./Sidebar";
-import Header from "./Header";
 import { Outlet } from "react-router-dom";
+
+// components
+// import Sidebar from "./Sidebar";
+// import Header from "./Header";
+
+// unstyled components
+import SmallExpenseCard from "./SmallExpenseCard";
+
+// regarding unstyled components: they are left commented out on purpose. to work on them, comment out all the other components in down below (like sidebar and header), then uncomment the components you want to style. its like a temporary testing. later they will be put into their place
 
 function Layout() {
   return (
     <div className="flex">
-      <Sidebar />
+      <SmallExpenseCard />
+      {/* <Sidebar /> */}
       <div className="w-full ml-16 md:ml-56">
-        <Header />
+        {/* <Header /> */}
+
         <Outlet />
       </div>
     </div>
