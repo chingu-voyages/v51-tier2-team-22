@@ -1,4 +1,7 @@
 import { MdGroups } from "react-icons/md";
+import EachMember from "./EachMember";
+
+// for icons, go to this page https://react-icons.github.io/react-icons/ the search for the icon you need. package is already installed, you just need to import the icon, just like the one above, on line 1. on the webpage, when you click on the icon and open it, you will see the code you need to copy paste to import it. to use the icon, you just put it in JSX like its a normal component. follow the <MdGroups/> example below
 
 const members = [
   {
@@ -9,40 +12,27 @@ const members = [
     name: "Mitchel",
     img: "https://img.freepik.com/free-photo/young-bearded-man-with-striped-shirt_273609-5677.jpg",
   },
+  
 ];
 
 function GroupMembers() {
   return (
-    <div className="gap-6 w-80 border border-slate-400 rounded-xl flex flex-col">
+    <div className=" w-80 border border-slate-400 rounded-xl flex flex-col">
+      <div className="p-2 flex justify-between bg-red-100 w-full">
+        <p>Members</p>
+        <button className="border border-black">View all</button>
+      </div>
 
-<div className="p-2 flex justify-between bg-red-100 w-full">
-<p>Members</p> 
-<button className="border border-black">View all</button> 
-</div>
+      <div className="flex items-center">
+        {/* map method */}
+        {members.map((member, index) => (
+          <EachMember member={member} index={index} />
+        ))}
 
-<div className="flex items-center gap-3">
-    {/* map method */}
-      {members.map((member, index) => (
-        <article
-          key={index}
-          className="bg-blue-100 flex flex-col items-center text-center  h-20 w-20"
-        >
-          <img
-            className="object-cover w-10 h-10 rounded-full"
-            src={member.img}
-            alt=""
-          />
-          <p>{member.name}</p>
-          <button className="bg-red-300 flex items-center justify-center rounded-full font-extrabold text-lg w-5 h-5 pb-1 bottom-20 relative left-5">
-            -
-          </button>
-        </article>
-      ))}
-
-      <button className="flex-col flex items-center ">
-        <MdGroups className="rounded-full w-14 h-14 bg-slate-100 p-3" />
-        <p>Add</p>
-      </button>
+        <button className="flex-col flex items-center ">
+          <MdGroups className="rounded-full w-14 h-14 bg-slate-100 p-3" />
+          <p>Add</p>
+        </button>
       </div>
     </div>
   );
