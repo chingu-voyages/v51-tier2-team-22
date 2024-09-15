@@ -13,7 +13,7 @@ function Sidebar() {
   (isActive) => "nav-link" + (!isActive ? " unselected" : "");
 
   return (
-    <div className="w-16 md:w-56 fixed left-0 top-0 z-10 h-screen border-r pt-8 px4 bg-white">
+    <div className="w-16 md:w-56 fixed left-0 top-0 z-10 h-screen border-r pt-8 px4 bg-white ">
       <div className="mb-8 flex justify-center">
         <img
           src="./src/assets/logo.png"
@@ -34,13 +34,13 @@ function Sidebar() {
             key={index}
             to={link.path}
             className={({ isActive }) =>
-              `flex justify-center md:justify-start items-center px-5 md:space-x-5 py-5 ${
-                isActive ? "bg-red-100" : "bg-blue-50"
+              `flex items-center px-4 py-5 space-x-5 hover:bg-indigo-100 ${
+                isActive ? "text-primary font-bold text-xl" : "text-gray-500 text-sm"
               }`
             }
           >
             <span>{link.icon()}</span>
-            <span className="text-sm text-gray-500 hidden md:flex">
+            <span className="text-sm text-gray-500 font-medium hidden md:flex">
               {link.name}
             </span>
           </NavLink>
@@ -48,7 +48,8 @@ function Sidebar() {
       </nav>
 
       <div className="w-full absolute bottom-5 left-0 px-4 py-2 cursor-pointer text-center">
-        <p className="flex items-center space-x-2 text-xs text-white py-2 px-5 bg-gradient-to-r from-indigo-500 to-violet-600 rounded-full">
+        <p className="w-full flex items-center justify-center space-x-2 text-sm text-white py-2 px-4
+        bg-primary rounded-xl hover:bg-indigo hover:text-blizzard-blue transition duration-300 ease-in-out">
           <span>?</span>
           <span className="hidden md:flex">Need help</span>
         </p>
