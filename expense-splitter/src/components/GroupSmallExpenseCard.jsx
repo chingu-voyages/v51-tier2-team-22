@@ -4,12 +4,12 @@ import { MdGroups } from "react-icons/md";
 
 function GroupSmallExpenseCard() {
   return (
-    <div className="pl-6 w-80 border border-slate-400 rounded-xl flex items-center">
-      <MdGroups className="bg-red-0 rounded-full w-14 h-14 p-2" />
+    <div className="bg-white p-4 rounded-lg shadow flex items-center space-x-4 max-w-xs ml-8">
+      <MdGroups className="bg-blizzard-blue rounded-full w-14 h-14 p-2 text-primary" />
 
       <span>
-        <p>Total budget</p>
-        <p className="font-semibold">1000 $</p>
+        <p className="text-sm font-medium text-gray-400">Total budget</p>
+        <p className="font-semibold text-2xl text-indigo">1000 $</p>
       </span>
     </div>
   );

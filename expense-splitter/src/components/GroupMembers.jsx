@@ -12,26 +12,27 @@ const members = [
     name: "Mitchel",
     img: "https://img.freepik.com/free-photo/young-bearded-man-with-striped-shirt_273609-5677.jpg",
   },
-  
+
 ];
 
 function GroupMembers() {
   return (
-    <div className=" w-80 border border-slate-400 rounded-xl flex flex-col">
-      <div className="p-2 flex justify-between bg-red-100 w-full">
-        <p>Members</p>
-        <button className="border border-black">View all</button>
+    <div className="bg-white p-4 rounded-lg shadow max-w-lg ml-8">
+      <div className="flex justify-between items-center mb-4 ml-4">
+        <p className="text-lg font-semibold text-indigo">Members</p>
+        <button className="px-3 py-1 rounded-lg text-sm font-semibold
+        bg-blizzard-blue text-primary hover:bg-indigo hover:text-blizzard-blue transition-colors duration-300">View all</button>
       </div>
 
-      <div className="flex items-center">
+      <div className="flex p-2 space-x-4">
         {/* map method */}
         {members.map((member, index) => (
           <EachMember member={member} index={index} />
         ))}
 
         <button className="flex-col flex items-center ">
-          <MdGroups className="rounded-full w-14 h-14 bg-slate-100 p-3" />
-          <p>Add</p>
+          <MdGroups className="rounded-full w-14 h-14 bg-blizzard-blue p-3 text-primary" />
+          <p className="font-medium text-indigo">Add</p>
         </button>
       </div>
     </div>
