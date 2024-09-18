@@ -5,14 +5,15 @@ import GroupName from "../components/GroupName";
 import GroupSmallExpenseCard from "../components/GroupSmallExpenseCard";
 
 function Groups() {
-<<<<<<< HEAD
-  return <div className="p-6 space-y-6 bg-blizzard-blue min-h-screen">
-
-    <GroupName/>
-    <GroupSmallExpenseCard/>
-    <GroupMembers />
-=======
->>>>>>> 15b5ad3acbb2a52597a5ae09622101d9f09791ed
+  return (
+    <div className="flex flex-col gap-8 m-6">
+      <GroupName />
+      <GroupSmallExpenseCard />
+      <ExpenseBar expense={300} budget={1000} />
+      <GroupMembers />
+      <GroupExpenseTable />
+    </div>
+  );
 
 }
 

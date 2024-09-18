@@ -9,7 +9,7 @@ function GroupSmallExpenseCard() {
 
       <span>
         <p className="text-sm font-medium text-gray-400">Total budget</p>
-        <p className="font-semibold text-2xl text-indigo">1000 $</p>
+        <p className="font-semibold text-2xl text-secondary">1000 $</p>
       </span>
     </div>
   );
