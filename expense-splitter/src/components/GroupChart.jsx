@@ -6,7 +6,7 @@ const data = [
   { name: "Mina", value: 25 },
 ];
 
-const COLORS = ["#4F46E5", "blue", "#F97316"]; // Tailwind colors: blue-600, rose-300, orange-400
+const COLORS = ["#4F46E5", "blue", "#F97316"];
 
 const renderCustomizedLabel = ({
   cx,
@@ -36,12 +36,17 @@ const renderCustomizedLabel = ({
 
 function GroupChart() {
   return (
-    <div className="flex flex-col items-center justify-center w-96 bg-white p-4 rounded-lg shadow">
-      <PieChart width={300} height={300}>
+    <section className="flex flex-col items-center justify-center w-96 bg-white p-6 rounded-lg shadow">
+      <div className="w-full flex justify-between">
+        <p className="font-semibold text-xl">Budget Split</p>
+        <button>Monthly ▼</button>
+      </div>
+
+      <PieChart width={300} height={270}>
         <Pie
           data={data}
           cx={150}
-          cy={150}
+          cy={130}
           innerRadius={50}
           outerRadius={100}
           fill="#8884d8"
@@ -70,7 +75,7 @@ function GroupChart() {
           </div>
         ))}
       </div>
-    </div>
+    </section>
   );
 }
 

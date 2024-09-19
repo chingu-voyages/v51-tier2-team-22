@@ -1,9 +1,9 @@
-function Home() {
+function Friends() {
     return (
         <div className="text-5xl">
-            Home Page
+            Friends
         </div>
     )
 }
 
-export default Home
+export default Friends

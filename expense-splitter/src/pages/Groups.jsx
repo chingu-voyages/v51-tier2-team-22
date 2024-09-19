@@ -8,10 +8,10 @@ import GroupSmallExpenseCard from "../components/GroupSmallExpenseCard";
 function Groups() {
   return (
     <div className="flex flex-col gap-8 m-6">
-      <GroupChart />
       <GroupName />
       <GroupSmallExpenseCard />
       <ExpenseBar expense={900} budget={1000} />
+      <GroupChart />
       <GroupMembers />
       <GroupExpenseTable />
     </div>

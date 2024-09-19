@@ -112,7 +112,7 @@ const expenses = [
 
 function GroupExpenseTable() {
   return (
-    <div className="overflow-x-auto rounded-lg">
+    <section className="overflow-x-auto rounded-lg">
       <table className="table-auto text-left">
         <thead className="border border-gray uppercase bg-orange-100 text-sm text-gray-400">
           <tr>
@@ -216,7 +216,7 @@ function GroupExpenseTable() {
           ))}
         </tbody>
       </table>
-    </div>
+    </section>
   );
 }
 
