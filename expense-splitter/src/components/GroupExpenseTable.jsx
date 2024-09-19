@@ -112,9 +112,9 @@ const expenses = [
 
 function GroupExpenseTable() {
   return (
-    <div className="overflow-x-auto">
-      <table className="table-auto text-left ">
-        <thead className="border border-gray uppercase bg-orange-100">
+    <div className="overflow-x-auto rounded-lg">
+      <table className="table-auto text-left">
+        <thead className="border border-gray uppercase bg-orange-100 text-sm text-gray-400">
           <tr>
             <th scope="col" className="px-6 py-3">
               Expense
@@ -159,15 +159,15 @@ function GroupExpenseTable() {
                 index % 2 === 0 ? "bg-white " : "bg-gray-50"
               }`}
             >
-              <td className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
+              <td className="px-6 py-4 font-semibold text-gray-900  whitespace-nowrap">
                 {expense.expense}
               </td>
-              <td className="px-6 py-4">{expense.description}</td>
-              <td className="px-6 py-4">{expense.category}</td>
-              <td className="px-6 py-4">{expense.date}</td>
-              <td className="px-6 py-4">{expense.totalAmount}</td>
+              <td className="px-6 py-4 font-semibold">{expense.description}</td>
+              <td className="px-6 py-4 font-semibold">{expense.category}</td>
+              <td className="px-6 py-4 font-semibold">{expense.date}</td>
+              <td className="px-6 py-4 font-semibold">{expense.totalAmount}</td>
 
-              <td className="px-6 py-4">
+              <td className="px-6 py-4 font-semibold">
                 {expense.participants.map((participant, pindex) => (
                   <div key={pindex} className="flex flex-col">
                     <span>{participant.name}</span>
@@ -175,7 +175,7 @@ function GroupExpenseTable() {
                 ))}
               </td>
 
-              <td className="px-6 py-4">
+              <td className="px-6 py-4 font-semibold">
                 {expense.participants.map((participant, pindex) => (
                   <div key={pindex} className="flex flex-col">
                     <span>{participant.contribution}</span>
@@ -183,7 +183,7 @@ function GroupExpenseTable() {
                 ))}
               </td>
 
-              <td className="px-6 py-4">
+              <td className="px-6 py-4 font-semibold">
                 {expense.participants.map((participant, pindex) => (
                   <div key={pindex} className="flex flex-col">
                     <span>{participant.split}</span>
@@ -191,7 +191,7 @@ function GroupExpenseTable() {
                 ))}
               </td>
 
-              <td className="px-6 py-4">
+              <td className="px-6 py-4 font-semibold">
                 {expense.participants.map((participant, pindex) => (
                   <div key={pindex} className="flex flex-col">
                     <span>{participant.paid}</span>
@@ -199,7 +199,7 @@ function GroupExpenseTable() {
                 ))}
               </td>
 
-              <td className="px-6 py-4">
+              <td className="px-6 py-4 font-semibold">
                 {expense.participants.map((participant, pindex) => (
                   <div key={pindex} className="flex flex-col">
                     <span>{participant.due}</span>
@@ -208,7 +208,7 @@ function GroupExpenseTable() {
               </td>
 
               <td className="px-6 py-4">
-                <button className="text-blue-600 hover:text-blue-900">
+                <button className="text-blue-600 hover:text-primary">
                   View Receipt
                 </button>
               </td>
