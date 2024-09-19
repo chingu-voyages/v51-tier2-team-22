@@ -34,7 +34,7 @@ function Sidebar() {
             key={index}
             to={link.path}
             className={({ isActive }) =>
-              `flex items-center px-4 py-5 space-x-5 hover:bg-secondary ${
+              `flex items-center px-4 py-5 space-x-5  ${
                 isActive ? "text-primary font-bold text-xl" : "text-gray-500 text-sm"
               }`
             }
