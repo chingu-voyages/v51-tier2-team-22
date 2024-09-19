@@ -27,7 +27,7 @@ const renderCustomizedLabel = ({
       fill="#FFFFFF"
       textAnchor="middle"
       dominantBaseline="central"
-      className=" font-semibold"
+      className=" font-semibold text-xl"
     >
       {(percent * 100).toFixed(0)}%
     </text>
@@ -36,13 +36,13 @@ const renderCustomizedLabel = ({
 
 function GroupChart() {
   return (
-    <div className="flex flex-col items-center justify-center bg-red-100 w-96">
+    <div className="flex flex-col items-center justify-center w-96 bg-white p-4 rounded-lg shadow">
       <PieChart width={300} height={300}>
         <Pie
           data={data}
           cx={150}
           cy={150}
-          innerRadius={60}
+          innerRadius={50}
           outerRadius={100}
           fill="#8884d8"
           paddingAngle={1}
@@ -54,18 +54,19 @@ function GroupChart() {
             <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
           ))}
         </Pie>
+        {/* out of the box Legend, ignore for now */}
         {/* <Legend verticalAlign="bottom" align="center" height={50} /> */}
       </PieChart>
 
       {/* Custom legend */}
-      <div className="mt-4">
+      <div className="mb-4 p-4 px-8 shadow w-3/5 ">
         {data.map((entry, index) => (
-          <div key={index} className="flex items-center space-x-2">
+          <div key={index} className="flex my-2 items-center space-x-3">
             <span
-              className="inline-block w-3 h-3 rounded-full"
+              className="w-3 h-3 rounded-full"
               style={{ backgroundColor: COLORS[index] }}
             ></span>
-            <span className="text-sm text-gray-700">{entry.name}</span>
+            <span className="text-black">{entry.name}</span>
           </div>
         ))}
       </div>
