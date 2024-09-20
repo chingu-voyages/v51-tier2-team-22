@@ -114,7 +114,7 @@ function GroupExpenseTable() {
   return (
     <section className="overflow-x-auto rounded-lg">
       <table className="table-auto text-left">
-        <thead className="border border-gray uppercase bg-orange-100 text-sm text-gray-400">
+        <thead className="uppercase bg-highlight text-body font-medium text-legend">
           <tr>
             <th scope="col" className="px-6 py-3">
               Expense
@@ -128,7 +128,7 @@ function GroupExpenseTable() {
             <th scope="col" className="px-6 py-3">
               Date
             </th>
-            <th scope="col" className="px-6 py-3">
+            <th scope="col" className="px-6 py-3 whitespace-nowrap">
               Total Amount
             </th>
             <th scope="col" className="px-6 py-3">
@@ -155,19 +155,17 @@ function GroupExpenseTable() {
           {expenses.map((expense, index) => (
             <tr
               key={index}
-              className={`border border-gray ${
-                index % 2 === 0 ? "bg-white " : "bg-gray-50"
-              }`}
+              className="bg-white border-b border-gray-100"
             >
-              <td className="px-6 py-4 font-semibold text-gray-900  whitespace-nowrap">
+              <td className="px-6 py-4 text-body font-bold text-secondary  whitespace-nowrap">
                 {expense.expense}
               </td>
-              <td className="px-6 py-4 font-semibold">{expense.description}</td>
-              <td className="px-6 py-4 font-semibold">{expense.category}</td>
-              <td className="px-6 py-4 font-semibold">{expense.date}</td>
-              <td className="px-6 py-4 font-semibold">{expense.totalAmount}</td>
+              <td className="px-6 py-4 text-sm font-normal text-secondary whitespace-nowrap">{expense.description}</td>
+              <td className="px-6 py-4 text-body font-bold text-secondary">{expense.category}</td>
+              <td className="px-6 py-4 text-body font-bold text-secondary">{expense.date}</td>
+              <td className="px-6 py-4 text-body font-bold text-secondary">{expense.totalAmount}</td>
 
-              <td className="px-6 py-4 font-semibold">
+              <td className="px-6 py-4 text-body font-bold text-secondary">
                 {expense.participants.map((participant, pindex) => (
                   <div key={pindex} className="flex flex-col">
                     <span>{participant.name}</span>
@@ -175,7 +173,7 @@ function GroupExpenseTable() {
                 ))}
               </td>
 
-              <td className="px-6 py-4 font-semibold">
+              <td className="px-6 py-4 text-body font-bold text-secondary">
                 {expense.participants.map((participant, pindex) => (
                   <div key={pindex} className="flex flex-col">
                     <span>{participant.contribution}</span>
@@ -183,7 +181,7 @@ function GroupExpenseTable() {
                 ))}
               </td>
 
-              <td className="px-6 py-4 font-semibold">
+              <td className="px-6 py-4 text-body font-bold text-secondary">
                 {expense.participants.map((participant, pindex) => (
                   <div key={pindex} className="flex flex-col">
                     <span>{participant.split}</span>
@@ -191,7 +189,7 @@ function GroupExpenseTable() {
                 ))}
               </td>
 
-              <td className="px-6 py-4 font-semibold">
+              <td className="px-6 py-4 text-body font-bold text-secondary">
                 {expense.participants.map((participant, pindex) => (
                   <div key={pindex} className="flex flex-col">
                     <span>{participant.paid}</span>
@@ -199,7 +197,7 @@ function GroupExpenseTable() {
                 ))}
               </td>
 
-              <td className="px-6 py-4 font-semibold">
+              <td className="px-6 py-4 text-body font-bold text-secondary">
                 {expense.participants.map((participant, pindex) => (
                   <div key={pindex} className="flex flex-col">
                     <span>{participant.due}</span>

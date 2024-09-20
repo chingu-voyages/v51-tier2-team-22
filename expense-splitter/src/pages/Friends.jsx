@@ -1,6 +1,6 @@
 function Friends() {
     return (
-        <div className="text-5xl">
+        <div className="text-header text-secondary">
             Friends
         </div>
     )

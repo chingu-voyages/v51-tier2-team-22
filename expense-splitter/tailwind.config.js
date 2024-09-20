@@ -6,33 +6,39 @@ export default {
     extend: {
       // Project's theme
       colors: {
-        "blizzard-blue": "#eefafc",
-        'primary': "#1D4ED8",
+        "blizzard-blue": "#F4F7FE",
+        'primary': "#4318FF",
         'secondary': "#2B3674",
+        'title':"#A3AED0",
+        'legend':"#767676",
+        'highlight':"#FFF4DF",
+        'alert':"#FF3636"
       },
       // Centralizing Common Spacing (Padding/Margin). Define custom spacing values for margins, padding, or gaps. This helps keep the UI consistent and makes it easy to change spacing globally.
       spacing: {
         "section-padding": "2rem",
         "container-padding": "1.5rem",
       },
-      // Defining consistent global typography
+      /* Defining consistent global typography
       fontFamily: {
         "font-primary": ["Lucia Sans", "sans-serif"],
         "font-secondary": ["Arial", "sans-serif"],
-      },
+      },*/
        // Defining consistent text sizes
       fontSize: {
-        'header': "2rem",
-        'subheader': "1.5rem",
+        'header': "2.125rem",
+        'subheader': "1.125rem",
         'body': "1rem",
+        'legend':"0.75rem",
       },
       // If you need custom shadows for your components:
       boxShadow: {
         "custom-light": "0 4px 6px rgba(0, 0, 0, 0.1)",
         "custom-dark": "0 10px 15px rgba(0, 0, 0, 0.5)",
+        "custom": "0 18px 40px 0 rgba(112, 144, 176, 0.12)",
       },
       borderRadius: {
-        'global': "10px",
+        'global': "16px",
         // use rounded-global for example instead of rounded-xl
       },
     },

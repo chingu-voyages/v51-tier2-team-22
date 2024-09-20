@@ -35,12 +35,12 @@ function Sidebar() {
             to={link.path}
             className={({ isActive }) =>
               `flex items-center px-4 py-5 space-x-5 text-xl font-extrabold ${
-                isActive ? "text-primary bg-blizzard-blue " : "text-gray-500"
+                isActive ? "text-primary" : "text-title"
               }`
             }
           >
             <span>{link.icon()}</span>
-            <span className="text-md text-gray-500 font-medium hidden md:flex">
+            <span className="text-body font-medium text-title hidden md:flex">
               {link.name}
             </span>
           </NavLink>
