@@ -1,6 +1,6 @@
-function EachMember({ member, index }) {
+function GroupsEachMember({ member, index }) {
   return (
-    <div
+    <section
       key={index}
       className="relative flex flex-col w-20 items-center text-center"
     >
@@ -13,8 +13,8 @@ function EachMember({ member, index }) {
       <button className="bg-red-200 flex items-center justify-center rounded-full font-extrabold text-lg text-red-500 w-6 h-6 pb-1 bottom-20 relative left-7">
         -
       </button>
-    </div>
+    </section>
   );
 }
 
-export default EachMember;
+export default GroupsEachMember;

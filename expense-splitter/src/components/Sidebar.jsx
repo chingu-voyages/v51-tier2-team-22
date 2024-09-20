@@ -5,9 +5,9 @@ import { NavLink } from "react-router-dom";
 
 function Sidebar() {
   const SIDEBAR_LINKS = [
-    { id: 1, path: "/", name: "Dashboard", icon: MdGroups },
+    { id: 1, path: "/", name: "Home", icon: MdGroups },
     { id: 2, path: "/groups", name: "Groups", icon: IoMdPerson },
-    { id: 3, path: "/product", name: "Product", icon: IoWalletSharp },
+    { id: 3, path: "/friends", name: "Friends", icon: IoWalletSharp },
   ];
 
   (isActive) => "nav-link" + (!isActive ? " unselected" : "");
@@ -34,13 +34,13 @@ function Sidebar() {
             key={index}
             to={link.path}
             className={({ isActive }) =>
-              `flex items-center px-4 py-5 space-x-5 hover:bg-indigo-100 ${
-                isActive ? "text-primary font-bold text-xl" : "text-gray-500 text-sm"
+              `flex items-center px-4 py-5 space-x-5 text-xl font-extrabold ${
+                isActive ? "text-primary bg-blizzard-blue " : "text-gray-500"
               }`
             }
           >
             <span>{link.icon()}</span>
-            <span className="text-sm text-gray-500 font-medium hidden md:flex">
+            <span className="text-md text-gray-500 font-medium hidden md:flex">
               {link.name}
             </span>
           </NavLink>
@@ -48,8 +48,10 @@ function Sidebar() {
       </nav>
 
       <div className="w-full absolute bottom-5 left-0 px-4 py-2 cursor-pointer text-center">
-        <p className="w-full flex items-center justify-center space-x-2 text-sm text-white py-2 px-4
-        bg-primary rounded-xl hover:bg-indigo hover:text-blizzard-blue transition duration-300 ease-in-out">
+        <p
+          className="w-full flex items-center justify-center space-x-2 text-sm text-white py-2 px-4
+        bg-primary rounded-xl hover:bg-secondary hover:text-blizzard-blue transition duration-300 ease-in-out"
+        >
           <span>?</span>
           <span className="hidden md:flex">Need help</span>
         </p>
