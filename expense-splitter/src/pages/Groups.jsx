@@ -33,7 +33,7 @@ function Groups() {
         ></GroupSmallExpenseCard>
       </div>
 
-      <ExpenseBar expense={900} budget={1000} />
+      <ExpenseBar expense={300} budget={1000} />
       <GroupChart />
       <GroupMembers />
       <GroupExpenseTable />

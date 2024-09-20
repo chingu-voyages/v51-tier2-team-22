@@ -6,7 +6,7 @@ const data = [
   { name: "Mina", value: 25 },
 ];
 
-const COLORS = ["#4F46E5", "blue", "#F97316"];
+const COLORS = ["#F4A79D", "#4318FF", "#F68D2B"];
 
 const renderCustomizedLabel = ({
   cx,
@@ -27,7 +27,7 @@ const renderCustomizedLabel = ({
       fill="#FFFFFF"
       textAnchor="middle"
       dominantBaseline="central"
-      className=" font-semibold text-xl"
+      className="text-lg font-bold text-secondary"
     >
       {(percent * 100).toFixed(0)}%
     </text>
@@ -38,8 +38,8 @@ function GroupChart() {
   return (
     <section className="flex flex-col items-center justify-center w-96 bg-white p-6 rounded-lg shadow">
       <div className="w-full flex justify-between">
-        <p className="font-semibold text-xl">Budget Split</p>
-        <button>Monthly ▼</button>
+        <p className="text-lg font-bold text-secondary">Budget Split</p>
+        <button className="text-body font-medium text-primary bg-blizzard-blue py-1 px-4 rounded-lg">Members ▼</button>
       </div>
 
       <PieChart width={300} height={270}>
@@ -64,14 +64,14 @@ function GroupChart() {
       </PieChart>
 
       {/* Custom legend */}
-      <div className="mb-4 p-4 px-8 shadow w-3/5 ">
+      <div className="mb-4 p-4 px-8 shadow w-52 h-30 rounded-lg bg-white shadow-custom">
         {data.map((entry, index) => (
           <div key={index} className="flex my-2 items-center space-x-3">
             <span
               className="w-3 h-3 rounded-full"
               style={{ backgroundColor: COLORS[index] }}
             ></span>
-            <span className="text-black">{entry.name}</span>
+            <span className="text-legend font-bold text-legend">{entry.name}</span>
           </div>
         ))}
       </div>
