@@ -64,14 +64,14 @@ function GroupChart() {
       </PieChart>
 
       {/* Custom legend */}
-      <div className="mb-4 p-4 px-8 shadow w-52 h-30 rounded-lg bg-white shadow-custom">
+      <div className="mb-4 p-4 px-8 w-52 h-30 rounded-lg bg-white shadow-custom">
         {data.map((entry, index) => (
           <div key={index} className="flex my-2 items-center space-x-3">
             <span
               className="w-3 h-3 rounded-full"
               style={{ backgroundColor: COLORS[index] }}
             ></span>
-            <span className="text-legend font-bold text-legend">{entry.name}</span>
+            <span className="font-bold text-legend">{entry.name}</span>
           </div>
         ))}
       </div>

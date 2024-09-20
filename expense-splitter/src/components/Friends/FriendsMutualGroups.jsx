@@ -1,6 +1,6 @@
-import EachMutualGroup from "./EachMutualGroup";
+import FriendsEachMutualGroup from "./FriendsEachMutualGroup";
 
-function MutualGroups() {
+function FriendsMutualGroups() {
   return (
     <article className="w-[30rem] bg-red-50 m-6 rounded-xl">
       <div className="py-3 px-4 flex justify-between">
@@ -8,11 +8,11 @@ function MutualGroups() {
         <button className="text-primary bg-blizzard-blue px-2 py-1 rounded-md">View all</button>
       </div>
 
-      <EachMutualGroup />
-      <EachMutualGroup />
-      <EachMutualGroup />
+      <FriendsEachMutualGroup />
+      <FriendsEachMutualGroup />
+      <FriendsEachMutualGroup />
     </article>
   );
 }
 
-export default MutualGroups;
+export default FriendsMutualGroups;

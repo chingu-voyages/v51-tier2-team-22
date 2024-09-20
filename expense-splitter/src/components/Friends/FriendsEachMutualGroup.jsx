@@ -1,4 +1,4 @@
-function EachMutualGroup() {
+function FriendsEachMutualGroup() {
     return (
         <article className="p-3 flex items-center space-x-4  border border-green-200">
       <img
@@ -16,4 +16,4 @@ function EachMutualGroup() {
     )
 }
 
-export default EachMutualGroup
+export default FriendsEachMutualGroup

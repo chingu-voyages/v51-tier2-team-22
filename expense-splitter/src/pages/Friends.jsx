@@ -1,10 +1,10 @@
 import FriendsTable from "../components/Friends/FriendsTable"
-import MutualGroups from "../components/Friends/MutualGroups"
+import FriendsMutualGroups from "../components/Friends/FriendsMutualGroups"
 
 function Friends() {
     return (
         <section>
-            {/* <MutualGroups /> */}
+            <FriendsMutualGroups />
             <FriendsTable />
 
         </section>
