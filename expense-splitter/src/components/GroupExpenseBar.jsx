@@ -2,7 +2,7 @@ const ExpenseBar = ({ expense, budget }) => {
   const expensePercentage = (expense / budget) * 100;
 
   return (
-    <section className="flex flex-col justify-between w-full max-w-lg ml-8 rounded-lg p-6 bg-white shadow-md">
+    <section className="flex flex-col justify-between w-full max-w-lg rounded-lg p-6 bg-white shadow-md">
       <div className="flex justify-between items-center mb-6">
         <p className="text-lg font-semibold text-secondary">Expense vs budget</p>
         <button className="text-sm font-medium text-gray-400 hover:text-secondary">Monthly ▼</button>
@@ -33,7 +33,7 @@ const ExpenseBar = ({ expense, budget }) => {
       </article>
 
         {/* legend */}
-        <article className="w-1/4 flex flex-col items-start space-y-2 p-4 w-52 h-20 rounded-lg bg-white shadow-xl">
+        <article className="flex flex-col items-start space-y-2 p-4 w-52 h-20 rounded-lg bg-white shadow-xl">
           <div className="flex items-center">
             <span className="w-3 h-3 rounded-full bg-primary mr-2"></span>
             <span className="text-sm font-semibold text-gray-600">Expense</span>
