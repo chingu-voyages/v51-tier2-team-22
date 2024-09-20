@@ -6,7 +6,7 @@ import Sidebar from "./Sidebar";
 
 function Layout() {
   return (
-    <div className="flex  bg-blizzard-blue">
+    <div className="flex  ">
 
       <Sidebar />
       {/* <Members /> */}

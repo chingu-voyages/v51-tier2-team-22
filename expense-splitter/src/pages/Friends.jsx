@@ -1,8 +1,10 @@
+import MutualGroups from "../components/Friends/MutualGroups"
+
 function Friends() {
     return (
-        <div className="text-header text-secondary">
-            Friends
-        </div>
+        <section>
+            <MutualGroups />
+        </section>
     )
 }
 

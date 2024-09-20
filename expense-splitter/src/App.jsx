@@ -3,7 +3,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Layout from "./components/Layout";
 import Home from "./pages/Home";
 import Groups from "./pages/Groups";
-import Friends from "./pages/friends";
+import Friends from "./pages/Friends";
 
 function App() {
   return (
