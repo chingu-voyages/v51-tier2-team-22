@@ -5,6 +5,12 @@ export default {
     // some thibest practices are added to keep in mind, if useless, they can easily be discarded
     extend: {
       // Project's theme
+      width: {
+        'custom-card': '347px',
+        'custom-wide': '437px',
+        'custom-narrow': '271px',
+      },
+
       colors: {
         "blizzard-blue": "#F4F7FE",
         'primary': "#4318FF",
@@ -18,6 +24,7 @@ export default {
       spacing: {
         "section-padding": "2rem",
         "container-padding": "1.5rem",
+        "69": "4.3125rem", // 69px, main component image size.
       },
       /* Defining consistent global typography
       fontFamily: {
