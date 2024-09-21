@@ -2,10 +2,11 @@ import FriendsEachMutualGroup from "./FriendsEachMutualGroup";
 
 function FriendsMutualGroups() {
   return (
-    <article className="w-[30rem] bg-red-50 rounded-xl">
+    <article className="p-8 pt-4 ml-8  w-custom-friend-width h-custom-friend-height bg-white rounded-2xl">
       <div className="py-3 px-4 flex justify-between">
-        <p className="font-semibold">4 Mutual groups</p>
-        <button className="text-primary bg-blizzard-blue px-2 py-1 rounded-md">View all</button>
+        <p className="text-lg font-bold text-secondary">4 Mutual groups</p>
+        <button className="w-20 h-8 rounded-lg text-body font-medium
+        bg-blizzard-blue text-primary  duration-300">View all</button>
       </div>
 
       <FriendsEachMutualGroup />

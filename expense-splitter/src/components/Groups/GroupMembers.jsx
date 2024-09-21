@@ -17,11 +17,11 @@ const members = [
 
 function GroupMembers() {
   return (
-    <section className="bg-white p-4 rounded-lg shadow max-w-lg">
+    <section className="bg-white p-8 pt-6 ml-8 rounded-lg shadow w-custom-width h-48">
       <div className="flex justify-between items-center mb-4 ml-4">
         <p className="text-lg font-bold text-secondary">Members</p>
-        <button className="px-3 py-1 rounded-lg text-body font-medium
-        bg-blizzard-blue text-primary  transition-colors duration-300">View all</button>
+        <button className="w-20 h-8 rounded-lg text-body font-medium
+        bg-blizzard-blue text-primary  duration-300">View all</button>
       </div>
 
       <div className="flex p-2 space-x-4">

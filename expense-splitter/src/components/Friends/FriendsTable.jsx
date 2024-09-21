@@ -57,7 +57,7 @@ function FriendsTable() {
                 {el.amount}
               </td>
 
-              <td className="px-6 py-4 text-body font-bold text-secondary">
+              <td className="px-6 py-4 text-sm font-normal text-secondary">
                 {el.note}
               </td>
 
