@@ -27,7 +27,7 @@ const renderCustomizedLabel = ({
       fill="#FFFFFF"
       textAnchor="middle"
       dominantBaseline="central"
-      className="text-lg font-bold text-secondary"
+      className="text-sm font-bold text-secondary"
     >
       {(percent * 100).toFixed(0)}%
     </text>
@@ -36,19 +36,19 @@ const renderCustomizedLabel = ({
 
 function GroupChart() {
   return (
-    <section className="flex flex-col items-center justify-center w-96 bg-white p-6 rounded-lg shadow">
+    <section className="flex flex-col items-center justify-center w-custom-wide-chart h-custom-height-chart bg-white p-6 ml-8 rounded-lg shadow">
       <div className="w-full flex justify-between">
-        <p className="text-lg font-bold text-secondary">Budget Split</p>
-        <button className="text-body font-medium text-primary bg-blizzard-blue py-1 px-4 rounded-lg">Members ▼</button>
+        <p className="text-lg font-bold text-secondary ml-8">Budget Split</p>
+        <button className="text-body font-medium text-primary bg-blizzard-blue w-30 h-8 mr-8 py-1 px-4 rounded-lg">Members ▼</button>
       </div>
 
-      <PieChart width={300} height={270}>
+      <PieChart width={171} height={171}>
         <Pie
           data={data}
-          cx={150}
-          cy={130}
-          innerRadius={50}
-          outerRadius={100}
+          cx={85.5}
+          cy={81.9}
+          innerRadius={28.5}
+          outerRadius={57}
           fill="#8884d8"
           paddingAngle={1}
           dataKey="value"
@@ -64,9 +64,9 @@ function GroupChart() {
       </PieChart>
 
       {/* Custom legend */}
-      <div className="mb-4 p-4 px-8 w-52 h-30 rounded-lg bg-white shadow-custom">
+      <div className="mb-6 p-4  w-52 h-30 rounded-lg bg-white shadow-custom">
         {data.map((entry, index) => (
-          <div key={index} className="flex my-2 items-center space-x-3">
+          <div key={index} className="flex my-2  items-center space-x-4">
             <span
               className="w-3 h-3 rounded-full"
               style={{ backgroundColor: COLORS[index] }}

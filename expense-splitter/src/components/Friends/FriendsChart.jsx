@@ -16,26 +16,28 @@ const data = [
   { name: "April", Group1: 40, Group2: 20, Group3: -20 },
 ];
 
+
 // made with https://recharts.org/
 
 function FriendsChart() {
   return (
-    <div className="bg-white p-4 rounded-lg shadow-md w-[30rem]">
-      <ResponsiveContainer width="100%" height={400}>
+    <div className="bg-white p-4 rounded-lg shadow-md w-custom-friend-width h-custom-friend-height">
+      <ResponsiveContainer width="100%" height={335}>
         <LineChart
           data={data}
           margin={{ top: 20, right: 30, left: 0, bottom: 0 }}
         >
           <CartesianGrid strokeDasharray="3 3" />
           <XAxis dataKey="name" />
-          <YAxis />
+          <YAxis
+          />
           <Tooltip />
           <Legend verticalAlign="top" />
 
           <Line
             type="monotone"
             dataKey="Group1"
-            stroke="#3b82f6"
+            stroke="#4318FF"
             strokeWidth={3}
             dot={{ r: 4 }}
             activeDot={{ r: 6 }}
@@ -44,7 +46,7 @@ function FriendsChart() {
           <Line
             type="monotone"
             dataKey="Group2"
-            stroke="#fca5a5"
+            stroke="#F4A79D"
             strokeWidth={3}
             dot={{ r: 4 }}
             activeDot={{ r: 6 }}
@@ -53,14 +55,14 @@ function FriendsChart() {
           <Line
             type="monotone"
             dataKey="Group3"
-            stroke="#f59e0b"
+            stroke="#F8AE1B"
             strokeWidth={3}
             dot={{ r: 4 }}
             activeDot={{ r: 6 }}
           />
         </LineChart>
       </ResponsiveContainer>
-      
+
     </div>
   );
 }

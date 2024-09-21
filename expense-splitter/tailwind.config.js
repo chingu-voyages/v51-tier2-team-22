@@ -7,8 +7,18 @@ export default {
       // Project's theme
       width: {
         'custom-card': '347px',
-        'custom-wide': '437px',
+        'custom-wide-chart': '437px',//budget split width
         'custom-narrow': '271px',
+        'custom-width':'628px',//group expense bar
+        'custom-friend-width':'570px', //mutual friends
+
+      },
+
+      height:{
+        'custom-height-chart':'443px',//budget split height
+        'custom-expense-height':'227px',//group expense bar
+        'custom-friend-height':'358px',//mutual friends
+
       },
 
       colors: {
@@ -18,13 +28,16 @@ export default {
         'title':"#A3AED0",
         'legend':"#767676",
         'highlight':"#FFF4DF",
-        'alert':"#FF3636"
+        'alert':"#FF3636",
+        'separator':"#EAEFFB",
+        'green':"02B788",
       },
       // Centralizing Common Spacing (Padding/Margin). Define custom spacing values for margins, padding, or gaps. This helps keep the UI consistent and makes it easy to change spacing globally.
       spacing: {
         "section-padding": "2rem",
         "container-padding": "1.5rem",
         "69": "4.3125rem", // 69px, main component image size.
+        "custom-bar":"20.5625rem" //custom width of 329px
       },
       /* Defining consistent global typography
       fontFamily: {
