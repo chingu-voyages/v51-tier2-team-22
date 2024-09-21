@@ -1,9 +1,9 @@
-import GroupChart from "../components/GroupChart";
-import ExpenseBar from "../components/GroupExpenseBar";
-import GroupExpenseTable from "../components/GroupExpenseTable";
-import GroupMembers from "../components/GroupMembers";
-import GroupName from "../components/GroupName";
-import GroupSmallExpenseCard from "../components/GroupSmallExpenseCard";
+import GroupChart from "../components/Groups/GroupChart";
+import ExpenseBar from "../components/Groups/GroupExpenseBar";
+import GroupExpenseTable from "../components/Groups/GroupExpenseTable";
+import GroupMembers from "../components/Groups/GroupMembers";
+import GroupName from "../components/Groups/GroupName";
+import GroupSmallExpenseCard from "../components/Groups/GroupSmallExpenseCard";
 // icons
 import { FaPiggyBank } from "react-icons/fa6";
 import { FaCartShopping } from "react-icons/fa6";
