@@ -43,4 +43,4 @@ coding!
 - Jordi, Developer: [GitHub](https://github.com/cluster28) / [LinkedIn](https://www.linkedin.com/in/jordi-rejas-b1319bb1/)
 - Farzaneh, UX/UI Designer: [GitHub](https://github.com/farzaneh-falakrou) / [LinkedIn](https://www.linkedin.com/in/farzaneh-falakrou/)
    ...
-- Teammate name #n: [GitHub](https://github.com/ghaccountname) / [LinkedIn](https://linkedin.com/in/liaccountname)
+- Afrah, Scrum Master: [GitHub](https://github.com/afbaf) / [LinkedIn](https://www.linkedin.com/in/afrah-ali-251264269/)
