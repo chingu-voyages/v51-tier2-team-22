@@ -68,7 +68,7 @@ function Home() {
       <div className="bg-white w-72 h-40 flex items-center justify-center flex-col">
         <button
           onClick={() => setIsModalOpen(true)}
-          className="rounded-full bg-emerald-300 w-14 h-14 text-5xl hover:bg-emerald-400"
+          className="hover:animate-ping rounded-full bg-emerald-300 w-14 h-14 text-5xl hover:bg-emerald-400"
         >
           +
         </button>
@@ -80,13 +80,23 @@ function Home() {
       ))}
 
       {isModalOpen && (
-        <div
+        <section
           id="modal-overlay"
           className="fixed inset-0 bg-black bg-opacity-20 flex justify-center items-center"
           onClick={handleModalClickOutside}
         >
-          <div className="bg-white p-6 rounded-lg w-96">
-            <h2 className="text-2xl mb-4">Add New Group</h2>
+          <article className="bg-white p-6 rounded-lg w-96">
+            <div className="flex justify-between items-center">
+              <h2 className="text-2xl mb-4">Add New Group</h2>
+              {/* add actual icon for close btn */}
+              <button
+                className="bg-red-400 rounded-full w-10 h-10"
+                onClick={() => setIsModalOpen(false)}
+              >
+                x
+              </button>
+            </div>
+
             <form onSubmit={handleSubmit} className="space-y-3">
               <div>
                 <label>Group Name</label>
@@ -134,8 +144,8 @@ function Home() {
                 Add Group
               </button>
             </form>
-          </div>
-        </div>
+          </article>
+        </section>
       )}
     </section>
   );

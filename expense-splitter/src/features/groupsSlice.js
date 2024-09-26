@@ -30,10 +30,10 @@ const groupsSlice = createSlice({
       state.groups = state.groups.filter(
         (group) => group.id !== action.payload
       );
-      // Remove associated friends when group is deleted
-      state.friends = state.friends.filter(
-        (friend) => friend.group !== action.payload
-      );
+      // Remove associated friends when group is deleted. uncomenting this piece will make the remove group button NOT WORK 
+      // state.groups.members = state.groups.members.filter(
+      //   (friend) => friend.group !== action.payload
+      // );
     },
     addFriendToGroup: (state, action) => {
       const { groupId, friendName } = action.payload;
