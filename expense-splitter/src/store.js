@@ -1,7 +1,10 @@
 import { configureStore } from "@reduxjs/toolkit";
+import groupsReducer from "./features/groupsSlice";
 
 export const store = configureStore({
-    reducer: {}
+    reducer: {
+        groups: groupsReducer,
+    }
 })
 
 // if interested about this, you can read more here. 
