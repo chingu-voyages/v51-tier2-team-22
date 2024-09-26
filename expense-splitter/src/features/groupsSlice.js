@@ -4,7 +4,12 @@ const initialState = {
   groups: [
     {
       id: 1,
-      name: "Las Vegas Holiday",
+      name: "Picnic Holiday",
+      members: ["Mark", "Tom"],
+    },
+    {
+      id: 2,
+      name: "Hiking",
       members: ["Mark", "Tom"],
     },
   ],

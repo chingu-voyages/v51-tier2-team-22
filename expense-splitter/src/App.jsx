@@ -12,6 +12,7 @@ function App() {
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
           <Route path="groups" element={<Groups />} />
+          <Route path="groups/:groupId" element={<Groups/>} />
           <Route path="friends" element={<Friends />} />
         </Route>
       </Routes>
