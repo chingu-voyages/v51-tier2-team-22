@@ -5,17 +5,17 @@ const initialState = {
     {
       id: 1,
       name: "Picnic Holiday",
+      totalBudget: 500,
+      totalExpense: 300,
       members: ["Mark", "Tom"],
     },
     {
       id: 2,
       name: "Hiking",
-      members: ["Mark", "Tom"],
+      totalBudget: 1000,
+      totalExpense: 700,
+      members: ["Jane", "Mary"],
     },
-  ],
-  friends: [
-    { id: 1, name: "Mark", group: "Las Vegas Holiday" },
-    { id: 2, name: "Tom", group: "Las Vegas Holiday" },
   ],
 };
 

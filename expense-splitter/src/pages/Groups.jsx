@@ -19,13 +19,13 @@ if (!group) {
   return <div>Group not found</div>;
 }
 
-const totalBudget = 2000;  // fake values update with actual logic later
-  const totalExpense = 700;
+const totalBudget = group.totalBudget;  // fake values update with actual logic later
+  const totalExpense = group.totalExpense;
   const remainingBudget = totalBudget - totalExpense;
 
   return (
     <section className="flex flex-col gap-8 m-6">
-      <GroupName />
+      <GroupName groupName={group.name} />
 
       <div className="flex gap-6 flex-col xl:flex-row">
         <GroupSmallExpenseCard
