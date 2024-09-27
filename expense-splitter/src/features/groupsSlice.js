@@ -7,14 +7,14 @@ const initialState = {
       name: "Picnic Holiday",
       totalBudget: 500,
       totalExpense: 300,
-      members: ["Mark", "Tom"],
+      members: [1, 2],
     },
     {
       id: 2,
       name: "Hiking",
       totalBudget: 1000,
       totalExpense: 700,
-      members: ["Jane", "Mary"],
+      members: [3, 4],
     },
   ],
 };

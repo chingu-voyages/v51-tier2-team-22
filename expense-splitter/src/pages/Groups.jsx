@@ -10,6 +10,7 @@ import { FaPiggyBank } from "react-icons/fa6";
 import { FaCartShopping } from "react-icons/fa6";
 import { GiReceiveMoney } from "react-icons/gi";
 import { useSelector } from "react-redux";
+import GetGroupMembers from "../service/group/GetGroupMembers";
 
 function Groups() {
 const {groupId} = useParams()
@@ -46,10 +47,10 @@ const totalBudget = group.totalBudget;  // fake values update with actual logic 
         ></GroupSmallExpenseCard>
       </div>
 
-      <ExpenseBar expense={totalExpense} budget={totalBudget} />
-      <GroupChart />
-      <GroupMembers members={group.members} />
-      <GroupExpenseTable />
+      <ExpenseBar expense={totalExpense} budget={totalBudget}/>
+      <GroupChart/>
+      <GroupMembers members={GetGroupMembers(group)} />
+      <GroupExpenseTable/>
     </section>
   );
 }
