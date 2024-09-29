@@ -18,6 +18,7 @@ export default {
         'custom-height-chart':'443px',//budget split height
         'custom-expense-height':'227px',//group expense bar
         'custom-friend-height':'358px',//mutual friends
+        'custom-card-height':'253px'
 
       },
 
