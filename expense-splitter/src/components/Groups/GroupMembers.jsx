@@ -31,13 +31,13 @@ function GroupMembers() {
     return <div>Group not found.</div>;
   }
 
-  const handleRemoveMember = (memberName) => {
+  const handleRemoveMember = (memberId, memberName) => {
     const confirmed = window.confirm(
       `Are you sure you want to remove ${memberName}?`
     );
 
     if (confirmed) {
-      dispatch(removeMember({ groupId: parseInt(groupId), memberName }));
+      dispatch(removeMember({ groupId: parseInt(groupId), memberId }));
     }
   };
 
@@ -51,11 +51,14 @@ function GroupMembers() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Dispatch action to add new member to the group
+
     dispatch(
       addMember({
         groupId: parseInt(groupId),
-        newMember: newMember.name, // Add the name of the new member
+        member: {
+          name: newMember.name,
+          number: newMember.number,
+        },
       })
     );
     setNewMember({ name: "", number: "" });
@@ -82,18 +85,21 @@ function GroupMembers() {
 
       <div className="flex p-2 space-x-4">
         {/* map method */}
-        {group.members.map((member, index) => (
+        {group.members.map((member) => (
           <GroupsEachMember
-            key={index}
-            onRemove={() => handleRemoveMember(member)}
+            key={member.id}
+            onRemove={() => handleRemoveMember(member.id, member.name)}
             member={{
-              name: member,
+              name: member.name,
               img: "https://img.freepik.com/free-photo/young-bearded-man-with-striped-shirt_273609-5677.jpg",
             }}
           />
         ))}
 
-        <button onClick={() => setIsModalOpen(true)} className="flex-col flex items-center ">
+        <button
+          onClick={() => setIsModalOpen(true)}
+          className="flex-col flex items-center "
+        >
           <MdGroups className="rounded-full w-14 h-14 bg-blizzard-blue p-3 text-primary" />
           <p className="text-legend font-bold text-secondary">Add</p>
         </button>

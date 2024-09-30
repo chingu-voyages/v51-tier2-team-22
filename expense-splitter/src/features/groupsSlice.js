@@ -7,7 +7,11 @@ const initialState = {
       name: "Picnic Holiday",
       totalBudget: 500,
       totalExpense: 300,
-      members: ["Mark", "Jason", "Conan"],
+      members: [
+        { id: 1, name: "Mark", number: "12345" },
+        { id: 2, name: "Jason", number: "67890" },
+        { id: 3, name: "Conan", number: "11223" },
+      ],
     },
     // {
     //   id: 2,
@@ -32,21 +36,25 @@ const groupsSlice = createSlice({
       );
     },
     addMember: (state, action) => {
-      const { groupId, newMember } = action.payload;
+      const { groupId, member } = action.payload;
       const group = state.groups.find((group) => group.id === groupId);
       if (group) {
-        group.members.push(newMember);
+        group.members.push({
+          id: Date.now(), 
+          ...member,    
+        });
       }
     },
     removeMember: (state, action) => {
-      const { groupId, memberName } = action.payload;
+      const { groupId, memberId  } = action.payload;
       const group = state.groups.find((group) => group.id === groupId);
       if (group) {
-        group.members = group.members.filter((member) => member !== memberName);
+        group.members = group.members.filter((member) => member.id !== memberId);
       }
     },
   },
 });
 
-export const { addGroup, removeGroup, addMember, removeMember } = groupsSlice.actions;
+export const { addGroup, removeGroup, addMember, removeMember } =
+  groupsSlice.actions;
 export default groupsSlice.reducer;
