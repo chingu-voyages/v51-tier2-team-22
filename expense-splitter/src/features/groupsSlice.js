@@ -7,7 +7,7 @@ const initialState = {
       name: "Picnic Holiday",
       totalBudget: 500,
       totalExpense: 300,
-      members: ["Mark", "Tom"],
+      members: ["Mark", "Jason", "Conan"],
     },
     {
       id: 2,
@@ -30,25 +30,9 @@ const groupsSlice = createSlice({
       state.groups = state.groups.filter(
         (group) => group.id !== action.payload
       );
-      // Remove associated friends when group is deleted. uncomenting this piece will make the remove group button NOT WORK 
-      // state.groups.members = state.groups.members.filter(
-      //   (friend) => friend.group !== action.payload
-      // );
-    },
-    addFriendToGroup: (state, action) => {
-      const { groupId, friendName } = action.payload;
-      const group = state.groups.find((group) => group.id === groupId);
-      if (group) {
-        group.members.push(friendName);
-        state.friends.push({
-          id: Date.now(),
-          name: friendName,
-          group: group.name,
-        });
-      }
     },
   },
 });
 
-export const { addGroup, removeGroup, addFriendToGroup } = groupsSlice.actions;
+export const { addGroup, removeGroup, removeMember } = groupsSlice.actions;
 export default groupsSlice.reducer;
