@@ -31,6 +31,13 @@ const groupsSlice = createSlice({
         (group) => group.id !== action.payload
       );
     },
+    removeMember: (state, action) => {
+      const { groupId, memberName } = action.payload;
+      const group = state.groups.find((group) => group.id === groupId);
+      if (group) {
+        group.members = group.members.filter((member) => member !== memberName);
+      }
+    },
   },
 });
 

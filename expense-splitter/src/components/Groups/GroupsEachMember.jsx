@@ -1,4 +1,4 @@
-function GroupsEachMember({ member }) {
+function GroupsEachMember({ member, onRemove }) {
   return (
     <section className="relative flex flex-col w-20 items-center text-center">
       <img
@@ -7,7 +7,7 @@ function GroupsEachMember({ member }) {
         alt={member.name}
       />
       <p className="font-bold text-legend">{member.name}</p>
-      <button className="bg-highlight flex items-center justify-center rounded-full font-extrabold text-lg text-alert w-6 h-6 pb-1 bottom-20 relative left-7">
+      <button onClick={onRemove} className="bg-highlight flex items-center justify-center rounded-full font-extrabold text-lg text-alert w-6 h-6 pb-1 bottom-20 relative left-7">
         -
       </button>
     </section>

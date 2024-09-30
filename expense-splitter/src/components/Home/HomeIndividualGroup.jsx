@@ -16,20 +16,26 @@ function HomeIndividualGroup({ group }) {
   };
 
   return (
-    <section className="p-4 border border-black w-72 h-36">
-      <h2 className="">{group.name}</h2>
-      <p className="pb-2">members: {group.members}</p>
+    <section className="p-4 border bg-white rounded-xl w-72 h-36 ml-8 w-custom-card h-custom-card-height flex flex-col items-center">
+      <img className="w-14 h-14 mb-2 rounded-full object-cover flex justify-center"
+        src="https://freedomdestinations.co.uk/wp-content/uploads/Diamond-Head-Crater-Honolulu.jpg" alt="group-logo" />
 
-      <div className="flex justify-between">
+      <p className="text-body font-medium text-title">{group.members.length} members</p>
+
+      <h2 className="font-bold text-secondary">{group.name}</h2>
+
+      <div className="flex justify-between w-full mt-auto">
         <Link
-          className="border border-emerald-600 hover:bg-emerald-200 p-2 text-xl"
+          className="border border-primary bg-blizzard-blue hover:bg-white text-xl text-primary
+            font-bold rounded-lg w-32 h-10 flex items-center justify-center ml-4"
           to={`/groups/${group.id}`}
         >
           Details
         </Link>
         <button
           onClick={confirmRemove}
-          className="border border-red-600 hover:bg-red-200 p-2 text-xl"
+          className=" border border-primary bg-blizzard-blue hover:bg-white text-xl text-primary
+          font-bold rounded-lg w-32 h-10 mb-4 flex items-center justify-center mr-4"
         >
           Remove
         </button>

@@ -63,16 +63,18 @@ function Home() {
 
   return (
     <section className="text-xl text-secondary p-5 space-y-5">
-      <h1>Groups</h1>
-
-      <div className="bg-white w-72 h-40 flex items-center justify-center flex-col">
+      <div>
+      <h1 className="text-header font-bold text-secondary ml-8 mt-8">Welcome to SplitSmart!</h1>
+      <p className="text-sm font-normal text-secondary ml-8 mb-8 pt-6">Tracks expenses, calculates costs, and settles debts with friends &#128522;</p>
+      </div>
+      <div className="bg-white rounded-2xl w-custom-card h-custom-card-height ml-8 shadow flex items-center justify-center flex-col">
         <button
           onClick={() => setIsModalOpen(true)}
-          className="hover:animate-ping rounded-full bg-emerald-300 w-14 h-14 text-5xl hover:bg-emerald-400"
+          className="hover:animate-ping rounded-full bg-primary w-16 h-16 text-5xl text-white hover:bg-primary"
         >
           +
         </button>
-        <p>Add</p>
+        <p className="text-2xl mt-4 font-bold">Add</p>
       </div>
 
       {groups.map((group) => (
@@ -87,10 +89,10 @@ function Home() {
         >
           <article className="bg-white p-6 rounded-lg w-96">
             <div className="flex justify-between items-center">
-              <h2 className="text-2xl mb-4">Add New Group</h2>
+              <h2 className="text-2xl mb-4 font-bold">Add New Group</h2>
               {/* add actual icon for close btn */}
               <button
-                className="bg-red-400 rounded-full w-10 h-10"
+                className="bg-white shadow rounded-full w-8 h-8 text-red-500 mb-4"
                 onClick={() => setIsModalOpen(false)}
               >
                 x
@@ -99,7 +101,7 @@ function Home() {
 
             <form onSubmit={handleSubmit} className="space-y-3">
               <div>
-                <label>Group Name</label>
+                <label className="text-body font-semibold">Group Name</label>
                 <input
                   type="text"
                   name="name"
@@ -107,12 +109,12 @@ function Home() {
                   onChange={handleInputChange}
                   className="border p-2 w-full"
                   placeholder="Enter group name"
-                  required
+                  required style={{ fontSize: '14px' }}
                 />
               </div>
 
               <div>
-                <label>Total Budget</label>
+                <label className="text-body font-semibold">Total Budget</label>
                 <input
                   type="number"
                   name="totalBudget"
@@ -120,12 +122,12 @@ function Home() {
                   onChange={handleInputChange}
                   className="border p-2 w-full"
                   placeholder="Enter total budget"
-                  required
+                  required style={{ fontSize: '14px' }}
                 />
               </div>
 
               <div>
-                <label>Total Expense</label>
+                <label className="text-body font-semibold">Total Expense</label>
                 <input
                   type="number"
                   name="totalExpense"
@@ -133,13 +135,13 @@ function Home() {
                   onChange={handleInputChange}
                   className="border p-2 w-full"
                   placeholder="Enter total expense"
-                  required
+                  required style={{ fontSize: '14px' }}
                 />
               </div>
 
               <button
                 type="submit"
-                className="hover:bg-emerald-400 px-7 py-3 bg-emerald-300"
+                className="px-4 py-2 bg-primary text-white rounded-xl"
               >
                 Add Group
               </button>
