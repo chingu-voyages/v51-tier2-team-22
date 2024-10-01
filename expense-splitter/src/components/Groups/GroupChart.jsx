@@ -1,13 +1,10 @@
 import { PieChart, Pie, Cell } from "recharts";
+import { useSelector } from "react-redux";
 
-const data = [
-  { name: "Fari", value: 50 },
-  { name: "Luigi", value: 25 },
-  { name: "Mina", value: 25 },
-];
+// chart
+const COLORS = ["#0B7A75", "#843B62", "#F67E7D", "#00A1E4", "#F5B700", "#00A1E4", "#A8C686", "#7067CF", "#E27396", "#DC0073","#89FC00"];
 
-const COLORS = ["#F4A79D", "#4318FF", "#F68D2B"];
-
+// props of numbers inside chart position and radius related 
 const renderCustomizedLabel = ({
   cx,
   cy,
@@ -21,6 +18,7 @@ const renderCustomizedLabel = ({
   const y = cy + radius * Math.sin(-midAngle * (Math.PI / 180));
 
   return (
+    // props of numbers inside chart styling related
     <text
       x={x}
       y={y}
@@ -34,12 +32,29 @@ const renderCustomizedLabel = ({
   );
 };
 
-function GroupChart() {
+function GroupChart({ groupId }) {
+  const groupIdInt = parseInt(groupId);
+
+  const group = useSelector((state) =>
+    state.groups.groups.find((group) => group.id === groupIdInt)
+  );
+
+  if (!group) {
+    return <p>No group found</p>;
+  }
+
+  const data = group.members.map((member) => ({
+    name: member.name,
+    value: member.contribution || 1,
+  }));
+
   return (
     <section className="flex flex-col items-center justify-center w-custom-wide-chart h-custom-height-chart bg-white p-6 ml-8 rounded-lg shadow">
       <div className="w-full flex justify-between">
         <p className="text-lg font-bold text-secondary ml-8">Budget Split</p>
-        <button className="text-body font-medium text-primary bg-blizzard-blue w-30 h-8 mr-8 py-1 px-4 rounded-lg">Members ▼</button>
+        <button className="text-body font-medium text-primary bg-blizzard-blue w-30 h-8 mr-8 py-1 px-4 rounded-lg">
+          Members ▼
+        </button>
       </div>
 
       <PieChart width={171} height={171}>
@@ -47,7 +62,7 @@ function GroupChart() {
           data={data}
           cx={85.5}
           cy={81.9}
-          innerRadius={28.5}
+          innerRadius={20.5}
           outerRadius={57}
           fill="#8884d8"
           paddingAngle={1}
