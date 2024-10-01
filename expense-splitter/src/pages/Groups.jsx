@@ -47,7 +47,7 @@ const totalBudget = group.totalBudget;  // fake values update with actual logic 
       </div>
 
       <ExpenseBar expense={totalExpense} budget={totalBudget} />
-      <GroupChart />
+      <GroupChart groupId={groupId} />
       <GroupMembers members={group.members} />
       <GroupExpenseTable />
     </section>

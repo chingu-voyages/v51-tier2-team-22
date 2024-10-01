@@ -67,7 +67,7 @@ function Home() {
       <h1 className="text-header font-bold text-secondary ml-8 mt-8">Welcome to SplitSmart!</h1>
       <p className="text-sm font-normal text-secondary ml-8 mb-8 pt-6">Tracks expenses, calculates costs, and settles debts with friends &#128522;</p>
       </div>
-      <div className="bg-white w-72 h-40 rounded-2xl w-custom-card h-custom-card-height ml-8 shadow flex items-center justify-center flex-col">
+      <div className="bg-white rounded-2xl w-custom-card h-custom-card-height ml-8 shadow flex items-center justify-center flex-col">
         <button
           onClick={() => setIsModalOpen(true)}
           className="hover:animate-ping rounded-full bg-primary w-16 h-16 text-5xl text-white hover:bg-primary"
