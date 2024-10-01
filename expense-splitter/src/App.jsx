@@ -14,6 +14,7 @@ function App() {
           <Route path="groups" element={<Groups />} />
           <Route path="groups/:groupId" element={<Groups/>} />
           <Route path="friends" element={<Friends />} />
+          <Route path="friends/:friendName" element={<Friends />} />
         </Route>
       </Routes>
     </BrowserRouter>

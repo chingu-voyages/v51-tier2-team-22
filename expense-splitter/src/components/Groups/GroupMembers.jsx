@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { addMember, removeMember } from "../../features/groupsSlice";
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
 function GroupMembers() {
   const { groupId } = useParams();
@@ -86,14 +87,15 @@ function GroupMembers() {
       <div className="flex p-2 space-x-4">
         {/* map method */}
         {group.members.map((member) => (
-          <GroupsEachMember
-            key={member.id}
-            onRemove={() => handleRemoveMember(member.id, member.name)}
-            member={{
-              name: member.name,
-              img: "https://img.freepik.com/free-photo/young-bearded-man-with-striped-shirt_273609-5677.jpg",
-            }}
-          />
+          <Link key={member.id} to={`/friends/${member.name}`}>
+            <GroupsEachMember
+              onRemove={() => handleRemoveMember(member.id, member.name)}
+              member={{
+                name: member.name,
+                img: "https://img.freepik.com/free-photo/young-bearded-man-with-striped-shirt_273609-5677.jpg",
+              }}
+            />
+          </Link>
         ))}
 
         <button
