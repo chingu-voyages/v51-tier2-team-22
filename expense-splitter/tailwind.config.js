@@ -1,6 +1,10 @@
 /** @type {import('tailwindcss').Config} */
 export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
+
+    // Add darkMode setting
+  darkMode: 'class', // This allows toggling between dark and light modes with the 'dark' class
+
   theme: {
     // some thibest practices are added to keep in mind, if useless, they can easily be discarded
     extend: {
@@ -32,6 +36,12 @@ export default {
         'alert':"#FF3636",
         'separator':"#EAEFFB",
         'green':"02B788",
+
+        //dark mode colors using 'dark:' classes in components)
+        'dark-primary': '#1a202c', // Darker primary for dark mode
+        'dark-secondary': '#2d3748', // Darker secondary color
+        'dark-bg': '#121212', // Background color for dark mode
+        'dark-text': '#E2E8F0', // Lighter text for dark mode
       },
       // Centralizing Common Spacing (Padding/Margin). Define custom spacing values for margins, padding, or gaps. This helps keep the UI consistent and makes it easy to change spacing globally.
       spacing: {
