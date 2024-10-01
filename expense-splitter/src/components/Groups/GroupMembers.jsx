@@ -87,15 +87,22 @@ function GroupMembers() {
       <div className="flex p-2 space-x-4">
         {/* map method */}
         {group.members.map((member) => (
-          <Link key={member.id} to={`/friends/${member.name}`}>
-            <GroupsEachMember
-              onRemove={() => handleRemoveMember(member.id, member.name)}
-              member={{
-                name: member.name,
-                img: "https://img.freepik.com/free-photo/young-bearded-man-with-striped-shirt_273609-5677.jpg",
-              }}
-            />
-          </Link>
+          <div key={member.id} className="flex flex-col items-center">
+            <Link to={`/friends/${member.name}`} className="hover:bg-slate-200">
+              <GroupsEachMember
+                member={{
+                  name: member.name,
+                  img: "https://img.freepik.com/free-photo/young-bearded-man-with-striped-shirt_273609-5677.jpg",
+                }}
+              />
+            </Link>
+            <button
+              onClick={() => handleRemoveMember(member.id, member.name)}
+              className="bg-highlight flex items-center justify-center rounded-full font-extrabold text-lg text-alert hover:bg-red-400 w-6 h-6 pb-1 relative bottom-20 left-5"
+            >
+              -
+            </button>
+          </div>
         ))}
 
         <button

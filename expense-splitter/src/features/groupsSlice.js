@@ -1,5 +1,15 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+const calculateContributions = (group) => {
+  const memberCount = group.members.length;
+  if (memberCount > 0) {
+    const contribution = group.totalExpense / memberCount;
+    group.members.forEach((member) => {
+      member.contribution = contribution;
+    });
+  }
+};
+
 const initialState = {
   groups: [
     {
@@ -8,18 +18,11 @@ const initialState = {
       totalBudget: 500,
       totalExpense: 300,
       members: [
-        { id: 1, name: "Mark", number: "12345" },
-        { id: 2, name: "Jason", number: "67890" },
-        { id: 3, name: "Conan", number: "11223" },
+        { id: 1, name: "Mark", contribution: 0 },
+        { id: 2, name: "Jason", contribution: 0 },
+        { id: 3, name: "Conan", contribution: 0 },
       ],
     },
-    // {
-    //   id: 2,
-    //   name: "Hiking",
-    //   totalBudget: 1000,
-    //   totalExpense: 700,
-    //   members: ["Jane", "Mary"],
-    // },
   ],
 };
 
@@ -40,16 +43,27 @@ const groupsSlice = createSlice({
       const group = state.groups.find((group) => group.id === groupId);
       if (group) {
         group.members.push({
-          id: Date.now(), 
-          ...member,    
+          id: Date.now(),
+          ...member,
         });
+        calculateContributions(group);
       }
     },
     removeMember: (state, action) => {
-      const { groupId, memberId  } = action.payload;
+      const { groupId, memberId } = action.payload;
       const group = state.groups.find((group) => group.id === groupId);
       if (group) {
-        group.members = group.members.filter((member) => member.id !== memberId);
+        group.members = group.members.filter(
+          (member) => member.id !== memberId
+        );
+      }
+    },
+    updateTotalExpense: (state, action) => {
+      const { groupId, totalExpense } = action.payload;
+      const group = state.groups.find((group) => group.id === groupId);
+      if (group) {
+        group.totalExpense = totalExpense;
+        calculateContributions(group);
       }
     },
   },
