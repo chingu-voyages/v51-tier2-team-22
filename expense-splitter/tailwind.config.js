@@ -42,6 +42,7 @@ export default {
         'dark-secondary': '#2d3748', // Darker secondary color
         'dark-bg': '#121212', // Background color for dark mode
         'dark-text': '#E2E8F0', // Lighter text for dark mode
+        'dark-input':'#D3D3D3'//gray background for input area
       },
       // Centralizing Common Spacing (Padding/Margin). Define custom spacing values for margins, padding, or gaps. This helps keep the UI consistent and makes it easy to change spacing globally.
       spacing: {

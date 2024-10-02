@@ -2,9 +2,9 @@ const ExpenseBar = ({ expense, budget }) => {
   const expensePercentage = (expense / budget) * 100;
 
   return (
-    <section className="flex flex-col justify-between  w-custom-width h-custom-expense-height rounded-global p-8 pt-6 ml-8 bg-white shadow-md">
+    <section className="flex flex-col justify-between  w-custom-width h-custom-expense-height rounded-global p-8 pt-6 ml-8 border bg-white dark:bg-dark-secondary shadow-md">
       <div className="flex justify-between items-center mb-6">
-        <p className="text-lg font-bold text-secondary">Expense vs budget</p>
+        <p className="text-lg font-bold text-secondary dark:text-primary">Expense vs budget</p>
         <button className="text-body font-medium text-primary bg-blizzard-blue py-1 px-4 mr-8 rounded-lg">
           Monthly ▼
         </button>
@@ -28,7 +28,7 @@ const ExpenseBar = ({ expense, budget }) => {
             ></p>
           </div>
           {/* numbers */}
-          <div className="flex justify-between text-sm font-bold text-secondary relative">
+          <div className="flex justify-between text-sm font-bold text-secondary relative dark:text-dark-text">
             <p
               style={{
                 left:

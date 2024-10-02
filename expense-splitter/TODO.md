@@ -5,5 +5,6 @@ some reminders for myself (Predrag)
 
 MINOR
 
-- see with Fari to make array of colors that look nice and are the same theme, like sand colors or something. this is for the chart colors on groups page
-- inside GroupMembers.jsx make a bg change on hover, add a little nice rounded corners also
+- check whether DarkModeToggle.jsx toggle functionality can be written in more declarative way
+- [IN PROGRESS] see with Fari to make array of colors that look nice and are the same theme, like sand colors or something. this is for the chart colors on groups page
+- inside GroupMembers.jsx make a bg change on hover

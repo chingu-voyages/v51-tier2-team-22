@@ -73,16 +73,18 @@ function GroupMembers() {
   };
 
   return (
-    <section className="bg-white p-6 ml-8 rounded-lg shadow w-custom-width">
+    <section className="bg-white dark:bg-dark-secondary dark:border p-6 ml-8 rounded-lg shadow w-custom-width">
       <div className="flex justify-between items-center mb-4 ml-4">
-        <p className="text-lg font-bold text-secondary">Members</p>
-        {/* "View all" btn to be removed perhaps, due to the simplification of the app */}
+        <p className="text-lg font-bold text-secondary dark:text-primary">
+          Members
+        </p>
+        {/* under btn to be removed perhaps due to simplification of the app */}
         {/* <button
           className="w-20 h-8 rounded-lg text-body font-medium
         bg-blizzard-blue text-primary  duration-300"
         >
           View all
-        </button> */}
+        </button>  */}
       </div>
 
       {/* note to self, add bg-red-500 to line under to better checking for aligments */}
@@ -99,10 +101,10 @@ function GroupMembers() {
         {group.members.map((member) => (
           <div
             key={member.id}
-            // note to self, add bg-red-200 to line under to better checking for aligments 
-            className="flex flex-col items-center  m-1"
+            // note to self, add bg-red-200 to line under to better checking for aligments
+            className="flex flex-col items-center m-1"
           >
-            <Link to={`/friends/${member.name}`} className="hover:bg-slate-200">
+            <Link to={`/friends/${member.name}`} className="hover:bg-slate-100 transition-colors rounded-md">
               <GroupsEachMember
                 member={{
                   name: member.name,
@@ -120,15 +122,18 @@ function GroupMembers() {
         ))}
       </article>
 
+{/* MODAL */}
       {isModalOpen && (
         <section
           id="modal-overlay"
           className="fixed inset-0 bg-black bg-opacity-20 flex justify-center items-center"
           onClick={handleModalClickOutside}
         >
-          <article className="bg-white p-6 rounded-lg w-96">
+          <article className="bg-white dark:bg-dark-secondary p-6 rounded-lg w-96">
             <div className="flex justify-between items-center">
-              <h2 className="text-2xl mb-4 font-bold">Add New Member</h2>
+              <h2 className="text-2xl mb-4 font-bold dark:text-dark-text">
+                Add New Member
+              </h2>
               <button
                 className="bg-white shadow rounded-full w-8 h-8 text-red-500 mb-4"
                 onClick={() => setIsModalOpen(false)}
@@ -139,13 +144,16 @@ function GroupMembers() {
 
             <form onSubmit={handleSubmit} className="space-y-3">
               <div>
-                <label className="text-body font-semibold">Member Name</label>
+                <label className="text-body font-semibold dark:text-dark-text">
+                  Member Name
+                </label>
+
                 <input
                   type="text"
                   name="name"
                   value={newMember.name}
                   onChange={handleAddMemberInputChange}
-                  className="border p-2 w-full"
+                  className="border p-2 w-full dark:bg-dark-input"
                   placeholder="Enter member name"
                   required
                   style={{ fontSize: "14px" }}
@@ -153,13 +161,16 @@ function GroupMembers() {
               </div>
 
               <div>
-                <label className="text-body font-semibold">Member Number</label>
+                <label className="text-body font-semibold dark:text-dark-text">
+                  Member Number
+                </label>
+
                 <input
                   type="text"
                   name="number"
                   value={newMember.number}
                   onChange={handleAddMemberInputChange}
-                  className="border p-2 w-full"
+                  className="border p-2 w-full dark:bg-dark-input"
                   placeholder="Enter member number"
                   required
                   style={{ fontSize: "14px" }}
@@ -168,7 +179,7 @@ function GroupMembers() {
 
               <button
                 type="submit"
-                className="px-4 py-2 bg-primary text-white rounded-xl"
+                className="px-4 py-2 bg-primary text-white rounded-xl dark:bg-dark-primary"
               >
                 Add Member
               </button>

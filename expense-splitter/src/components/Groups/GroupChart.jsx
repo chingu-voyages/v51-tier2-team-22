@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 // chart
 const COLORS = ["#0B7A75", "#843B62", "#F67E7D", "#00A1E4", "#F5B700", "#00A1E4", "#A8C686", "#7067CF", "#E27396", "#DC0073","#89FC00"];
 
-// props of numbers inside chart position and radius related 
+// props of numbers inside chart position and radius related
 const renderCustomizedLabel = ({
   cx,
   cy,
@@ -49,10 +49,10 @@ function GroupChart({ groupId }) {
   }));
 
   return (
-    <section className="flex flex-col items-center justify-center w-custom-wide-chart bg-white p-6 ml-8 rounded-lg shadow">
+    <section className="flex flex-col items-center justify-center w-custom-wide-chart bg-white dark:bg-dark-secondary dark:border p-6 ml-8 rounded-lg shadow">
       <div className="w-full flex justify-between">
-        <p className="text-lg font-bold text-secondary ml-8">Budget Split</p>
-        {/* "Members ▼" btn to be removed perhaps, due to the simplification of the app */}
+        <p className="text-lg font-bold text-secondary ml-8 dark:text-primary">Budget Split</p>
+         {/* under btn to be removed perhaps due to simplification of the app */}
         {/* <button className="text-body font-medium text-primary bg-blizzard-blue w-30 h-8 mr-8 py-1 px-4 rounded-lg">
           Members ▼
         </button> */}
