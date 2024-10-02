@@ -76,18 +76,32 @@ function GroupMembers() {
     <section className="bg-white p-6 ml-8 rounded-lg shadow w-custom-width">
       <div className="flex justify-between items-center mb-4 ml-4">
         <p className="text-lg font-bold text-secondary">Members</p>
-        <button
+        {/* "View all" btn to be removed perhaps, due to the simplification of the app */}
+        {/* <button
           className="w-20 h-8 rounded-lg text-body font-medium
         bg-blizzard-blue text-primary  duration-300"
         >
           View all
-        </button>
+        </button> */}
       </div>
 
-      <div className="flex p-2 space-x-4">
+      {/* note to self, add bg-red-500 to line under to better checking for aligments */}
+      <article className="flex flex-wrap justify-start">
         {/* map method */}
+        <button
+          onClick={() => setIsModalOpen(true)}
+          // note to self, add bg-red-300 to line under to better checking for aligments
+          className=" flex-col flex items-center m-1 w-20"
+        >
+          <MdGroups className="rounded-full w-14 h-14 bg-blizzard-blue p-3 text-primary" />
+          <p className="text-legend font-bold text-secondary">Add</p>
+        </button>
         {group.members.map((member) => (
-          <div key={member.id} className="flex flex-col items-center">
+          <div
+            key={member.id}
+            // note to self, add bg-red-200 to line under to better checking for aligments 
+            className="flex flex-col items-center  m-1"
+          >
             <Link to={`/friends/${member.name}`} className="hover:bg-slate-200">
               <GroupsEachMember
                 member={{
@@ -104,15 +118,7 @@ function GroupMembers() {
             </button>
           </div>
         ))}
-
-        <button
-          onClick={() => setIsModalOpen(true)}
-          className="flex-col flex items-center "
-        >
-          <MdGroups className="rounded-full w-14 h-14 bg-blizzard-blue p-3 text-primary" />
-          <p className="text-legend font-bold text-secondary">Add</p>
-        </button>
-      </div>
+      </article>
 
       {isModalOpen && (
         <section

@@ -13,7 +13,7 @@ const renderCustomizedLabel = ({
   outerRadius,
   percent,
 }) => {
-  const radius = innerRadius + (outerRadius - innerRadius) * 0.5;
+  const radius = innerRadius + (outerRadius - innerRadius) * 0.6;
   const x = cx + radius * Math.cos(-midAngle * (Math.PI / 180));
   const y = cy + radius * Math.sin(-midAngle * (Math.PI / 180));
 
@@ -25,7 +25,7 @@ const renderCustomizedLabel = ({
       fill="#FFFFFF"
       textAnchor="middle"
       dominantBaseline="central"
-      className="text-sm font-bold text-secondary"
+      className="text-md font-bold text-secondary"
     >
       {(percent * 100).toFixed(0)}%
     </text>
@@ -49,21 +49,23 @@ function GroupChart({ groupId }) {
   }));
 
   return (
-    <section className="flex flex-col items-center justify-center w-custom-wide-chart h-custom-height-chart bg-white p-6 ml-8 rounded-lg shadow">
+    <section className="flex flex-col items-center justify-center w-custom-wide-chart bg-white p-6 ml-8 rounded-lg shadow">
       <div className="w-full flex justify-between">
         <p className="text-lg font-bold text-secondary ml-8">Budget Split</p>
-        <button className="text-body font-medium text-primary bg-blizzard-blue w-30 h-8 mr-8 py-1 px-4 rounded-lg">
+        {/* "Members ▼" btn to be removed perhaps, due to the simplification of the app */}
+        {/* <button className="text-body font-medium text-primary bg-blizzard-blue w-30 h-8 mr-8 py-1 px-4 rounded-lg">
           Members ▼
-        </button>
+        </button> */}
       </div>
 
-      <PieChart width={171} height={171}>
+      {/* chart size */}
+      <PieChart width={250} height={250}>
         <Pie
           data={data}
-          cx={85.5}
-          cy={81.9}
-          innerRadius={20.5}
-          outerRadius={57}
+          cx={120}
+          cy={130}
+          innerRadius={30.5}
+          outerRadius={90}
           fill="#8884d8"
           paddingAngle={1}
           dataKey="value"
@@ -79,9 +81,10 @@ function GroupChart({ groupId }) {
       </PieChart>
 
       {/* Custom legend */}
-      <div className="mb-6 p-4  w-52 h-30 rounded-lg bg-white shadow-custom">
+      {/* bg-white removed */}
+      <div className="p-3  flex rounded-lg  shadow-custom flex-wrap  justify-start">
         {data.map((entry, index) => (
-          <div key={index} className="flex my-2  items-center space-x-4">
+          <div key={index} className="flex my-2  items-center mx-2 space-x-3 p-1 ">
             <span
               className="w-3 h-3 rounded-full"
               style={{ backgroundColor: COLORS[index] }}
