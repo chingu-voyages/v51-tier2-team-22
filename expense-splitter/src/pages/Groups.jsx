@@ -16,7 +16,7 @@ const {groupId} = useParams()
 const group = useSelector((state) => state.groups.groups.find((group) => group.id === parseInt(groupId)))
 
 if (!group) {
-  return <div>Group not found</div>;
+  return <div className="text-header font-bold text-secondary dark:text-dark-text">Group not found</div>;
 }
 
 const totalBudget = group.totalBudget;  // fake values update with actual logic later

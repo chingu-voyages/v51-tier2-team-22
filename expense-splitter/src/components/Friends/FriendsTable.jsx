@@ -20,7 +20,7 @@ function FriendsTable() {
   return (
     <section className="overflow-x-auto rounded-lg">
       <table className="table-auto text-left">
-        <thead className="uppercase bg-highlight text-body font-medium text-legend">
+        <thead className="uppercase bg-highlight dark:bg-dark-input text-body font-medium text-legend dark:text-black">
           <tr>
             <th scope="col" className="px-6 py-3">
               Type

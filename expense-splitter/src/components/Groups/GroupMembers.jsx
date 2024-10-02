@@ -73,9 +73,9 @@ function GroupMembers() {
   };
 
   return (
-    <section className="bg-white p-6 ml-8 rounded-lg shadow w-custom-width">
+    <section className="bg-white dark:bg-dark-secondary dark:border p-6 ml-8 rounded-lg shadow w-custom-width">
       <div className="flex justify-between items-center mb-4 ml-4">
-        <p className="text-lg font-bold text-secondary">Members</p>
+        <p className="text-lg font-bold text-secondary dark:text-primary">Members</p>
         <button
           className="w-20 h-8 rounded-lg text-body font-medium
         bg-blizzard-blue text-primary  duration-300"
@@ -110,7 +110,7 @@ function GroupMembers() {
           className="flex-col flex items-center "
         >
           <MdGroups className="rounded-full w-14 h-14 bg-blizzard-blue p-3 text-primary" />
-          <p className="text-legend font-bold text-secondary">Add</p>
+          <p className="text-legend font-bold text-secondary dark:text-primary">Add</p>
         </button>
       </div>
 
@@ -120,9 +120,10 @@ function GroupMembers() {
           className="fixed inset-0 bg-black bg-opacity-20 flex justify-center items-center"
           onClick={handleModalClickOutside}
         >
-          <article className="bg-white p-6 rounded-lg w-96">
+
+          <article className="bg-white dark:bg-dark-secondary p-6 rounded-lg w-96">
             <div className="flex justify-between items-center">
-              <h2 className="text-2xl mb-4 font-bold">Add New Member</h2>
+              <h2 className="text-2xl mb-4 font-bold dark:text-dark-text">Add New Member</h2>
               <button
                 className="bg-white shadow rounded-full w-8 h-8 text-red-500 mb-4"
                 onClick={() => setIsModalOpen(false)}
@@ -133,13 +134,15 @@ function GroupMembers() {
 
             <form onSubmit={handleSubmit} className="space-y-3">
               <div>
-                <label className="text-body font-semibold">Member Name</label>
+
+                <label className="text-body font-semibold dark:text-dark-text">Member Name</label>
+
                 <input
                   type="text"
                   name="name"
                   value={newMember.name}
                   onChange={handleAddMemberInputChange}
-                  className="border p-2 w-full"
+                  className="border p-2 w-full dark:bg-dark-input"
                   placeholder="Enter member name"
                   required
                   style={{ fontSize: "14px" }}
@@ -147,13 +150,17 @@ function GroupMembers() {
               </div>
 
               <div>
-                <label className="text-body font-semibold">Member Number</label>
+
+                <label className="text-body font-semibold dark:text-dark-text">Member Number</label>
+
                 <input
                   type="text"
                   name="number"
                   value={newMember.number}
                   onChange={handleAddMemberInputChange}
-                  className="border p-2 w-full"
+
+                  className="border p-2 w-full dark:bg-dark-input"
+
                   placeholder="Enter member number"
                   required
                   style={{ fontSize: "14px" }}
@@ -162,7 +169,9 @@ function GroupMembers() {
 
               <button
                 type="submit"
-                className="px-4 py-2 bg-primary text-white rounded-xl"
+
+                className="px-4 py-2 bg-primary text-white rounded-xl dark:bg-dark-primary"
+
               >
                 Add Member
               </button>

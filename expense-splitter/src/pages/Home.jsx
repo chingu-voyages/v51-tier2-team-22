@@ -64,17 +64,19 @@ function Home() {
   return (
     <section className="text-xl text-secondary p-5 space-y-5">
       <div>
-      <h1 className="text-header font-bold text-secondary ml-8 mt-8">Welcome to SplitSmart!</h1>
-      <p className="text-sm font-normal text-secondary ml-8 mb-8 pt-6">Tracks expenses, calculates costs, and settles debts with friends &#128522;</p>
+      <h1 className="text-header font-bold text-secondary dark:text-dark-text ml-8 mt-8">Welcome to SplitSmart!</h1>
+      <p className="text-sm font-normal text-secondary dark:text-dark-text ml-8 mb-8 pt-6">Tracks expenses, calculates costs, and settles debts with friends &#128522;</p>
       </div>
-      <div className="bg-white rounded-2xl w-custom-card h-custom-card-height ml-8 shadow flex items-center justify-center flex-col">
+
+      <div className=" border bg-white dark:bg-dark-secondary rounded-2xl w-custom-card h-custom-card-height ml-8 shadow flex items-center justify-center flex-col">
+
         <button
           onClick={() => setIsModalOpen(true)}
-          className="hover:animate-ping rounded-full bg-primary w-16 h-16 text-5xl text-white hover:bg-primary"
+          className="hover:animate-ping rounded-full bg-primary dark:bg-dark-bg dark:border w-16 h-16 text-5xl text-white dark:text-dark-text hover:bg-primary"
         >
           +
         </button>
-        <p className="text-2xl mt-4 font-bold">Add</p>
+        <p className="text-2xl mt-4 font-bold dark:text-dark-text">Add</p>
       </div>
 
       {groups.map((group) => (
@@ -84,12 +86,12 @@ function Home() {
       {isModalOpen && (
         <section
           id="modal-overlay"
-          className="fixed inset-0 bg-black bg-opacity-20 flex justify-center items-center"
+          className="fixed inset-0 bg-black dark:bg-gray-500 dark:bg-opacity-20 bg-opacity-20 flex justify-center items-center"
           onClick={handleModalClickOutside}
         >
-          <article className="bg-white p-6 rounded-lg w-96">
+          <article className="bg-white dark:bg-dark-secondary p-6 rounded-lg w-96">
             <div className="flex justify-between items-center">
-              <h2 className="text-2xl mb-4 font-bold">Add New Group</h2>
+              <h2 className="text-2xl mb-4 font-bold dark:text-dark-text">Add New Group</h2>
               {/* add actual icon for close btn */}
               <button
                 className="bg-white shadow rounded-full w-8 h-8 text-red-500 mb-4"
@@ -101,39 +103,39 @@ function Home() {
 
             <form onSubmit={handleSubmit} className="space-y-3">
               <div>
-                <label className="text-body font-semibold">Group Name</label>
+                <label className="text-body font-semibold dark:text-dark-text">Group Name</label>
                 <input
                   type="text"
                   name="name"
                   value={newGroup.name}
                   onChange={handleInputChange}
-                  className="border p-2 w-full"
+                  className="border p-2 w-full dark:bg-dark-input"
                   placeholder="Enter group name"
                   required style={{ fontSize: '14px' }}
                 />
               </div>
 
               <div>
-                <label className="text-body font-semibold">Total Budget</label>
+                <label className="text-body font-semibold dark:text-dark-text">Total Budget</label>
                 <input
                   type="number"
                   name="totalBudget"
                   value={newGroup.totalBudget}
                   onChange={handleInputChange}
-                  className="border p-2 w-full"
+                  className="border p-2 w-full dark:bg-dark-input"
                   placeholder="Enter total budget"
                   required style={{ fontSize: '14px' }}
                 />
               </div>
 
               <div>
-                <label className="text-body font-semibold">Total Expense</label>
+                <label className="text-body font-semibold dark:text-dark-text">Total Expense</label>
                 <input
                   type="number"
                   name="totalExpense"
                   value={newGroup.totalExpense}
                   onChange={handleInputChange}
-                  className="border p-2 w-full"
+                  className="border p-2 w-full dark:bg-dark-input"
                   placeholder="Enter total expense"
                   required style={{ fontSize: '14px' }}
                 />
@@ -141,7 +143,7 @@ function Home() {
 
               <button
                 type="submit"
-                className="px-4 py-2 bg-primary text-white rounded-xl"
+                className="px-4 py-2 bg-primary text-white rounded-xl dark:bg-dark-primary"
               >
                 Add Group
               </button>
