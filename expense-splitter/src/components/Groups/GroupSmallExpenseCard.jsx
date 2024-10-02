@@ -2,16 +2,16 @@
 
 function GroupSmallExpenseCard({ icon: Icon, label, value, button }) {
   return (
-<section className="bg-white p-8 mt-8 ml-8 space-x-6  rounded-global shadow flex items-start w-custom-card">
+<section className="bg-white dark:bg-dark-secondary border p-8 mt-8 ml-8 space-x-6  rounded-global  flex items-start w-custom-card">
   <div className="flex items-start space-x-4 flex-grow">
-    <Icon className="bg-blizzard-blue rounded-full w-14 h-14 p-3 text-primary"/>
+    <Icon className="bg-blizzard-blue dark:bg-dark-primary rounded-full w-14 h-14 p-3 text-primary"/>
     <span>
-      <p className="text-body font-medium text-title">{label}</p>
-      <p className="font-bold text-2xl text-secondary">{value}</p>
+      <p className="text-body font-medium text-title dark:text-dark-text">{label}</p>
+      <p className="text-2xl font-bold text-secondary dark:text-primary">{value}</p>
     </span>
   </div>
   {button && (
-    <button className="w-[67px] h-8 py-1 px-3 bg-blizzard-blue text-primary font-medium rounded-lg text-body ml-auto">
+    <button className="w-[67px] h-8 py-1 px-3 bg-blizzard-blue  text-primary font-medium rounded-lg text-body ml-auto">
       {button}
     </button>
   )}
