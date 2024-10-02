@@ -6,6 +6,8 @@ function HomeIndividualGroup({ group }) {
   const dispatch = useDispatch();
 
   const handleRemove = () => {
+
+  
     dispatch(removeGroup(group.id));
   };
 

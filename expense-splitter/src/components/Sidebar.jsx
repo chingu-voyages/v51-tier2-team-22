@@ -2,6 +2,7 @@ import { MdGroups } from "react-icons/md";
 import { IoMdPerson } from "react-icons/io";
 import { IoWalletSharp } from "react-icons/io5";
 import { NavLink } from "react-router-dom";
+import DarkModeToggle from './DarkModeToggle';
 
 function Sidebar() {
   const SIDEBAR_LINKS = [
@@ -13,7 +14,7 @@ function Sidebar() {
   (isActive) => "nav-link" + (!isActive ? " unselected" : "");
 
   return (
-    <div className="w-16 md:w-56 fixed left-0 top-0 z-10 h-screen border-r pt-8 px4 bg-white ">
+    <div className="w-16 md:w-56 fixed left-0 top-0 z-10 h-screen border-r pt-8 px4 bg-white dark:bg-dark-bg">
       <div className="mb-8 flex justify-center">
         <img
           src="./src/assets/logo.png"
@@ -46,6 +47,12 @@ function Sidebar() {
           </NavLink>
         ))}
       </nav>
+
+      {/* Dark Mode Toggle  */}
+      <div className="mt-4 md:mt-2 flex items-center justify-center">
+        <DarkModeToggle /> {/* This is the dark mode toggle button */}
+      </div>
+
 
       <div className="w-full absolute bottom-5 left-0 px-4 py-2 cursor-pointer text-center">
         <p
