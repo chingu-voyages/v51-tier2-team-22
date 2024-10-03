@@ -1,4 +1,3 @@
-import { MdGroups } from "react-icons/md";
 import GroupsEachMember from "./GroupsEachMember";
 import { useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
@@ -89,15 +88,16 @@ function GroupMembers() {
 
       {/* note to self, add bg-red-500 to line under to better checking for aligments */}
       <article className="flex flex-wrap justify-start">
-        {/* map method */}
+        
+      <div className="bg-white dark:bg-dark-secondary rounded-2xl flex items-center flex-col">
         <button
           onClick={() => setIsModalOpen(true)}
-          // note to self, add bg-red-300 to line under to better checking for aligments
-          className=" flex-col flex items-center m-1 w-20"
+          className="w-14 h-14 rounded-full shadow-lg  bg-primary dark:bg-dark-bg text-4xl text-white dark:text-dark-text hover:bg-primary"
         >
-          <MdGroups className="rounded-full w-14 h-14 bg-blizzard-blue p-3 text-primary" />
-          <p className="text-legend font-bold text-secondary">Add</p>
+          +
         </button>
+        <p className="font-bold text-legend dark:text-dark-text">Add</p>
+      </div>
         {group.members.map((member) => (
           <div
             key={member.id}

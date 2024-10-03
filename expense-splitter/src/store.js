@@ -15,11 +15,10 @@ store.subscribe(() => {
     saveState(store.getState());
   });
 
-//   run in the browser console to clear the local storage or just remove manually in the local storage tab in dev tools
-//   localStorage.removeItem("appState");
+//  uncomment line below and reload page 2x for testing purposes or run in the browser console to clear the local storage or just remove manually in the local storage tab in dev tools
+  localStorage.removeItem("appState");
 
 // if interested about this, you can read more here. 
 // https://redux-toolkit.js.org/tutorials/quick-start
-// still left to do: create state slice inside features folder
-// and then add that slice reducers to the store
+
 
