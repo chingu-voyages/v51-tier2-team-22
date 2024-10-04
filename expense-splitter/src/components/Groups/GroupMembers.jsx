@@ -102,9 +102,9 @@ function GroupMembers() {
           <div
             key={member.id}
             // note to self, add bg-red-200 to line under to better checking for aligments
-            className="flex flex-col items-center m-1"
+            className="bg-red-200 flex flex-col items-center m-1"
           >
-            <Link to={`/friends/${member.name}`} className="hover:bg-slate-100 transition-colors rounded-md">
+            <Link to={`/friends/${member.name}`} className="hover:bg-slate-100 transition-colors rounded-md bg-red-400">
               <GroupsEachMember
                 member={{
                   name: member.name,
@@ -145,7 +145,7 @@ function GroupMembers() {
             <form onSubmit={handleSubmit} className="space-y-3">
               <div>
                 <label className="text-body font-semibold dark:text-dark-text">
-                  Member Name
+                  Name
                 </label>
 
                 <input
