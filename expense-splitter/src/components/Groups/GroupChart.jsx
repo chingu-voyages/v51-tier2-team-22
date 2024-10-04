@@ -2,7 +2,19 @@ import { PieChart, Pie, Cell } from "recharts";
 import { useSelector } from "react-redux";
 
 // chart
-const COLORS = ["#0B7A75", "#843B62", "#F67E7D", "#00A1E4", "#F5B700", "#00A1E4", "#A8C686", "#7067CF", "#E27396", "#DC0073","#89FC00"];
+const COLORS = [
+  "#0B7A75",
+  "#843B62",
+  "#F67E7D",
+  "#00A1E4",
+  "#F5B700",
+  "#00A1E4",
+  "#A8C686",
+  "#7067CF",
+  "#E27396",
+  "#DC0073",
+  "#89FC00",
+];
 
 // props of numbers inside chart position and radius related
 const renderCustomizedLabel = ({
@@ -50,13 +62,9 @@ function GroupChart({ groupId }) {
 
   return (
     <section className="flex flex-col items-center justify-center w-custom-wide-chart bg-white dark:bg-dark-secondary dark:border p-6 ml-8 rounded-lg shadow">
-      <div className="w-full flex justify-between">
-        <p className="text-lg font-bold text-secondary ml-8 dark:text-primary">Budget Split</p>
-         {/* under btn to be removed perhaps due to simplification of the app */}
-        {/* <button className="text-body font-medium text-primary bg-blizzard-blue w-30 h-8 mr-8 py-1 px-4 rounded-lg">
-          Members ▼
-        </button> */}
-      </div>
+      <p className="text-lg mr-auto font-bold text-secondary ml-3 dark:text-primary ">
+        Budget Split
+      </p>
 
       {/* chart size */}
       <PieChart width={250} height={250}>
@@ -76,15 +84,15 @@ function GroupChart({ groupId }) {
             <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
           ))}
         </Pie>
-        {/* out of the box Legend, ignore for now */}
-        {/* <Legend verticalAlign="bottom" align="center" height={50} /> */}
       </PieChart>
 
       {/* Custom legend */}
-      {/* bg-white removed */}
-      <div className="p-3  flex rounded-lg  shadow-custom flex-wrap  justify-start">
+      <div className="p-3 ml-3 flex rounded-lg shadow-custom flex-wrap justify-start">
         {data.map((entry, index) => (
-          <div key={index} className="flex my-2  items-center mx-2 space-x-3 p-1 ">
+          <div
+            key={index}
+            className="flex my-2  items-center mx-2 space-x-3 p-1 "
+          >
             <span
               className="w-3 h-3 rounded-full"
               style={{ backgroundColor: COLORS[index] }}

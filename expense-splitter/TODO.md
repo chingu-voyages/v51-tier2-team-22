@@ -10,7 +10,7 @@ CASH MEETING
 
 - AGREEMENT TO DELAY FOR NOW UNTIL ALL PREVIOUS TASKS ARE DONE discuss purpose of table inside group details and how to handle adding an expense
 - CASH [STEP TO BE DONE?] discuss implementing groups in the sidebar as well and the ability to add new groups from the sidebar [SHOW IMAGE]
-- [STEP TO BE DONE?] implement editing groups total budget and expense from groups details page
+- PREDRAG [STEP TO BE DONE?] implement editing groups total budget and expense from groups details page
 - CASH [STEP TO BE DONE?] fix styling and align everything well in GroupMembers.jsx
 - CASH [STEP TO BE DONE?] inside GroupMembers.jsx members section where you can add and remove members, make a bg change on hover and replace minus for removing members with x and make bg of x more red and do hover too
 - PREDRAG [STEP TO BE DONE?] try to extract modal logic into a custom hook

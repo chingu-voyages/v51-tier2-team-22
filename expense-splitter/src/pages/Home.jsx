@@ -90,7 +90,7 @@ function Home() {
             &#128522;
           </p>
         </div>
-        <SearchBar onSearch={handleSearch}  />
+        <SearchBar onSearch={handleSearch} />
       </article>
 
       <div className=" border bg-white dark:bg-dark-secondary rounded-2xl w-custom-card h-custom-card-height ml-8 shadow flex items-center justify-center flex-col">

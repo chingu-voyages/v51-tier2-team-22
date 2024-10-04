@@ -73,38 +73,31 @@ function GroupMembers() {
 
   return (
     <section className="bg-white dark:bg-dark-secondary dark:border p-6 ml-8 rounded-lg shadow w-custom-width">
-      <div className="flex justify-between items-center mb-4 ml-4">
-        <p className="text-lg font-bold text-secondary dark:text-primary">
-          Members
-        </p>
-        {/* under btn to be removed perhaps due to simplification of the app */}
-        {/* <button
-          className="w-20 h-8 rounded-lg text-body font-medium
-        bg-blizzard-blue text-primary  duration-300"
-        >
-          View all
-        </button>  */}
-      </div>
+      <p className="ml-3 mb-6 text-lg font-bold text-secondary dark:text-primary">
+        Members
+      </p>
 
       {/* note to self, add bg-red-500 to line under to better checking for aligments */}
       <article className="flex flex-wrap justify-start">
-        
-      <div className="bg-white dark:bg-dark-secondary rounded-2xl flex items-center flex-col">
-        <button
-          onClick={() => setIsModalOpen(true)}
-          className="w-14 h-14 rounded-full shadow-lg  bg-primary dark:bg-dark-bg text-4xl text-white dark:text-dark-text hover:bg-primary"
-        >
-          +
-        </button>
-        <p className="font-bold text-legend dark:text-dark-text">Add</p>
-      </div>
+        <div className="bg-white dark:bg-dark-secondary rounded-2xl flex items-center flex-col">
+          <button
+            onClick={() => setIsModalOpen(true)}
+            className="w-14 h-14 rounded-full shadow-lg  bg-primary dark:bg-dark-bg text-4xl text-white dark:text-dark-text hover:bg-primary"
+          >
+            +
+          </button>
+          <p className="font-bold text-legend dark:text-dark-text">Add</p>
+        </div>
         {group.members.map((member) => (
           <div
             key={member.id}
             // note to self, add bg-red-200 to line under to better checking for aligments
             className="bg-red-200 flex flex-col items-center m-1"
           >
-            <Link to={`/friends/${member.name}`} className="hover:bg-slate-100 transition-colors rounded-md bg-red-400">
+            <Link
+              to={`/friends/${member.name}`}
+              className="hover:bg-slate-100 transition-colors rounded-md bg-red-400"
+            >
               <GroupsEachMember
                 member={{
                   name: member.name,
@@ -122,7 +115,7 @@ function GroupMembers() {
         ))}
       </article>
 
-{/* MODAL */}
+      {/* MODAL */}
       {isModalOpen && (
         <section
           id="modal-overlay"
