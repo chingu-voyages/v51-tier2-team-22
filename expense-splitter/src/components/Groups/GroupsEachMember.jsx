@@ -8,7 +8,6 @@ function GroupsEachMember({ member }) {
       />
 
       <p className="font-bold text-legend dark:text-dark-text">{member.name}</p>
-
     </section>
   );
 }

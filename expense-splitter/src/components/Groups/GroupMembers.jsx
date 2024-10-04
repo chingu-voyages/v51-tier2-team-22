@@ -1,4 +1,3 @@
-import { MdGroups } from "react-icons/md";
 import GroupsEachMember from "./GroupsEachMember";
 import { useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
@@ -75,20 +74,37 @@ function GroupMembers() {
   return (
     <section className="bg-white dark:bg-dark-secondary dark:border p-6 ml-8 rounded-lg shadow w-custom-width">
       <div className="flex justify-between items-center mb-4 ml-4">
-        <p className="text-lg font-bold text-secondary dark:text-primary">Members</p>
-        <button
+        <p className="text-lg font-bold text-secondary dark:text-primary">
+          Members
+        </p>
+        {/* under btn to be removed perhaps due to simplification of the app */}
+        {/* <button
           className="w-20 h-8 rounded-lg text-body font-medium
         bg-blizzard-blue text-primary  duration-300"
         >
           View all
-        </button>
+        </button>  */}
       </div>
 
-      <div className="flex p-2 space-x-4">
-        {/* map method */}
+      {/* note to self, add bg-red-500 to line under to better checking for aligments */}
+      <article className="flex flex-wrap justify-start">
+        
+      <div className="bg-white dark:bg-dark-secondary rounded-2xl flex items-center flex-col">
+        <button
+          onClick={() => setIsModalOpen(true)}
+          className="w-14 h-14 rounded-full shadow-lg  bg-primary dark:bg-dark-bg text-4xl text-white dark:text-dark-text hover:bg-primary"
+        >
+          +
+        </button>
+        <p className="font-bold text-legend dark:text-dark-text">Add</p>
+      </div>
         {group.members.map((member) => (
-          <div key={member.id} className="flex flex-col items-center">
-            <Link to={`/friends/${member.name}`} className="hover:bg-slate-200">
+          <div
+            key={member.id}
+            // note to self, add bg-red-200 to line under to better checking for aligments
+            className="bg-red-200 flex flex-col items-center m-1"
+          >
+            <Link to={`/friends/${member.name}`} className="hover:bg-slate-100 transition-colors rounded-md bg-red-400">
               <GroupsEachMember
                 member={{
                   name: member.name,
@@ -104,26 +120,20 @@ function GroupMembers() {
             </button>
           </div>
         ))}
+      </article>
 
-        <button
-          onClick={() => setIsModalOpen(true)}
-          className="flex-col flex items-center "
-        >
-          <MdGroups className="rounded-full w-14 h-14 bg-blizzard-blue p-3 text-primary" />
-          <p className="text-legend font-bold text-secondary dark:text-primary">Add</p>
-        </button>
-      </div>
-
+{/* MODAL */}
       {isModalOpen && (
         <section
           id="modal-overlay"
           className="fixed inset-0 bg-black bg-opacity-20 flex justify-center items-center"
           onClick={handleModalClickOutside}
         >
-
           <article className="bg-white dark:bg-dark-secondary p-6 rounded-lg w-96">
             <div className="flex justify-between items-center">
-              <h2 className="text-2xl mb-4 font-bold dark:text-dark-text">Add New Member</h2>
+              <h2 className="text-2xl mb-4 font-bold dark:text-dark-text">
+                Add New Member
+              </h2>
               <button
                 className="bg-white shadow rounded-full w-8 h-8 text-red-500 mb-4"
                 onClick={() => setIsModalOpen(false)}
@@ -134,8 +144,9 @@ function GroupMembers() {
 
             <form onSubmit={handleSubmit} className="space-y-3">
               <div>
-
-                <label className="text-body font-semibold dark:text-dark-text">Member Name</label>
+                <label className="text-body font-semibold dark:text-dark-text">
+                  Name
+                </label>
 
                 <input
                   type="text"
@@ -150,17 +161,16 @@ function GroupMembers() {
               </div>
 
               <div>
-
-                <label className="text-body font-semibold dark:text-dark-text">Member Number</label>
+                <label className="text-body font-semibold dark:text-dark-text">
+                  Member Number
+                </label>
 
                 <input
                   type="text"
                   name="number"
                   value={newMember.number}
                   onChange={handleAddMemberInputChange}
-
                   className="border p-2 w-full dark:bg-dark-input"
-
                   placeholder="Enter member number"
                   required
                   style={{ fontSize: "14px" }}
@@ -169,9 +179,7 @@ function GroupMembers() {
 
               <button
                 type="submit"
-
                 className="px-4 py-2 bg-primary text-white rounded-xl dark:bg-dark-primary"
-
               >
                 Add Member
               </button>

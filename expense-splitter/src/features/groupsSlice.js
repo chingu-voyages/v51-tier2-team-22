@@ -21,7 +21,9 @@ const initialState = {
         { id: 1, name: "Mark", contribution: 0 },
         { id: 2, name: "Jason", contribution: 0 },
         { id: 3, name: "Conan", contribution: 0 },
-      ],
+        { id: 4, name: "Mark", contribution: 0 },
+        { id: 5, name: "Jason", contribution: 0 },
+      ]
     },
   ],
 };
