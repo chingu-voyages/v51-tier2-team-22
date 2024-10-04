@@ -2,8 +2,11 @@ import GroupsEachMember from "./GroupsEachMember";
 import { useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { addMember, removeMember } from "../../features/groupsSlice";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
+// modal
+import Modal from "../Utils/Modal";
+import useModal from "../Utils/useModal";
 
 function GroupMembers() {
   const { groupId } = useParams();
@@ -13,19 +16,8 @@ function GroupMembers() {
     state.groups.groups.find((group) => group.id === parseInt(groupId))
   );
 
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const { isOpen, openModal, closeModal, handleClickOutside } = useModal();
   const [newMember, setNewMember] = useState({ name: "", number: "" });
-
-  // Close modal when pressing Escape
-  useEffect(() => {
-    const handleEsc = (event) => {
-      if (event.key === "Escape") {
-        setIsModalOpen(false);
-      }
-    };
-    window.addEventListener("keydown", handleEsc);
-    return () => window.removeEventListener("keydown", handleEsc);
-  }, []);
 
   if (!group) {
     return <div>Group not found.</div>;
@@ -62,13 +54,7 @@ function GroupMembers() {
       })
     );
     setNewMember({ name: "", number: "" });
-    setIsModalOpen(false);
-  };
-
-  const handleModalClickOutside = (event) => {
-    if (event.target.id === "modal-overlay") {
-      setIsModalOpen(false);
-    }
+    closeModal();
   };
 
   return (
@@ -81,7 +67,7 @@ function GroupMembers() {
       <article className="flex flex-wrap justify-start">
         <div className="bg-white dark:bg-dark-secondary rounded-2xl flex items-center flex-col">
           <button
-            onClick={() => setIsModalOpen(true)}
+            onClick={openModal}
             className="w-14 h-14 rounded-full shadow-lg  bg-primary dark:bg-dark-bg text-4xl text-white dark:text-dark-text hover:bg-primary"
           >
             +
@@ -116,25 +102,9 @@ function GroupMembers() {
       </article>
 
       {/* MODAL */}
-      {isModalOpen && (
-        <section
-          id="modal-overlay"
-          className="fixed inset-0 bg-black bg-opacity-20 flex justify-center items-center"
-          onClick={handleModalClickOutside}
-        >
-          <article className="bg-white dark:bg-dark-secondary p-6 rounded-lg w-96">
-            <div className="flex justify-between items-center">
-              <h2 className="text-2xl mb-4 font-bold dark:text-dark-text">
-                Add New Member
-              </h2>
-              <button
-                className="bg-white shadow rounded-full w-8 h-8 text-red-500 mb-4"
-                onClick={() => setIsModalOpen(false)}
-              >
-                x
-              </button>
-            </div>
-
+      {isOpen && ( // Conditionally render Modal if it's open
+        <Modal
+          content={
             <form onSubmit={handleSubmit} className="space-y-3">
               <div>
                 <label className="text-body font-semibold dark:text-dark-text">
@@ -177,8 +147,10 @@ function GroupMembers() {
                 Add Member
               </button>
             </form>
-          </article>
-        </section>
+          }
+          onClose={closeModal} // Close modal when clicking close button or outside the modal
+          handleClickOutside={handleClickOutside} // Close modal when clicking outside
+        />
       )}
     </section>
   );

@@ -19,11 +19,9 @@ const initialState = {
       totalExpense: 300,
       members: [
         { id: 1, name: "Mark", contribution: 0 },
-        { id: 2, name: "Jason", contribution: 0 },
-        { id: 3, name: "Conan", contribution: 0 },
-        { id: 4, name: "Mark", contribution: 0 },
-        { id: 5, name: "Jason", contribution: 0 },
-      ]
+        { id: 2, name: "Mark", contribution: 0 },
+        { id: 3, name: "Mark", contribution: 0 },
+      ],
     },
   ],
 };
@@ -60,7 +58,14 @@ const groupsSlice = createSlice({
         );
       }
     },
-    updateTotalExpense: (state, action) => {
+    updateGroupBudget: (state, action) => {
+      const { groupId, totalBudget } = action.payload;
+      const group = state.groups.find((group) => group.id === groupId);
+      if (group) {
+        group.totalBudget = totalBudget;
+      }
+    },
+    updateGroupExpense: (state, action) => {
       const { groupId, totalExpense } = action.payload;
       const group = state.groups.find((group) => group.id === groupId);
       if (group) {
@@ -71,6 +76,12 @@ const groupsSlice = createSlice({
   },
 });
 
-export const { addGroup, removeGroup, addMember, removeMember } =
-  groupsSlice.actions;
+export const {
+  addGroup,
+  removeGroup,
+  addMember,
+  removeMember,
+  updateGroupBudget,
+  updateGroupExpense,
+} = groupsSlice.actions;
 export default groupsSlice.reducer;
