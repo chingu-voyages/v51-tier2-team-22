@@ -1,10 +1,13 @@
-import { useDispatch, useSelector } from "react-redux";
+// react
 import { useEffect, useState } from "react";
-import HomeIndividualGroup from "../components/Home/HomeIndividualGroup";
+// redux
+import { useDispatch, useSelector } from "react-redux";
 import { addGroup } from "../features/groupsSlice";
+// components
+import HomeIndividualGroup from "../components/Home/HomeIndividualGroup";
 import SearchBar from "../components/SearchBar";
-import Modal from "../components/Utils/Modal"; 
-import useModal from "../components/Utils/useModal"; 
+import Modal from "../components/Utils/Modal";
+import useModal from "../components/Utils/useModal";
 
 function Home() {
   const groups = useSelector((state) => state.groups.groups);
@@ -21,7 +24,7 @@ function Home() {
     );
   };
 
-  const { isOpen, openModal, closeModal, handleClickOutside } = useModal(); 
+  const { isOpen, openModal, closeModal, handleClickOutside } = useModal();
 
   const dispatch = useDispatch();
 

@@ -59,7 +59,7 @@ function GroupMembers() {
 
   return (
     <section className="bg-white dark:bg-dark-secondary dark:border p-6 ml-8 rounded-lg shadow w-custom-width">
-      <p className="ml-3 mb-6 text-lg font-bold text-secondary dark:text-primary">
+      <p className="ml-3 mb-6 text-groupComponentHeader font-bold text-secondary dark:text-primary">
         Members
       </p>
 

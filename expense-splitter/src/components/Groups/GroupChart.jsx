@@ -51,56 +51,66 @@ function GroupChart({ groupId }) {
     state.groups.groups.find((group) => group.id === groupIdInt)
   );
 
-  if (!group) {
-    return <p>No group found</p>;
-  }
+  const hasMembers = group.members && group.members.length > 0;
 
-  const data = group.members.map((member) => ({
-    name: member.name,
-    value: member.contribution || 1,
-  }));
+  const data = hasMembers
+    ? group.members.map((member) => ({
+        name: member.name,
+        value: member.contribution || 1,
+      }))
+    : [];
 
   return (
     <section className="flex flex-col items-center justify-center w-custom-wide-chart bg-white dark:bg-dark-secondary dark:border p-6 ml-8 rounded-lg shadow">
-      <p className="text-lg mr-auto font-bold text-secondary ml-3 dark:text-primary ">
+      <p className="text-groupComponentHeader mr-auto font-bold text-secondary ml-3 dark:text-primary ">
         Budget Split
       </p>
 
-      {/* chart size */}
-      <PieChart width={250} height={250}>
-        <Pie
-          data={data}
-          cx={120}
-          cy={130}
-          innerRadius={30.5}
-          outerRadius={90}
-          fill="#8884d8"
-          paddingAngle={1}
-          dataKey="value"
-          labelLine={false}
-          label={renderCustomizedLabel}
-        >
-          {data.map((entry, index) => (
-            <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
-          ))}
-        </Pie>
-      </PieChart>
+      {hasMembers ? (
+        <>
+          <PieChart className="my-6" width={250} height={250}>
+            <Pie
+              data={data}
+              cx={120}
+              cy={120}
+              innerRadius={35.5}
+              outerRadius={120}
+              fill="#8884d8"
+              paddingAngle={1}
+              dataKey="value"
+              labelLine={false}
+              label={renderCustomizedLabel}
+            >
+              {data.map((entry, index) => (
+                <Cell
+                  key={`cell-${index}`}
+                  fill={COLORS[index % COLORS.length]}
+                />
+              ))}
+            </Pie>
+          </PieChart>
 
-      {/* Custom legend */}
-      <div className="p-3 ml-3 flex rounded-lg shadow-custom flex-wrap justify-start">
-        {data.map((entry, index) => (
-          <div
-            key={index}
-            className="flex my-2  items-center mx-2 space-x-3 p-1 "
-          >
-            <span
-              className="w-3 h-3 rounded-full"
-              style={{ backgroundColor: COLORS[index] }}
-            ></span>
-            <span className="font-bold text-legend">{entry.name}</span>
-          </div>
-        ))}
-      </div>
+          {/* Custom legend */}
+          <article className="p-3 ml-3 flex rounded-lg shadow-custom flex-wrap justify-start">
+            {data.map((entry, index) => (
+              <div
+                key={index}
+                className="flex my-2  items-center mx-2 space-x-3 p-1 "
+              >
+                <span
+                  className="w-3 h-3 rounded-full"
+                  style={{ backgroundColor: COLORS[index] }}
+                ></span>
+                <span className="font-bold text-legend">{entry.name}</span>
+              </div>
+            ))}
+          </article>
+        </>
+      ) : (
+        <p className="text-lg my-8 font-bold text-secondary">
+          Add members to see the chart
+        </p>
+      )}
     </section>
   );
 }
@@ -123,7 +133,3 @@ export default GroupChart;
 // -Each slice of the pie is rendered as a Cell, and each cell gets a color from the COLORS array.
 // -fill={COLORS[index % COLORS.length]} dynamically applies the color based on the index of each slice.
 // ----------------------
-// Legend Component (currently):
-
-// -It’s the built-in Recharts Legend placed at the bottom (verticalAlign="bottom") and center (align="center").
-// -This is currently active but will be replaced by a custom legend for better control.

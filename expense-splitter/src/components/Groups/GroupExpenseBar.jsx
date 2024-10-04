@@ -3,7 +3,7 @@ const ExpenseBar = ({ expense, budget }) => {
 
   return (
     <section className="flex flex-col justify-between  w-custom-width h-custom-expense-height rounded-global p-8 pt-6 ml-8 border bg-white dark:bg-dark-secondary shadow-md">
-      <p className="text-lg font-bold text-secondary dark:text-primary">
+      <p className="text-groupComponentHeader font-bold text-secondary dark:text-primary">
         Expense vs budget
       </p>
 

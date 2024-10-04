@@ -1,19 +1,22 @@
+// react
 import { useParams } from "react-router-dom";
-import GroupChart from "../components/Groups/GroupChart";
 import { useState } from "react";
+// redux
+import { useSelector, useDispatch } from "react-redux";
+import { updateGroupBudget, updateGroupExpense } from "../features/groupsSlice";
+import useModal from "../components/Utils/useModal";
+import Modal from "../components/Utils/Modal";
+// components
+import GroupChart from "../components/Groups/GroupChart";
 import ExpenseBar from "../components/Groups/GroupExpenseBar";
 import GroupExpenseTable from "../components/Groups/GroupExpenseTable";
 import GroupMembers from "../components/Groups/GroupMembers";
 import GroupName from "../components/Groups/GroupName";
 import GroupSmallExpenseCard from "../components/Groups/GroupSmallExpenseCard";
 // icons
-import { FaPiggyBank } from "react-icons/fa6";
-import { FaCartShopping } from "react-icons/fa6";
-import { GiReceiveMoney } from "react-icons/gi";
-import { useSelector, useDispatch } from "react-redux";
-import { updateGroupBudget, updateGroupExpense } from "../features/groupsSlice";
-import useModal from "../components/Utils/useModal";
-import Modal from "../components/Utils/Modal";
+import { GiMoneyStack } from "react-icons/gi";
+import { MdOutlineShoppingCart } from "react-icons/md";
+import { LiaMoneyBillWaveAltSolid } from "react-icons/lia";
 
 function Groups() {
   const { groupId } = useParams();
@@ -80,19 +83,19 @@ function Groups() {
 
       <div className="flex gap-6 flex-col xl:flex-row">
         <GroupSmallExpenseCard
-          icon={FaPiggyBank}
+          icon={GiMoneyStack}
           label="Total budget"
           value={`${totalBudget}`}
           button="Edit"
           onClick={handleEditClick}
         />
         <GroupSmallExpenseCard
-          icon={FaCartShopping}
+          icon={MdOutlineShoppingCart}
           label="Total expense"
           value={`${totalExpense}`}
         />
         <GroupSmallExpenseCard
-          icon={GiReceiveMoney}
+          icon={LiaMoneyBillWaveAltSolid}
           label="Remaining budget"
           value={`${remainingBudget}`}
         />
