@@ -96,7 +96,7 @@ function Home() {
         >
           +
         </button>
-        <p className="text-2xl mt-4 font-bold dark:text-dark-text">Add</p>
+        <p className="text-2xl mt-4 font-bold dark:text-dark-text">Add Group</p>
       </div>
 
       {filteredGroups.length > 0 ? (

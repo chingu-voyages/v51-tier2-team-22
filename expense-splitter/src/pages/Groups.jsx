@@ -154,7 +154,7 @@ function Groups() {
                 type="submit"
                 className="px-4 py-2 bg-primary text-white rounded-xl dark:bg-dark-primary"
               >
-                Edit
+                Update
               </button>
             </form>
           }

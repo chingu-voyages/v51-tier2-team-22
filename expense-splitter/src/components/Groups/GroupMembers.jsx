@@ -19,7 +19,7 @@ function GroupMembers() {
   );
 
   const { isOpen, openModal, closeModal, handleClickOutside } = useModal();
-  const [newMember, setNewMember] = useState({ name: "", number: "" });
+  const [newMember, setNewMember] = useState({ name: ""});
 
   if (!group) {
     return <div>Group not found.</div>;
@@ -57,7 +57,6 @@ function GroupMembers() {
         groupId: parseInt(groupId),
         member: {
           name: newMember.name,
-          number: newMember.number,
         },
       })
     );
@@ -67,7 +66,7 @@ function GroupMembers() {
       autoClose: 2000,
     });
 
-    setNewMember({ name: "", number: "" });
+    setNewMember({ name: ""});
     closeModal();
   };
 
@@ -137,23 +136,6 @@ function GroupMembers() {
                 />
               </div>
 
-              <div>
-                <label className="text-body font-semibold dark:text-dark-text">
-                  Member Number
-                </label>
-
-                <input
-                  type="text"
-                  name="number"
-                  value={newMember.number}
-                  onChange={handleAddMemberInputChange}
-                  className="border p-2 w-full dark:bg-dark-input"
-                  placeholder="Enter member number"
-                  required
-                  style={{ fontSize: "14px" }}
-                />
-              </div>
-
               <button
                 type="submit"
                 className="px-4 py-2 bg-primary text-white rounded-xl dark:bg-dark-primary"
@@ -162,8 +144,8 @@ function GroupMembers() {
               </button>
             </form>
           }
-          onClose={closeModal} // Close modal when clicking close button or outside the modal
-          handleClickOutside={handleClickOutside} // Close modal when clicking outside
+          onClose={closeModal}
+          handleClickOutside={handleClickOutside}
         />
       )}
 

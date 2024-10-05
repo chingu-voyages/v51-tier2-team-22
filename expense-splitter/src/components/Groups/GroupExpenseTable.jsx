@@ -11,85 +11,23 @@ const expenses = [
         name: "Fari",
         contribution: "60%",
         split: "60€",
-        paid: "100€",
         due: "+40€",
       },
       {
         name: "Mina",
         contribution: "20%",
         split: "20€",
-        paid: "0€",
         due: "-20€",
       },
       {
         name: "Luigi",
         contribution: "20%",
         split: "20€",
-        paid: "0€",
         due: "-20€",
       },
     ],
   },
-  {
-    expense: "Restaurant",
-    description: "The harvest table",
-    category: "Meal",
-    date: "2023/3/20",
-    totalAmount: "100€",
-    participants: [
-      {
-        name: "Fari",
-        contribution: "60%",
-        split: "60€",
-        paid: "100€",
-        due: "+40€",
-      },
-      {
-        name: "Mina",
-        contribution: "20%",
-        split: "20€",
-        paid: "0€",
-        due: "-20€",
-      },
-      {
-        name: "Luigi",
-        contribution: "20%",
-        split: "20€",
-        paid: "0€",
-        due: "-20€",
-      },
-    ],
-  },
-  {
-    expense: "Restaurant",
-    description: "The harvest table",
-    category: "Meal",
-    date: "2023/3/20",
-    totalAmount: "100€",
-    participants: [
-      {
-        name: "Fari",
-        contribution: "60%",
-        split: "60€",
-        paid: "100€",
-        due: "+40€",
-      },
-      {
-        name: "Mina",
-        contribution: "20%",
-        split: "20€",
-        paid: "0€",
-        due: "-20€",
-      },
-      {
-        name: "Luigi",
-        contribution: "20%",
-        split: "20€",
-        paid: "0€",
-        due: "-20€",
-      },
-    ],
-  },
+
   {
     expense: "Bakery",
     description: "First day of vacation",
@@ -97,13 +35,12 @@ const expenses = [
     date: "----",
     totalAmount: "0€",
     participants: [
-      { name: "Fari", contribution: "0%", split: "0€", paid: "0€", due: "+0€" },
-      { name: "Mina", contribution: "0%", split: "0€", paid: "0€", due: "-0€" },
+      { name: "Fari", contribution: "0%", split: "0€", due: "+0€" },
+      { name: "Mina", contribution: "0%", split: "0€", due: "-0€" },
       {
         name: "Luigi",
         contribution: "0%",
         split: "0€",
-        paid: "0€",
         due: "-0€",
       },
     ],
@@ -140,9 +77,7 @@ function GroupExpenseTable() {
             <th scope="col" className="px-6 py-3">
               Split
             </th>
-            <th scope="col" className="px-6 py-3">
-              Paid
-            </th>
+
             <th scope="col" className="px-6 py-3">
               Due
             </th>
@@ -153,17 +88,22 @@ function GroupExpenseTable() {
         </thead>
         <tbody>
           {expenses.map((expense, index) => (
-            <tr
-              key={index}
-              className="bg-white border-b border-gray-100"
-            >
+            <tr key={index} className="bg-white border-b border-gray-100">
               <td className="px-6 py-4 text-body font-bold text-secondary  whitespace-nowrap">
                 {expense.expense}
               </td>
-              <td className="px-6 py-4 text-sm font-normal text-secondary whitespace-nowrap">{expense.description}</td>
-              <td className="px-6 py-4 text-body font-bold text-secondary">{expense.category}</td>
-              <td className="px-6 py-4 text-body font-bold text-secondary">{expense.date}</td>
-              <td className="px-6 py-4 text-body font-bold text-secondary">{expense.totalAmount}</td>
+              <td className="px-6 py-4 text-sm font-normal text-secondary whitespace-nowrap">
+                {expense.description}
+              </td>
+              <td className="px-6 py-4 text-body font-bold text-secondary">
+                {expense.category}
+              </td>
+              <td className="px-6 py-4 text-body font-bold text-secondary">
+                {expense.date}
+              </td>
+              <td className="px-6 py-4 text-body font-bold text-secondary">
+                {expense.totalAmount}
+              </td>
 
               <td className="px-6 py-4 text-body font-bold text-secondary">
                 {expense.participants.map((participant, pindex) => (
@@ -185,14 +125,6 @@ function GroupExpenseTable() {
                 {expense.participants.map((participant, pindex) => (
                   <div key={pindex} className="flex flex-col">
                     <span>{participant.split}</span>
-                  </div>
-                ))}
-              </td>
-
-              <td className="px-6 py-4 text-body font-bold text-secondary">
-                {expense.participants.map((participant, pindex) => (
-                  <div key={pindex} className="flex flex-col">
-                    <span>{participant.paid}</span>
                   </div>
                 ))}
               </td>

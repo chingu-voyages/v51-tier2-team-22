@@ -1,10 +1,8 @@
-
-
 const Modal = ({ content, onClose, handleClickOutside }) => {
   return (
     <section
       id="modal-overlay"
-      className="fixed inset-0 bg-black bg-opacity-20 flex justify-center items-center"
+      className="!mt-0 fixed z-50 inset-0 bg-black bg-opacity-20 flex justify-center items-center"
       onClick={handleClickOutside} // Handle clicking outside the modal
     >
       <article className="bg-white p-6 rounded-lg w-96">

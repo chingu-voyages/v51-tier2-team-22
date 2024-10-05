@@ -1,5 +1,9 @@
 import { PieChart, Pie, Cell } from "recharts";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import Modal from "../Utils/Modal";
+import useModal from "../Utils/useModal";
+import { useEffect, useState } from "react";
+import { updateMemberContribution } from "../../features/groupsSlice";
 
 // chart
 const COLORS = [
@@ -39,7 +43,7 @@ const renderCustomizedLabel = ({
       dominantBaseline="central"
       className="text-md font-bold text-secondary"
     >
-      {(percent * 100).toFixed(0)}%
+      {(percent * 100).toFixed(1)}%
     </text>
   );
 };
@@ -60,11 +64,92 @@ function GroupChart({ groupId }) {
       }))
     : [];
 
+  const dispatch = useDispatch();
+  const { isOpen, openModal, closeModal, handleClickOutside } = useModal();
+
+  // Set equal contributions by default
+  const [customContributions, setCustomContributions] = useState({});
+
+  // Calculate and set equal contributions when component mounts
+  useEffect(() => {
+    if (hasMembers) {
+      const equalContribution = (100 / group.members.length).toFixed(1);
+      const initialContributions = group.members.reduce((acc, member) => {
+        acc[member.id] = equalContribution;
+        return acc;
+      }, {});
+      setCustomContributions(initialContributions);
+    }
+  }, [group.members, hasMembers]); // Run when members change
+
+  const handleContributionChange = (memberId, newContribution) => {
+    const newContributionValue = parseFloat(newContribution);
+
+    if (newContributionValue > 100 || newContributionValue < 0) return;
+
+    const remainingContribution = 100 - newContributionValue;
+    const otherMembers = group.members.filter((member) => member.id !== memberId);
+    const otherMembersCount = otherMembers.length;
+    const equalContribution = remainingContribution / otherMembersCount;
+
+    setCustomContributions((prevContributions) => {
+      const updatedContributions = { ...prevContributions };
+      updatedContributions[memberId] = newContributionValue;
+      otherMembers.forEach((member) => {
+        updatedContributions[member.id] = equalContribution;
+      });
+      return updatedContributions;
+    });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    dispatch(
+      updateMemberContribution({
+        groupId: group.id,
+        contributions: customContributions,
+      })
+    );
+    closeModal();
+  };
+
   return (
     <section className="flex flex-col items-center justify-center w-custom-wide-chart bg-white dark:bg-dark-secondary dark:border p-6 ml-8 rounded-lg shadow">
-      <p className="text-groupComponentHeader mr-auto font-bold text-secondary ml-3 dark:text-primary ">
-        Budget Split
-      </p>
+      <div className="w-full flex items-stretch justify-end">
+        <p className="text-groupComponentHeader mr-auto font-bold text-secondary ml-3 dark:text-primary ">
+          Budget Split
+        </p>
+        <button className="hover:bg-primary px-3 transition rounded-md border border-primary text-primary font-bold hover:text-white" onClick={openModal}>Edit Contributions</button>
+      </div>
+
+      {/* contribution change */}
+      {isOpen && (
+        <Modal
+          content={
+            <form onSubmit={handleSubmit} className="space-y-3">
+              {group.members.map((member) => (
+                <div key={member.id}>
+                  <label>{member.name}s Contribution</label>
+                  <input
+                    type="number"
+                    value={customContributions[member.id] }
+                    onChange={(e) =>
+                      handleContributionChange(member.id, e.target.value)
+                    }
+                    className="border mr-3 p-2 w-[90%] dark:bg-dark-input"
+                    required
+                  /> %
+                </div>
+              ))}
+              <button type="submit" className="rounded-xl px-4 py-2 bg-primary text-white">
+                Update Contributions
+              </button>
+            </form>
+          }
+          onClose={closeModal}
+          handleClickOutside={handleClickOutside}
+        />
+      )}
 
       {hasMembers ? (
         <>
