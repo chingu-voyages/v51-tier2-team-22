@@ -56,7 +56,7 @@ function Sidebar() {
 
             {/* Listing the created groups directly below the "Groups" link */}
             <div>
-              {/*display the first 3 groups in sidebar*/}
+              {/*display the first 2 groups in sidebar*/}
               {groups.slice(0,2).map((group) => (
                 <NavLink
                   key={group.id}

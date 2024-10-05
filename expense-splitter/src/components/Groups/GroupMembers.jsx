@@ -89,7 +89,7 @@ function GroupMembers() {
       {/* note to self, add bg-red-500 to line under to better checking for aligments */}
       <article className="flex flex-wrap justify-start items-centre">
 
-      <div className="bg-white dark:bg-dark-secondary rounded-2xl flex items-center flex-col ml-6">
+      <div className="bg-white dark:bg-dark-secondary rounded-2xl flex items-center flex-col ml-4 mr-2">
         <button
           onClick={() => setIsModalOpen(true)}
           className="w-16 h-16 rounded-full shadow-lg  bg-primary dark:bg-dark-bg text-4xl text-white dark:text-dark-text hover:bg-primary"
