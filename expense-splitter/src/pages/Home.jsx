@@ -25,6 +25,7 @@ function Home() {
 
   const [newGroup, setNewGroup] = useState({
     name: "",
+    description:"",
     totalBudget: "",
     totalExpense: "",
   });
@@ -44,6 +45,7 @@ function Home() {
       addGroup({
         id: groups.length + 1,
         name: newGroup.name,
+        description:newGroup.description,
         totalBudget: newGroup.totalBudget,
         totalExpense: newGroup.totalExpense,
         members: [], // empty for now
@@ -52,6 +54,7 @@ function Home() {
 
     setNewGroup({
       name: "",
+      description:"",
       totalBudget: "",
       totalExpense: "",
     });
@@ -149,6 +152,24 @@ function Home() {
               </div>
 
               <div>
+              <label className="text-body font-semibold dark:text-dark-text">
+                  Description
+                </label>
+                <input textarea
+                  name="description"
+                  value={newGroup.description}
+                  onChange={handleInputChange}
+                  className="border p-2 w-full dark:bg-dark-input"
+                  placeholder="Enter group description"
+                  required
+                  maxLength={70}
+                  style={{ fontSize: "14px" }}
+                />
+              </div>
+
+
+
+              <div>
                 <label className="text-body font-semibold dark:text-dark-text">
                   Total Budget
                 </label>
@@ -183,7 +204,8 @@ function Home() {
               <button
                 type="submit"
                 className="px-4 py-2 bg-primary text-white rounded-xl dark:bg-dark-primary"
-              >
+
+>
                 Add Group
               </button>
             </form>
