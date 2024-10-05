@@ -95,6 +95,13 @@ const groupsSlice = createSlice({
         });
       }
     },
+    updateGroupName: (state, action) => {
+      const { groupId, newName } = action.payload;
+      const group = state.groups.find((group) => group.id === groupId);
+      if (group) {
+        group.name = newName;
+      }
+    },
   },
 });
 
@@ -106,5 +113,6 @@ export const {
   updateGroupBudget,
   updateGroupExpense,
   updateMemberContribution,
+  updateGroupName
 } = groupsSlice.actions;
 export default groupsSlice.reducer;
