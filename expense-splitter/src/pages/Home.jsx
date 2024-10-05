@@ -10,6 +10,7 @@ import Modal from "../components/Utils/Modal";
 import useModal from "../components/Utils/useModal";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { getRandomImage } from "../components/Utils/images";
 
 function Home() {
   const groups = useSelector((state) => state.groups.groups);
@@ -51,6 +52,7 @@ function Home() {
       addGroup({
         id: groups.length + 1,
         name: newGroup.name,
+        image: getRandomImage(),
         totalBudget: newGroup.totalBudget,
         totalExpense: newGroup.totalExpense,
         members: [], // empty for now

@@ -67,10 +67,8 @@ function GroupChart({ groupId }) {
   const dispatch = useDispatch();
   const { isOpen, openModal, closeModal, handleClickOutside } = useModal();
 
-  // Set equal contributions by default
   const [customContributions, setCustomContributions] = useState({});
 
-  // Calculate and set equal contributions when component mounts
   useEffect(() => {
     if (hasMembers) {
       const equalContribution = (100 / group.members.length).toFixed(1);
@@ -80,30 +78,61 @@ function GroupChart({ groupId }) {
       }, {});
       setCustomContributions(initialContributions);
     }
-  }, [group.members, hasMembers]); // Run when members change
+  }, [group.members, hasMembers]);
+
+  const openModalWithCurrentContributions = () => {
+    if (hasMembers) {
+      const currentContributions = group.members.reduce((acc, member) => {
+        acc[member.id] = member.contribution
+          ? member.contribution.toFixed(1)
+          : (100 / group.members.length).toFixed(1);
+        return acc;
+      }, {});
+      setCustomContributions(currentContributions);
+    }
+    openModal();
+  };
 
   const handleContributionChange = (memberId, newContribution) => {
-    const newContributionValue = parseFloat(newContribution);
+    let newContributionValue = parseFloat(newContribution);
 
     if (newContributionValue > 100 || newContributionValue < 0) return;
 
     const remainingContribution = 100 - newContributionValue;
-    const otherMembers = group.members.filter((member) => member.id !== memberId);
+    const otherMembers = group.members.filter(
+      (member) => member.id !== memberId
+    );
     const otherMembersCount = otherMembers.length;
+
     const equalContribution = remainingContribution / otherMembersCount;
 
     setCustomContributions((prevContributions) => {
       const updatedContributions = { ...prevContributions };
       updatedContributions[memberId] = newContributionValue;
+
       otherMembers.forEach((member) => {
-        updatedContributions[member.id] = equalContribution;
+        updatedContributions[member.id] = parseFloat(
+          equalContribution.toFixed(2)
+        );
       });
+
       return updatedContributions;
     });
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    // Validate total contributions before submission
+    const totalContributions = Object.values(customContributions).reduce(
+      (acc, val) => acc + val,
+      0
+    );
+    if (totalContributions !== 100) {
+      alert("Total contributions must equal 100%");
+      return;
+    }
+
     dispatch(
       updateMemberContribution({
         groupId: group.id,
@@ -119,7 +148,12 @@ function GroupChart({ groupId }) {
         <p className="text-groupComponentHeader mr-auto font-bold text-secondary ml-3 dark:text-primary ">
           Budget Split
         </p>
-        <button className="hover:bg-primary px-3 transition rounded-md border border-primary text-primary font-bold hover:text-white" onClick={openModal}>Edit Contributions</button>
+        <button
+          className="hover:bg-primary px-3 transition rounded-md border border-primary text-primary font-bold hover:text-white"
+          onClick={openModalWithCurrentContributions}
+        >
+          Edit Contributions
+        </button>
       </div>
 
       {/* contribution change */}
@@ -132,16 +166,20 @@ function GroupChart({ groupId }) {
                   <label>{member.name}s Contribution</label>
                   <input
                     type="number"
-                    value={customContributions[member.id] }
+                    value={Math.floor(customContributions[member.id])}
                     onChange={(e) =>
                       handleContributionChange(member.id, e.target.value)
                     }
                     className="border mr-3 p-2 w-[90%] dark:bg-dark-input"
                     required
-                  /> %
+                  />{" "}
+                  %
                 </div>
               ))}
-              <button type="submit" className="rounded-xl px-4 py-2 bg-primary text-white">
+              <button
+                type="submit"
+                className="rounded-xl px-4 py-2 bg-primary text-white"
+              >
                 Update Contributions
               </button>
             </form>
@@ -175,7 +213,7 @@ function GroupChart({ groupId }) {
             </Pie>
           </PieChart>
 
-          {/* Custom legend */}
+          {/* custom legend */}
           <article className="p-3 ml-3 flex rounded-lg shadow-custom flex-wrap justify-start">
             {data.map((entry, index) => (
               <div
