@@ -25,7 +25,7 @@ const totalBudget = group.totalBudget;  // fake values update with actual logic 
 
   return (
     <section className="flex flex-col gap-8 m-6">
-      <GroupName groupName={group.name} />
+      <GroupName groupName={group.name} description={group.description} />
 
       <div className="flex gap-6 flex-col xl:flex-row">
         <GroupSmallExpenseCard

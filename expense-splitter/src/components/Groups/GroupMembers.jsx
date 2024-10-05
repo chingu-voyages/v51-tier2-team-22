@@ -87,12 +87,12 @@ function GroupMembers() {
       </div>
 
       {/* note to self, add bg-red-500 to line under to better checking for aligments */}
-      <article className="flex flex-wrap justify-start">
-        
-      <div className="bg-white dark:bg-dark-secondary rounded-2xl flex items-center flex-col">
+      <article className="flex flex-wrap justify-start items-centre">
+
+      <div className="bg-white dark:bg-dark-secondary rounded-2xl flex items-center flex-col ml-6">
         <button
           onClick={() => setIsModalOpen(true)}
-          className="w-14 h-14 rounded-full shadow-lg  bg-primary dark:bg-dark-bg text-4xl text-white dark:text-dark-text hover:bg-primary"
+          className="w-16 h-16 rounded-full shadow-lg  bg-primary dark:bg-dark-bg text-4xl text-white dark:text-dark-text hover:bg-primary"
         >
           +
         </button>
@@ -102,9 +102,9 @@ function GroupMembers() {
           <div
             key={member.id}
             // note to self, add bg-red-200 to line under to better checking for aligments
-            className="bg-red-200 flex flex-col items-center m-1"
+            className="hover:bg-slate-100 flex flex-col items-center m-1 rounded-md"
           >
-            <Link to={`/friends/${member.name}`} className="hover:bg-slate-100 transition-colors rounded-md bg-red-400">
+            <Link to={`/friends/${member.name}`} className="hover:bg-slate-100 transition-colors rounded-xl">
               <GroupsEachMember
                 member={{
                   name: member.name,
@@ -116,7 +116,7 @@ function GroupMembers() {
               onClick={() => handleRemoveMember(member.id, member.name)}
               className="bg-highlight flex items-center justify-center rounded-full font-extrabold text-lg text-alert hover:bg-red-400 w-6 h-6 pb-1 relative bottom-20 left-5"
             >
-              -
+              x
             </button>
           </div>
         ))}
