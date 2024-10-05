@@ -11,8 +11,8 @@
 - [DONE] PREDRAG [STEP TO BE DONE?] removed split column from table
 - [DONE] PREDRAG [STEP TO BE DONE?] editable group name inside group page
 - [DONE] PREDRAG [STEP TO BE DONE?] randomized profile image for newly created group
+- [DONE] PREDRAG [STEP TO BE DONE?] add a system to change image effortlessly
 
-- PREDRAG [STEP TO BE DONE?] add a system to change image effortlessly
 - PREDRAG [STEP TO BE DONE?] add the ability to edit more than one values when clicked "edit contributions" inside group page
 - PREDRAG [STEP TO BE DONE?] add number of dollars that is percentage inside chart
 - PREDRAG fix addgroup modal and add members to group modal to display empty text if modal is opened and information typed but then modal is closed without submition. then when it is re opened the old unsubmited info is still there

@@ -129,7 +129,7 @@ function Groups() {
                   value={formData.totalBudget}
                   onChange={handleInputChange}
                   className="border p-2 w-full dark:bg-dark-input"
-                  placeholder="Enter member name"
+                  placeholder="Enter new budget"
                   required
                 />
               </div>
@@ -145,7 +145,7 @@ function Groups() {
                   value={formData.totalExpense}
                   onChange={handleInputChange}
                   className="border p-2 w-full dark:bg-dark-input"
-                  placeholder="Enter member number"
+                  placeholder="Enter new expense"
                   required
                 />
               </div>

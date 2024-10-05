@@ -24,7 +24,7 @@ function HomeIndividualGroup({ group }) {
   return (
     <section className="p-4 border bg-white dark:bg-dark-secondary rounded-xl ml-8 w-custom-card h-custom-card-height flex flex-col items-center">
       <img
-        className="w-14 h-14 mb-2 rounded-full object-cover flex justify-center"
+        className="w-20 h-20 mb-2 rounded-full object-cover flex justify-center"
         src={group.image}
         alt="group-logo"
       />

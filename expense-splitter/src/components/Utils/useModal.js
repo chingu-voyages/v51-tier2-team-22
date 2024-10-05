@@ -9,7 +9,6 @@ function useModal() {
   const closeModal = () => {
     setIsOpen(false);}
 
-  // Handle Escape key press to close modal
   useEffect(() => {
     const handleEscape = (event) => {
       if (event.key === 'Escape') {
@@ -20,7 +19,6 @@ function useModal() {
     return () => window.removeEventListener('keydown', handleEscape);
   }, []);
 
-  // Handle click outside the modal to close it
   const handleClickOutside = (event) => {
     if (event.target.id === 'modal-overlay') {
       closeModal();
