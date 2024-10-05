@@ -7,17 +7,28 @@ import { updateMemberContribution } from "../../features/groupsSlice";
 
 // chart
 const COLORS = [
-  "#0B7A75",
-  "#843B62",
-  "#F67E7D",
-  "#00A1E4",
-  "#F5B700",
-  "#00A1E4",
-  "#A8C686",
-  "#7067CF",
-  "#E27396",
-  "#DC0073",
-  "#89FC00",
+  "#F8AE1B",
+  "#8D73FD",
+  "#EEAAFF",
+  "#6AD2FF",
+  "#EBAF91",
+  "#F68D2B",
+  "#F9C84D",
+  "#00B1A0",
+  "#03B56D",
+  "#6EEDFF",
+  "#D4A5A5",
+  "#F4A79D",
+  "#F8A5FF",
+  "#B8B8B8",
+  "#FDE0B8",
+  "#F35353",
+  "#D3917B",
+  "#FFF597",
+  "#D2FBA4",
+  "#FABE7A",
+  "#9FFFD8",
+  "#4318FF",
 ];
 
 // props of numbers inside chart position and radius related
@@ -38,7 +49,7 @@ const renderCustomizedLabel = ({
     <text
       x={x}
       y={y}
-      fill="#FFFFFF"
+      fill="#1f1d1b"
       textAnchor="middle"
       dominantBaseline="central"
       className="text-md font-bold text-secondary"
