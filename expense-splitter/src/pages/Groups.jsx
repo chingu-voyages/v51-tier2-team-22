@@ -17,6 +17,8 @@ import GroupSmallExpenseCard from "../components/Groups/GroupSmallExpenseCard";
 import { GiMoneyStack } from "react-icons/gi";
 import { MdOutlineShoppingCart } from "react-icons/md";
 import { LiaMoneyBillWaveAltSolid } from "react-icons/lia";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function Groups() {
   const { groupId } = useParams();
@@ -70,6 +72,12 @@ function Groups() {
       totalBudget: "",
       totalExpense: "",
     });
+
+    toast.success(`Budget and expense updated`, {
+      position: "top-right",
+      autoClose: 2000,
+    });
+
     closeModal();
   };
 

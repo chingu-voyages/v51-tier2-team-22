@@ -8,6 +8,8 @@ import HomeIndividualGroup from "../components/Home/HomeIndividualGroup";
 import SearchBar from "../components/SearchBar";
 import Modal from "../components/Utils/Modal";
 import useModal from "../components/Utils/useModal";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function Home() {
   const groups = useSelector((state) => state.groups.groups);
@@ -60,6 +62,11 @@ function Home() {
       totalBudget: "",
       totalExpense: "",
     });
+    toast.success(`Group added`, {
+      position: "top-right",
+      autoClose: 2000,
+    });
+
     closeModal(); // Close modal after submission
   };
 
@@ -164,6 +171,8 @@ function Home() {
           handleClickOutside={handleClickOutside} // Pass click outside handler
         />
       )}
+
+      <ToastContainer />
     </section>
   );
 }

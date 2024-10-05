@@ -7,6 +7,8 @@ import { Link } from "react-router-dom";
 // modal
 import Modal from "../Utils/Modal";
 import useModal from "../Utils/useModal";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function GroupMembers() {
   const { groupId } = useParams();
@@ -30,6 +32,12 @@ function GroupMembers() {
 
     if (confirmed) {
       dispatch(removeMember({ groupId: parseInt(groupId), memberId }));
+
+      // Show toast notification
+      toast.success(`${memberName} removed from the group`, {
+        position: "top-right",
+        autoClose: 2000,
+      });
     }
   };
 
@@ -53,6 +61,12 @@ function GroupMembers() {
         },
       })
     );
+    // Show toast notification
+    toast.success(`${newMember.name} added to the group`, {
+      position: "top-right",
+      autoClose: 2000,
+    });
+
     setNewMember({ name: "", number: "" });
     closeModal();
   };
@@ -152,6 +166,8 @@ function GroupMembers() {
           handleClickOutside={handleClickOutside} // Close modal when clicking outside
         />
       )}
+
+      <ToastContainer />
     </section>
   );
 }

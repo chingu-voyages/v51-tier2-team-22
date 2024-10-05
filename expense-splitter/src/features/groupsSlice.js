@@ -65,6 +65,7 @@ const groupsSlice = createSlice({
           (member) => member.id !== memberId
         );
       }
+      calculateContributions(group);
     },
     updateGroupBudget: (state, action) => {
       const { groupId, totalBudget } = action.payload;
@@ -78,7 +79,6 @@ const groupsSlice = createSlice({
       const group = state.groups.find((group) => group.id === groupId);
       if (group) {
         group.totalExpense = totalExpense;
-        calculateContributions(group);
       }
     },
   },
