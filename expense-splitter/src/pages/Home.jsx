@@ -1,13 +1,21 @@
-import { useDispatch, useSelector } from "react-redux";
+// react
 import { useEffect, useState } from "react";
-import HomeIndividualGroup from "../components/Home/HomeIndividualGroup";
+// redux
+import { useDispatch, useSelector } from "react-redux";
 import { addGroup } from "../features/groupsSlice";
+// components
+import HomeIndividualGroup from "../components/Home/HomeIndividualGroup";
 import SearchBar from "../components/SearchBar";
+import Modal from "../components/Utils/Modal";
+import useModal from "../components/Utils/useModal";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { getRandomImage } from "../components/Utils/images";
 
 function Home() {
   const groups = useSelector((state) => state.groups.groups);
 
-  // search bar functionality
+  // Search bar functionality
   const [filteredGroups, setFilteredGroups] = useState(groups);
 
   const handleSearch = (query) => {
@@ -19,7 +27,7 @@ function Home() {
     );
   };
 
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const { isOpen, openModal, closeModal, handleClickOutside } = useModal();
 
   const dispatch = useDispatch();
 
@@ -45,6 +53,7 @@ function Home() {
       addGroup({
         id: groups.length + 1,
         name: newGroup.name,
+        image: getRandomImage(),
         description:newGroup.description,
         totalBudget: newGroup.totalBudget,
         totalExpense: newGroup.totalExpense,
@@ -58,23 +67,12 @@ function Home() {
       totalBudget: "",
       totalExpense: "",
     });
-    setIsModalOpen(false);
-  };
+    toast.success(`Group added`, {
+      position: "top-right",
+      autoClose: 2000,
+    });
 
-  useEffect(() => {
-    const handleEsc = (event) => {
-      if (event.key === "Escape") {
-        setIsModalOpen(false);
-      }
-    };
-    window.addEventListener("keydown", handleEsc);
-    return () => window.removeEventListener("keydown", handleEsc);
-  }, []);
-
-  const handleModalClickOutside = (event) => {
-    if (event.target.id === "modal-overlay") {
-      setIsModalOpen(false);
-    }
+    closeModal(); // Close modal after submission
   };
 
   useEffect(() => {
@@ -93,17 +91,17 @@ function Home() {
             &#128522;
           </p>
         </div>
-        <SearchBar onSearch={handleSearch}  />
+        <SearchBar onSearch={handleSearch} />
       </article>
 
-      <div className=" border bg-white dark:bg-dark-secondary rounded-2xl w-custom-card h-custom-card-height ml-8 shadow flex items-center justify-center flex-col">
+      <div className="border bg-white dark:bg-dark-secondary rounded-2xl w-custom-card h-custom-card-height ml-8 shadow flex items-center justify-center flex-col">
         <button
-          onClick={() => setIsModalOpen(true)}
+          onClick={openModal} // Use openModal from the custom hook
           className="hover:animate-ping rounded-full bg-primary dark:bg-dark-bg dark:border w-16 h-16 text-5xl text-white dark:text-dark-text hover:bg-primary"
         >
           +
         </button>
-        <p className="text-2xl mt-4 font-bold dark:text-dark-text">Add</p>
+        <p className="text-2xl mt-4 font-bold dark:text-dark-text">Add Group</p>
       </div>
 
       {filteredGroups.length > 0 ? (
@@ -114,26 +112,9 @@ function Home() {
         <p className="ml-8">No groups found</p>
       )}
 
-      {isModalOpen && (
-        <section
-          id="modal-overlay"
-          className="fixed inset-0 bg-black dark:bg-gray-500 dark:bg-opacity-20 bg-opacity-20 flex justify-center items-center"
-          onClick={handleModalClickOutside}
-        >
-          <article className="bg-white dark:bg-dark-secondary p-6 rounded-lg w-96">
-            <div className="flex justify-between items-center">
-              <h2 className="text-2xl mb-4 font-bold dark:text-dark-text">
-                Add New Group
-              </h2>
-              {/* add actual icon for close btn */}
-              <button
-                className="bg-white shadow rounded-full w-8 h-8 text-red-500 mb-4"
-                onClick={() => setIsModalOpen(false)}
-              >
-                x
-              </button>
-            </div>
-
+      {isOpen && ( // Use isOpen from the custom hook
+        <Modal
+          content={
             <form onSubmit={handleSubmit} className="space-y-3">
               <div>
                 <label className="text-body font-semibold dark:text-dark-text">
@@ -155,7 +136,7 @@ function Home() {
               <label className="text-body font-semibold dark:text-dark-text">
                   Description
                 </label>
-                <input textarea
+                <input 
                   name="description"
                   value={newGroup.description}
                   onChange={handleInputChange}
@@ -209,9 +190,13 @@ function Home() {
                 Add Group
               </button>
             </form>
-          </article>
-        </section>
+          }
+          onClose={closeModal} // Pass onClose handler to close modal
+          handleClickOutside={handleClickOutside} // Pass click outside handler
+        />
       )}
+
+      <ToastContainer />
     </section>
   );
 }

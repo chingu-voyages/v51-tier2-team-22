@@ -1,14 +1,11 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 function DarkModeToggle() {
-  const [darkMode, setDarkMode] = useState(false);
-
-  useEffect(() => {
-    // Check local storage for the theme on initial render
+  const [darkMode, setDarkMode] = useState(() => {
     const isDarkMode = localStorage.getItem("theme") === "dark";
-    setDarkMode(isDarkMode);
     document.documentElement.classList.toggle("dark", isDarkMode);
-  }, []);
+    return isDarkMode;
+  });
 
   const toggleDarkMode = () => {
     const newDarkMode = !darkMode;
