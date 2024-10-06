@@ -62,6 +62,7 @@ export default {
         'subheader': "1.125rem",
         'body': "1rem",
         'legend':"0.75rem",
+        'groupComponentHeader' : "1.5rem"
       },
       // If you need custom shadows for your components:
       boxShadow: {

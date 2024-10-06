@@ -1,4 +1,14 @@
+// { id: 23423513, name: "Anthony", contribution: 0 },
+// { id: 4575897, name: "Marko", contribution: 0 },
+// { id: 3464867, name: "Duda", contribution: 0 },
+// { id: 34534712, name: "Kirk", contribution: 0 },
+// { id: 23213423513, name: "Elijah", contribution: 0 },
+// { id: 45780897, name: "Oliver", contribution: 0 },
+// { id: 3469067, name: "Theodore", contribution: 0 },
+// { id: 3453654712, name: "Liam", contribution: 0 },
+
 import { createSlice } from "@reduxjs/toolkit";
+import group from "../assets/group.png";
 
 const calculateContributions = (group) => {
   const memberCount = group.members.length;
@@ -15,15 +25,16 @@ const initialState = {
     {
       id: 1,
       name: "Picnic Holiday",
+      image: group,
       totalBudget: 500,
       totalExpense: 300,
       members: [
-        { id: 1, name: "Mark", contribution: 0 },
-        { id: 2, name: "Jason", contribution: 0 },
-        { id: 3, name: "Conan", contribution: 0 },
-        { id: 4, name: "Mark", contribution: 0 },
-        { id: 5, name: "Jason", contribution: 0 },
-      ]
+        { id: 1, name: "Mark 2nd", contribution: 0 },
+        { id: 2, name: "Markus", contribution: 0 },
+        { id: 3134532523, name: "jasson", contribution: 0 },
+
+
+      ],
     },
   ],
 };
@@ -59,18 +70,59 @@ const groupsSlice = createSlice({
           (member) => member.id !== memberId
         );
       }
+      calculateContributions(group);
     },
-    updateTotalExpense: (state, action) => {
+    updateGroupBudget: (state, action) => {
+      const { groupId, totalBudget } = action.payload;
+      const group = state.groups.find((group) => group.id === groupId);
+      if (group) {
+        group.totalBudget = totalBudget;
+      }
+    },
+    updateGroupExpense: (state, action) => {
       const { groupId, totalExpense } = action.payload;
       const group = state.groups.find((group) => group.id === groupId);
       if (group) {
         group.totalExpense = totalExpense;
-        calculateContributions(group);
       }
     },
+    updateMemberContribution: (state, action) => {
+      const { groupId, contributions } = action.payload;
+      const group = state.groups.find((group) => group.id === groupId);
+      if (group) {
+        group.members.forEach((member) => {
+          if (contributions[member.id] !== undefined) {
+            member.contribution = contributions[member.id];
+          }
+        });
+      }
+    },
+    updateGroupName: (state, action) => {
+      const { groupId, newName } = action.payload;
+      const group = state.groups.find((group) => group.id === groupId);
+      if (group) {
+        group.name = newName;
+      }
+    },
+    updateGroupImage: (state, action) => {
+      const { groupId, newImage } = action.payload;
+      const group = state.groups.find((group) => group.id === groupId);
+      if (group) {
+        group.image = newImage;
+      }
+    }
   },
 });
 
-export const { addGroup, removeGroup, addMember, removeMember } =
-  groupsSlice.actions;
+export const {
+  addGroup,
+  removeGroup,
+  addMember,
+  removeMember,
+  updateGroupBudget,
+  updateGroupExpense,
+  updateMemberContribution,
+  updateGroupName,
+  updateGroupImage,
+} = groupsSlice.actions;
 export default groupsSlice.reducer;

@@ -1,14 +1,16 @@
 some reminders for myself (Predrag)
 
 MINOR
-
-- check whether DarkModeToggle.jsx toggle functionality can be written in more declarative way
 - [IN PROGRESS] see with Fari to make array of colors that look nice and are the same theme, like sand colors or something. this is for the chart colors on groups page
 - [IN PROGRESS] color pallete for dark mode
 
 CASH MEETING
 
 - AGREEMENT TO DELAY FOR NOW UNTIL ALL PREVIOUS TASKS ARE DONE discuss purpose of table inside group details and how to handle adding an expense
+- CASH [STEP TO BE DONE?] discuss implementing groups in the sidebar as well and the ability to add new groups from the sidebar [SHOW IMAGE]
+- PREDRAG [STEP TO BE DONE?] implement editing groups total budget and expense from groups details page
+- CASH [STEP TO BE DONE?] fix styling and align everything well in GroupMembers.jsx
+- CASH [STEP TO BE DONE?] inside GroupMembers.jsx members section where you can add and remove members, make a bg change on hover and replace minus for removing members with x and make bg of x more red and do hover too
 - ~~CASH-Done [STEP TO BE DONE?] discuss implementing groups in the sidebar as well and the ability to add new groups from the sidebar [SHOW IMAGE]~~ (backlog) Groups not yet creatable from side bar.
 - [STEP TO BE DONE?] implement editing groups total budget and expense from groups details page
 - ~~CASH-Done [STEP TO BE DONE?] fix styling and align everything well in GroupMembers.jsx~~

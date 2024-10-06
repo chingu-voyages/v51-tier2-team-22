@@ -2,8 +2,13 @@ import GroupsEachMember from "./GroupsEachMember";
 import { useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { addMember, removeMember } from "../../features/groupsSlice";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
+// modal
+import Modal from "../Utils/Modal";
+import useModal from "../Utils/useModal";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function GroupMembers() {
   const { groupId } = useParams();
@@ -13,19 +18,8 @@ function GroupMembers() {
     state.groups.groups.find((group) => group.id === parseInt(groupId))
   );
 
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [newMember, setNewMember] = useState({ name: "", number: "" });
-
-  // Close modal when pressing Escape
-  useEffect(() => {
-    const handleEsc = (event) => {
-      if (event.key === "Escape") {
-        setIsModalOpen(false);
-      }
-    };
-    window.addEventListener("keydown", handleEsc);
-    return () => window.removeEventListener("keydown", handleEsc);
-  }, []);
+  const { isOpen, openModal, closeModal, handleClickOutside } = useModal();
+  const [newMember, setNewMember] = useState({ name: ""});
 
   if (!group) {
     return <div>Group not found.</div>;
@@ -38,6 +32,12 @@ function GroupMembers() {
 
     if (confirmed) {
       dispatch(removeMember({ groupId: parseInt(groupId), memberId }));
+
+      // Show toast notification
+      toast.success(`${memberName} removed from the group`, {
+        position: "top-right",
+        autoClose: 2000,
+      });
     }
   };
 
@@ -57,41 +57,31 @@ function GroupMembers() {
         groupId: parseInt(groupId),
         member: {
           name: newMember.name,
-          number: newMember.number,
         },
       })
     );
-    setNewMember({ name: "", number: "" });
-    setIsModalOpen(false);
-  };
+    // Show toast notification
+    toast.success(`${newMember.name} added to the group`, {
+      position: "top-right",
+      autoClose: 2000,
+    });
 
-  const handleModalClickOutside = (event) => {
-    if (event.target.id === "modal-overlay") {
-      setIsModalOpen(false);
-    }
+    setNewMember({ name: ""});
+    closeModal();
   };
 
   return (
     <section className="bg-white dark:bg-dark-secondary dark:border p-6 ml-8 rounded-lg shadow w-custom-width">
-      <div className="flex justify-between items-center mb-4 ml-4">
-        <p className="text-lg font-bold text-secondary dark:text-primary">
-          Members
-        </p>
-        {/* under btn to be removed perhaps due to simplification of the app */}
-        {/* <button
-          className="w-20 h-8 rounded-lg text-body font-medium
-        bg-blizzard-blue text-primary  duration-300"
-        >
-          View all
-        </button>  */}
-      </div>
+      <p className="ml-3 mb-6 text-groupComponentHeader font-bold text-secondary dark:text-primary">
+        Members
+      </p>
 
       {/* note to self, add bg-red-500 to line under to better checking for aligments */}
       <article className="flex flex-wrap justify-start items-centre">
 
       <div className="bg-white dark:bg-dark-secondary rounded-2xl flex items-center flex-col ml-4 mr-2">
         <button
-          onClick={() => setIsModalOpen(true)}
+          onClick={openModal}
           className="w-16 h-16 rounded-full shadow-lg  bg-primary dark:bg-dark-bg text-4xl text-white dark:text-dark-text hover:bg-primary"
         >
           +
@@ -122,26 +112,10 @@ function GroupMembers() {
         ))}
       </article>
 
-{/* MODAL */}
-      {isModalOpen && (
-        <section
-          id="modal-overlay"
-          className="fixed inset-0 bg-black bg-opacity-20 flex justify-center items-center"
-          onClick={handleModalClickOutside}
-        >
-          <article className="bg-white dark:bg-dark-secondary p-6 rounded-lg w-96">
-            <div className="flex justify-between items-center">
-              <h2 className="text-2xl mb-4 font-bold dark:text-dark-text">
-                Add New Member
-              </h2>
-              <button
-                className="bg-white shadow rounded-full w-8 h-8 text-red-500 mb-4"
-                onClick={() => setIsModalOpen(false)}
-              >
-                x
-              </button>
-            </div>
-
+      {/* MODAL */}
+      {isOpen && ( // Conditionally render Modal if it's open
+        <Modal
+          content={
             <form onSubmit={handleSubmit} className="space-y-3">
               <div>
                 <label className="text-body font-semibold dark:text-dark-text">
@@ -160,23 +134,6 @@ function GroupMembers() {
                 />
               </div>
 
-              <div>
-                <label className="text-body font-semibold dark:text-dark-text">
-                  Member Number
-                </label>
-
-                <input
-                  type="text"
-                  name="number"
-                  value={newMember.number}
-                  onChange={handleAddMemberInputChange}
-                  className="border p-2 w-full dark:bg-dark-input"
-                  placeholder="Enter member number"
-                  required
-                  style={{ fontSize: "14px" }}
-                />
-              </div>
-
               <button
                 type="submit"
                 className="px-4 py-2 bg-primary text-white rounded-xl dark:bg-dark-primary"
@@ -184,9 +141,13 @@ function GroupMembers() {
                 Add Member
               </button>
             </form>
-          </article>
-        </section>
+          }
+          onClose={closeModal}
+          handleClickOutside={handleClickOutside}
+        />
       )}
+
+      <ToastContainer />
     </section>
   );
 }

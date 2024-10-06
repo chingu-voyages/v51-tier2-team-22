@@ -3,12 +3,9 @@ const ExpenseBar = ({ expense, budget }) => {
 
   return (
     <section className="flex flex-col justify-between  w-custom-width h-custom-expense-height rounded-global p-8 pt-6 ml-8 border bg-white dark:bg-dark-secondary shadow-md">
-      <div className="flex justify-between items-center mb-6">
-        <p className="text-lg font-bold text-secondary dark:text-primary">Expense vs budget</p>
-        <button className="text-body font-medium text-primary bg-blizzard-blue py-1 px-4 mr-8 rounded-lg">
-          Monthly ▼
-        </button>
-      </div>
+      <p className="text-groupComponentHeader font-bold text-secondary dark:text-primary">
+        Expense vs budget
+      </p>
 
       <div className="flex justify-between items-start">
         <article className="w-custom-bar pr-4">
