@@ -77,12 +77,12 @@ function GroupMembers() {
       </p>
 
       {/* note to self, add bg-red-500 to line under to better checking for aligments */}
-      <article className="flex flex-wrap justify-start items-centre">
+      <article className="flex flex-wrap justify-start">
 
-      <div className="bg-white dark:bg-dark-secondary rounded-2xl flex items-center flex-col ml-6">
+      <div className="bg-white dark:bg-dark-secondary rounded-2xl flex items-center flex-col pl-3 pr-3">
         <button
           onClick={openModal}
-          className="w-16 h-16 rounded-full shadow-lg  bg-primary dark:bg-dark-bg text-4xl text-white dark:text-dark-text hover:bg-primary"
+          className="w-[3.5rem] h-[3.5rem] rounded-full shadow-lg  bg-primary dark:bg-dark-bg text-4xl text-white dark:text-dark-text hover:bg-primary"
         >
           +
         </button>
@@ -92,7 +92,7 @@ function GroupMembers() {
           <div
             key={member.id}
             // note to self, add bg-red-200 to line under to better checking for aligments
-            className="hover:bg-slate-100 flex flex-col items-center m-1 rounded-md"
+            className="hover:bg-slate-100 flex flex-col items-center  rounded-md"
           >
             <Link to={`/friends/${member.name}`} className="hover:bg-slate-100 transition-colors rounded-xl">
               <GroupsEachMember

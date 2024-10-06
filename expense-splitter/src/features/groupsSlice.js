@@ -30,11 +30,9 @@ const initialState = {
       totalBudget: 500,
       totalExpense: 300,
       members: [
-        { id: 1, name: "Mark 2nd", contribution: 0 },
+        { id: 1, name: "Conan", contribution: 0 },
         { id: 2, name: "Markus", contribution: 0 },
-        { id: 3134532523, name: "jasson", contribution: 0 },
-
-
+        { id: 3134532523, name: "Jason", contribution: 0 },
       ],
     },
   ],
