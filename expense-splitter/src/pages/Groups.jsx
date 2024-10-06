@@ -90,6 +90,7 @@ function Groups() {
       <GroupName group={group}/>
 
       <div className="flex gap-6 flex-col xl:flex-row">
+
         <GroupSmallExpenseCard
           icon={GiMoneyStack}
           label="Total budget"
@@ -109,9 +110,19 @@ function Groups() {
         />
       </div>
 
-      <ExpenseBar expense={totalExpense} budget={totalBudget} />
-      <GroupChart groupId={groupId} />
-      <GroupMembers members={group.members} />
+      {/* Flex container for ExpenseBar and GroupChart styling */}
+      <div className="flex gap-6 flex-col xl:flex-row">
+        <div className="flex-1"> {/* The ExpenseBar should take the available width */}
+          <ExpenseBar expense={totalExpense} budget={totalBudget} />
+        </div>
+        <div className="flex-1 ml-8"> {/* GroupChart will take the available width */}
+          <GroupChart groupId={groupId} />
+        </div>
+      </div>
+      <div className="-mt-20">
+          <GroupMembers members={group.members} />
+      </div>
+
       <GroupExpenseTable />
 
       {isOpen && (

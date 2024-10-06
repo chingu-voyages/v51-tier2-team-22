@@ -104,6 +104,7 @@ function Home() {
         <p className="text-2xl mt-4 font-bold dark:text-dark-text">Add Group</p>
       </div>
 
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
       {filteredGroups.length > 0 ? (
         filteredGroups.map((group) => (
           <HomeIndividualGroup key={group.id} group={group} />
@@ -111,6 +112,7 @@ function Home() {
       ) : (
         <p className="ml-8">No groups found</p>
       )}
+      </div>
 
       {isOpen && ( // Use isOpen from the custom hook
         <Modal
@@ -136,7 +138,7 @@ function Home() {
               <label className="text-body font-semibold dark:text-dark-text">
                   Description
                 </label>
-                <input 
+                <input
                   name="description"
                   value={newGroup.description}
                   onChange={handleInputChange}

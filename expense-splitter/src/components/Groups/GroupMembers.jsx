@@ -92,9 +92,9 @@ function GroupMembers() {
           <div
             key={member.id}
             // note to self, add bg-red-200 to line under to better checking for aligments
-            className="hover:bg-slate-100 flex flex-col items-center m-1 rounded-md"
+            className="hover:bg-dark-bg flex flex-col items-center m-1 rounded-md"
           >
-            <Link to={`/friends/${member.name}`} className="hover:bg-slate-100 transition-colors rounded-xl">
+            <Link to={`/friends/${member.name}`} className="hover:bg-dark-bg transition-colors rounded-xl">
               <GroupsEachMember
                 member={{
                   name: member.name,
