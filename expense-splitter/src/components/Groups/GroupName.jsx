@@ -7,6 +7,10 @@ import useModal from "../Utils/useModal";
 import Modal from "../Utils/Modal";
 import { images } from "../Utils/images";
 import { updateGroupImage } from "../../features/groupsSlice";
+import {  toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
+
 
 function GroupName({ group }) {
   const dispatch = useDispatch();
@@ -22,16 +26,8 @@ function GroupName({ group }) {
   const handleEditToggle = () => {
     setIsEditing(!isEditing);
     dispatch(updateGroupName({ groupId: group.id, newName: groupName }));
+   
   };
-
-  useEffect(() => {
-    console.log(images); // This should log the array of image paths
-  }, []);
-
-  useEffect(() => {
-    console.log("Is Modal Open: ", isOpen); // Check if modal opens
-  }, [isOpen]);
-
 
   const handleImageSelect = (image) => {
     setSelectedImage(image);
@@ -39,8 +35,12 @@ function GroupName({ group }) {
   };
 
   const handleSubmit = () => {
-    dispatch(updateGroupImage({ groupId: group.id, newImage: selectedImage })); // Update image in Redux
+    dispatch(updateGroupImage({ groupId: group.id, newImage: selectedImage }));
     closeModal();
+    toast.success(`Group image changed`, {
+      position: "top-right",
+      autoClose: 2000,
+    });
   };
 
   const handleInputChange = (e) => {
@@ -67,21 +67,22 @@ function GroupName({ group }) {
       {isEditing ? (
         <input
           type="text"
-          value={group.name}
+          value={groupName}
           onChange={handleInputChange}
           onKeyDown={handleKeyDown}
           className="text-header border rounded-lg px-3 font-bold text-secondary border-b-2 border-gray-300 focus:outline-none"
           style={{ width: `${Math.max(groupName.length * 20, 200)}px` }}
         />
       ) : (
-        <>
+        <div>
         <h1 className="text-header font-bold text-secondary dark:text-dark-text">
           {groupName}
         </h1>
         <p className="text-body dark:text-dark-text">
         {group.description}
-      </p>
-      </>
+      </p> 
+      </div>
+      
       )}
       <button
         onClick={handleEditToggle}
@@ -95,13 +96,13 @@ function GroupName({ group }) {
           content={
             <div className="space-y-4">
               <h2 className="text-2xl font-bold">Select an Image</h2>
-              <div className="flex space-x-2">
+              <div className="flex space-x-2 flex-wrap gap-3">
                 {images.map((image, index) => (
                   <img
                     key={index}
                     src={image}
                     alt={`image-${index}`}
-                    className={`w-[4.3rem] h-[4.3rem] object-cover rounded-full cursor-pointer ${
+                    className={`w-[4.3rem] h-[4.3rem] object-cover !m-0 rounded-full cursor-pointer ${
                       selectedImage === image ? "ring-[3px] ring-primary" : ""
                     }`}
                     onClick={() => handleImageSelect(image)}

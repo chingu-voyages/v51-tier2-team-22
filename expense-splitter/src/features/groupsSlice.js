@@ -26,6 +26,7 @@ const initialState = {
       id: 1,
       name: "Picnic Holiday",
       image: group,
+      description: "This is our group description 🙌",
       totalBudget: 500,
       totalExpense: 300,
       members: [
