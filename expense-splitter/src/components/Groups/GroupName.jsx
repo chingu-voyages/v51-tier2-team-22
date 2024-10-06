@@ -67,16 +67,21 @@ function GroupName({ group }) {
       {isEditing ? (
         <input
           type="text"
-          value={groupName}
+          value={group.name}
           onChange={handleInputChange}
           onKeyDown={handleKeyDown}
           className="text-header border rounded-lg px-3 font-bold text-secondary border-b-2 border-gray-300 focus:outline-none"
           style={{ width: `${Math.max(groupName.length * 20, 200)}px` }}
         />
       ) : (
+        <>
         <h1 className="text-header font-bold text-secondary dark:text-dark-text">
           {groupName}
         </h1>
+        <p className="text-body dark:text-dark-text">
+        {group.description}
+      </p>
+      </>
       )}
       <button
         onClick={handleEditToggle}
@@ -116,6 +121,8 @@ function GroupName({ group }) {
         />
       )}
     </section>
+
+
   );
 }
 

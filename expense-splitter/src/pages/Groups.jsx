@@ -87,7 +87,7 @@ function Groups() {
 
   return (
     <section className="flex flex-col gap-8 m-6">
-      <GroupName group={group} />
+      <GroupName group={group}/>
 
       <div className="flex gap-6 flex-col xl:flex-row">
         <GroupSmallExpenseCard
