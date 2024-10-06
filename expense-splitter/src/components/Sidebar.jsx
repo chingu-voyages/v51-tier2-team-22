@@ -18,7 +18,7 @@ function Sidebar() {
   const groups = useSelector((state) => state.groups.groups);
 
   return (
-    <div className="w-16 md:w-56 fixed left-0 top-0 z-10 h-screen border-r pt-8 px-4 bg-white dark:bg-dark-bg">
+    <div className="w-16 md:w-56 fixed left-0 top-0 z-10 h-screen border-r pt-8 px-4 bg-white dark:bg-dark-primary">
       <div className="mb-8 flex justify-center">
         <NavLink to="/" className="flex cursor-pointer">
           <img

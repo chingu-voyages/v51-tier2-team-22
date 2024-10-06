@@ -71,7 +71,8 @@ function GroupMembers() {
   };
 
   return (
-    <section className="bg-white dark:bg-dark-secondary dark:border p-6 ml-8 rounded-lg shadow w-custom-width">
+    <section className="bg-white dark:bg-dark-secondary dark:border p-4 ml-8 rounded-lg shadow
+      w-custom-width gap-y-1 mt-6 lg:-mt-24 mb-6">
       <p className="ml-3 mb-6 text-groupComponentHeader font-bold text-secondary dark:text-primary">
         Members
       </p>

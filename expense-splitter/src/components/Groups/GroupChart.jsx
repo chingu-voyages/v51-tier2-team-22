@@ -174,7 +174,7 @@ function GroupChart({ groupId }) {
             <form onSubmit={handleSubmit} className="space-y-3">
               {group.members.map((member) => (
                 <div key={member.id}>
-                  <label>{member.name}s Contribution</label>
+                  <label>{member.name}'s Contribution</label>
                   <input
                     type="number"
                     value={Math.floor(customContributions[member.id])}
