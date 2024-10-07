@@ -129,6 +129,7 @@ function GroupChart({ groupId }) {
     closeModal();
   };
 
+
   return (
     <section className="flex flex-col items-center justify-center w-custom-wide-chart bg-white dark:bg-dark-secondary dark:border p-6 ml-8 rounded-lg shadow">
       <div className="w-full flex items-stretch justify-end">
@@ -211,13 +212,15 @@ function GroupChart({ groupId }) {
             {group.members.map((entry, index) => (
               <div
                 key={index}
-                className="flex my-2 items-center mx-2 space-x-3 p-1"
+                className="flex my-2 items-center mx-2  p-1"
               >
                 <span
                   className="w-3 h-3 rounded-full"
                   style={{ backgroundColor: COLORS[index] }}
                 ></span>
-                <span className="font-bold text-legend">{entry.name}</span>
+                <span className="ml-2 font-bold text-legend">{entry.name}</span>
+                <span className="text-sm ml-1 text-secondary"> - {((entry.contribution / 100) * group.totalExpense).toFixed(1)}$
+                </span>
               </div>
             ))}
           </article>
@@ -232,20 +235,3 @@ function GroupChart({ groupId }) {
 }
 
 export default GroupChart;
-
-// CHART EXPLANATION CODE, "RECHARTS" PACKAGE IS USED FOR CHARTS
-// ----------------------------------------------------
-// <PieChart>: Defines the overall chart's width and height.
-
-// <Pie>:
-// -This component takes data and builds a donut chart based on the value field of each entry.
-// -cx and cy control the center of the pie chart.
-// -innerRadius and outerRadius control the donut's thickness.
-// -paddingAngle adds space between the slices.
-// -dataKey="value" is the key used to calculate the size of the pie slices (in this case, the value field).
-// -label shows the percentage labels inside the pie slices, using the renderCustomizedLabel function.
-// ----------------------
-// <Cell>:
-// -Each slice of the pie is rendered as a Cell, and each cell gets a color from the COLORS array.
-// -fill={COLORS[index % COLORS.length]} dynamically applies the color based on the index of each slice.
-// ----------------------

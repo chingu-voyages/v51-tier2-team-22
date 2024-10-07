@@ -1,6 +1,5 @@
 - [DONE] PREDRAG [STEP TO BE DONE?] try to extract modal logic into a custom hook
 - [DONE] PREDRAG [STEP TO BE DONE?] check whether DarkModeToggle.jsx toggle functionality can be written in more declarative way
-- [DONE] check whether DarkModeToggle.jsx toggle functionality can be written in more declarative way
 - [DONE] PREDRAG [STEP TO BE DONE?] replace icons in Total budget/Total expense/Remaining budget cards to be empty not filled, and replace the bugged shopping cart icon with something else
 - [DONE] PREDRAG [STEP TO BE DONE?] implement editing groups total budget and expense from groups details page
 - [DONE] AGREEMENT TO REMOVE discuss removing "montly" and "view all" btns in groups details page
@@ -13,9 +12,9 @@
 - [DONE] PREDRAG [STEP TO BE DONE?] randomized profile image for newly created group
 - [DONE] PREDRAG [STEP TO BE DONE?] add a system to change image effortlessly
 - [DONE] PREDRAG [STEP TO BE DONE?] add a system to select image for member profile picture inside groups
-
-- PREDRAG [STEP TO BE DONE?] add the ability to edit more than one values when clicked "edit contributions" inside group page
+- [DONE] PREDRAG [STEP TO BE DONE?] add the ability to edit more than one values when clicked "edit contributions" inside group page
 - PREDRAG [STEP TO BE DONE?] add number of dollars that is percentage inside chart
+
 - PREDRAG fix addgroup modal and add members to group modal to display empty text if modal is opened and information typed but then modal is closed without submition. then when it is re opened the old unsubmited info is still there
 
 ===================== TO DO OLD
@@ -24,7 +23,7 @@ some reminders for myself (Predrag)
 
 MINOR
 
-- [IN PROGRESS] see with Fari to make array of colors that look nice and are the same theme, like sand colors or something. this is for the chart colors on groups page
+- [DONE] see with Fari to make array of colors that look nice and are the same theme, like sand colors or something. this is for the chart colors on groups page
 - [IN PROGRESS] color pallete for dark mode
 
 CASH MEETING
