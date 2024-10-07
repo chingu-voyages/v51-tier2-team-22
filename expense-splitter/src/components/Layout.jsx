@@ -7,10 +7,10 @@ import Sidebar from "./Sidebar";
 
 function Layout() {
   return (
-    <section className="flex bg-blizzard-blue dark:bg-dark-bg">
+    <section className="flex bg-blizzard-blue dark:bg-dark-bg overflow-auto">
       <Sidebar />
-      
-      <div className="w-full ml-16 md:ml-56">
+
+      <div className="w-full ml-16 mr-8 md:ml-56">
         <Outlet />
       </div>
     </section>

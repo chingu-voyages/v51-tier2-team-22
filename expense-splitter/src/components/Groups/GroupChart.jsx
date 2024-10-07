@@ -150,8 +150,9 @@ function GroupChart({ groupId }) {
           content={
             <form onSubmit={handleSubmit} className="space-y-3">
               {group.members.map((member) => (
-                <div key={member.id}>
+                <div key={member.id} className="grid grid-cols-[152px_auto] items-center"  >
                   <label>{member.name} Contribution</label>
+                  <div className="flex items-center">
                   <input
                     type="number"
                     value={customContributions[member.id]}
@@ -161,7 +162,8 @@ function GroupChart({ groupId }) {
                     className="border mr-3 p-2 w-[10rem] dark:bg-dark-input"
                     required
                   />
-                  %
+                 <span> % </span>
+                 </div>
                 </div>
               ))}
               <p className="text-md">
@@ -207,7 +209,7 @@ function GroupChart({ groupId }) {
               ))}
             </Pie>
           </PieChart>
-          <article className="p-3 ml-3 flex rounded-lg shadow-custom flex-wrap justify-start">
+          <article className="p-3 w-full flex rounded-lg shadow-custom flex-wrap justify-start gap-2">
             {group.members.map((entry, index) => (
               <div
                 key={index}
