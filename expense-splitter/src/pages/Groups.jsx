@@ -111,17 +111,18 @@ function Groups() {
       </div>
 
       {/* Flex container for ExpenseBar and GroupChart styling */}
-      <div className="flex gap-6 flex-col xl:flex-row">
-        <div className="flex-1"> {/* The ExpenseBar should take the available width */}
+      <div className="flex flex-col lg:flex-row w-full gap-6 ">
+      {/* Left column container */}
+      <div className="flex flex-col gap-6 lg:w-1/2 min-w-0">
           <ExpenseBar expense={totalExpense} budget={totalBudget} />
+          <GroupMembers members={group.members} />
         </div>
-        <div className="flex-1 ml-8"> {/* GroupChart will take the available width */}
+        <div className="lg:w-1/2 min-w-0"> {/* GroupChart will take the available width */}
           <GroupChart groupId={groupId} />
         </div>
       </div>
-      <div className="-mt-20">
-          <GroupMembers members={group.members} />
-      </div>
+
+
 
       <GroupExpenseTable />
 
