@@ -9,6 +9,9 @@ import Modal from "../Utils/Modal";
 import useModal from "../Utils/useModal";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { imagesPeople } from "../Utils/images";
+import unknownPerson from "../../assets/unknownPerson.jpg"
+
 
 function GroupMembers() {
   const { groupId } = useParams();
@@ -20,6 +23,7 @@ function GroupMembers() {
 
   const { isOpen, openModal, closeModal, handleClickOutside } = useModal();
   const [newMember, setNewMember] = useState({ name: "", image: ""});
+  const [selectedImage, setSelectedImage] = useState("");
 
   if (!group) {
     return <div>Group not found.</div>;
@@ -34,7 +38,7 @@ function GroupMembers() {
       dispatch(removeMember({ groupId: parseInt(groupId), memberId }));
 
       // Show toast notification
-      toast.success(`${memberName} removed from the group`, {
+      toast.success(`${memberName} removed`, {
         position: "top-right",
         autoClose: 2000,
       });
@@ -57,18 +61,23 @@ function GroupMembers() {
         groupId: parseInt(groupId),
         member: {
           name: newMember.name,
-       
+          image: selectedImage || unknownPerson
         },
       })
     );
     // Show toast notification
-    toast.success(`${newMember.name} added to the group`, {
+    toast.success(`${newMember.name} added`, {
       position: "top-right",
       autoClose: 2000,
     });
 
-    setNewMember({ name: ""});
+    setNewMember({ name: "", image: ""});
+    setSelectedImage("")
     closeModal();
+  };
+
+  const handleImageSelect = (image) => {
+    setSelectedImage(image);
   };
 
   return (
@@ -133,6 +142,21 @@ function GroupMembers() {
                   required
                   style={{ fontSize: "14px" }}
                 />
+              </div>
+
+              <h2 className="text-2xl font-bold">Select an Image</h2>
+              <div className="flex space-x-2 flex-wrap gap-3">
+                {imagesPeople.map((image, index) => (
+                  <img
+                    key={index}
+                    src={image}
+                    alt={`image-${index}`}
+                    className={`w-[4.3rem] h-[4.3rem] object-cover !m-0 rounded-full cursor-pointer ${
+                      selectedImage === image ? "ring-[3px] ring-primary" : ""
+                    }`}
+                    onClick={() => handleImageSelect(image)}
+                  />
+                ))}
               </div>
 
               <button

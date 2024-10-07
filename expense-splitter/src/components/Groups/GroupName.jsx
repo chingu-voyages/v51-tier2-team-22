@@ -31,7 +31,6 @@ function GroupName({ group }) {
 
   const handleImageSelect = (image) => {
     setSelectedImage(image);
-    console.log("Selected Image: ", image);
   };
 
   const handleSubmit = () => {

@@ -8,12 +8,14 @@
 // { id: 3453654712, name: "Liam", contribution: 0 },
 
 import { createSlice } from "@reduxjs/toolkit";
-import group from "../assets/group.png";
+import groupDefault from "../assets/groupDefault.png";
 import unknownPerson from "../assets/unknownPerson.jpg";
 
 // default images for the users of default group. pictures need change to those of humans
-import image1 from "../assets/image1.jpg";
-import image2 from "../assets/image2.jpg";
+import person10 from "../assets/person10.jpg";
+import person2 from "../assets/person2.jpg";
+import person9 from "../assets/person9.jpg";
+
 
 const calculateContributions = (group) => {
   const memberCount = group.members.length;
@@ -30,13 +32,15 @@ const initialState = {
     {
       id: 1,
       name: "Picnic Holiday",
-      image: group,
+      image: groupDefault,
       description: "This is our group description 🙌",
       totalBudget: 500,
       totalExpense: 300,
       members: [
-        { id: 346235, name: "Conan", contribution: 0, image: image1 },
-        { id: 255436, name: "Markus", contribution: 0, image: image2 },
+        { id: 255436, name: "Markus", contribution: 0, image: person2 },
+        { id: 346235, name: "Maria", contribution: 0, image: person10 },
+        { id: 978035, name: "Lucy", contribution: 0, image: person9 },
+
         // { id: 3134532523, name: "Jason", contribution: 0 },
       ],
     },
