@@ -9,9 +9,9 @@ import { useState } from "react";
 function Sidebar() {
   const [expanded, setExpanded] = useState(false); // State to control expansion
   const SIDEBAR_LINKS = [
-    { id: 1, path: "/", name: "Home", icon: MdGroups },
-    { id: 2, path: "/groups", name: "Groups", icon: IoMdPerson },
-    { id: 3, path: "/friends", name: "Friends", icon: IoWalletSharp },
+    { id: 124534, path: "/", name: "Home", icon: MdGroups },
+    { id: 262546, path: "/groups", name: "Groups", icon: IoMdPerson },
+    { id: 3254657, path: "/friends", name: "Friends", icon: IoWalletSharp },
   ];
 
   // Fetching groups from the Redux store
