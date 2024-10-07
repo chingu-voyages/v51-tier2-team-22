@@ -36,7 +36,8 @@ function Home() {
     );
   };
 
-  const { isOpen, openModal, closeModal, handleClickOutside } = useModal(resetNewGroupState);
+  const { isOpen, openModal, closeModal, handleClickOutside } =
+    useModal(resetNewGroupState);
 
   const dispatch = useDispatch();
 
@@ -46,8 +47,6 @@ function Home() {
     totalBudget: "",
     totalExpense: "",
   });
-
-
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -90,10 +89,8 @@ function Home() {
     setFilteredGroups(groups);
   }, [groups]);
 
-
-
   return (
-    <section className="text-xl text-secondary p-5 space-y-5 ">
+    <section className="text-xl text-secondary  p-5 space-y-5 h-screen ">
       <article className="flex items-center justify-between ">
         <div>
           <h1 className="text-header font-bold text-secondary dark:text-dark-text ml-8 mt-8">
@@ -107,25 +104,27 @@ function Home() {
         <SearchBar onSearch={handleSearch} />
       </article>
 
-      <div className="border bg-white dark:bg-dark-secondary rounded-2xl w-custom-card h-custom-card-height ml-8 shadow flex items-center justify-center flex-col">
-        <button
-          onClick={openModal} // Use openModal from the custom hook
-          className="hover:animate-ping rounded-full bg-primary dark:bg-dark-bg dark:border w-16 h-16 text-5xl text-white dark:text-dark-text hover:bg-primary"
-        >
-          +
-        </button>
-        <p className="text-2xl mt-4 font-bold dark:text-dark-text">Add Group</p>
-      </div>
+      <article className="flex flex-wrap gap-10 mx-8">
+        <div className="border bg-white dark:bg-dark-secondary rounded-2xl w-custom-card h-custom-card-height shadow flex items-center justify-center flex-col">
+          <button
+            onClick={openModal} // Use openModal from the custom hook
+            className="hover:animate-ping rounded-full bg-primary dark:bg-dark-bg dark:border w-16 h-16 text-5xl text-white dark:text-dark-text hover:bg-primary"
+          >
+            +
+          </button>
+          <p className="text-2xl mt-4 font-bold dark:text-dark-text">
+            Add Group
+          </p>
+        </div>
 
-
-      {filteredGroups.length > 0 ? (
-        filteredGroups.map((group) => (
-          <HomeIndividualGroup key={group.id} group={group} />
-        ))
-      ) : (
-        <p className="ml-8">No groups found</p>
-      )}
-
+        {filteredGroups.length > 0 ? (
+          filteredGroups.map((group) => (
+            <HomeIndividualGroup key={group.id} group={group} />
+          ))
+        ) : (
+          <p className="ml-8 place-content-center">No groups found</p>
+        )}
+      </article>
 
       {isOpen && ( // Use isOpen from the custom hook
         <Modal

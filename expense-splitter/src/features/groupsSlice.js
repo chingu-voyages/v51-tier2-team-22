@@ -14,7 +14,19 @@ import unknownPerson from "../assets/unknownPerson.jpg";
 // default images for the users of default group. pictures need change to those of humans
 import person10 from "../assets/person10.jpg";
 import person2 from "../assets/person2.jpg";
-import person9 from "../assets/person9.jpg";
+// import person9 from "../assets/person9.jpg";
+
+// PREVIEW ONLY, DELETE AFTER SPRING PLANNING
+import person3 from "../assets/person3.jpg";
+import person4 from "../assets/person4.jpg";
+import person5 from "../assets/person5.jpg";
+import person6 from "../assets/person6.jpg";
+import group4 from "../assets/group4.jpg"
+import person14 from "../assets/person14.jpg";
+import person13 from "../assets/person13.jpg";
+import group1 from "../assets/group1.jpg"
+
+
 
 
 const calculateContributions = (group) => {
@@ -30,7 +42,7 @@ const calculateContributions = (group) => {
 const initialState = {
   groups: [
     {
-      id: 1,
+      id: 45674,
       name: "Picnic Holiday",
       image: groupDefault,
       description: "This is our group description 🙌",
@@ -39,9 +51,33 @@ const initialState = {
       members: [
         { id: 255436, name: "Markus", contribution: 0, image: person2 },
         { id: 346235, name: "Maria", contribution: 0, image: person10 },
-        { id: 978035, name: "Lucy", contribution: 0, image: person9 },
+      ],
+    },
+    {
+      id: 3453,
+      name: "Beach party",
+      image: group4,
+      description: "This is our group description 🙌",
+      totalBudget: 950,
+      totalExpense: 780,
+      members: [
+        { id: 25455436, name: "John", contribution: 0, image: person3 },
+        { id: 34626335, name: "Ali", contribution: 0, image: person4 },
+        { id: 97867035, name: "Buba", contribution: 0, image: person5 },
+        { id: 978675678035, name: "Nick", contribution: 0, image: person6 },
 
-        // { id: 3134532523, name: "Jason", contribution: 0 },
+      ],
+    },
+    {
+      id: 456,
+      name: "Nightout party",
+      image: group1,
+      description: "This is our group description 🙌",
+      totalBudget: 300,
+      totalExpense: 170,
+      members: [
+        { id: 2540890436, name: "Mia", contribution: 0, image: person13 },
+        { id: 3456786335, name: "Eli", contribution: 0, image: person14 },
       ],
     },
   ],

@@ -90,7 +90,10 @@ function GroupChart({ groupId }) {
     const newValue = parseFloat(newContribution);
 
     setCustomContributions((prevContributions) => {
-      const updatedContributions = { ...prevContributions, [memberId]: newValue || "" };
+      const updatedContributions = {
+        ...prevContributions,
+        [memberId]: newValue || "",
+      };
 
       // Calculate remaining percentage
       const totalContributions = Object.values(updatedContributions).reduce(
@@ -132,12 +135,14 @@ function GroupChart({ groupId }) {
         <p className="text-groupComponentHeader mr-auto font-bold text-secondary ml-3 dark:text-primary ">
           Budget Split
         </p>
-        <button
-          className="hover:bg-primary px-3 transition rounded-md border border-primary text-primary font-bold hover:text-white"
-          onClick={openModal}
-        >
-          Edit Contributions
-        </button>
+        {hasMembers && (
+          <button
+            className="hover:bg-primary px-3 transition rounded-md border border-primary text-primary font-bold hover:text-white"
+            onClick={openModal}
+          >
+            Edit Contributions
+          </button>
+        )}
       </div>
 
       {isOpen && (
