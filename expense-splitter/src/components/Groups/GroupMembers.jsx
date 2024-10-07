@@ -9,6 +9,9 @@ import Modal from "../Utils/Modal";
 import useModal from "../Utils/useModal";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { imagesPeople } from "../Utils/images";
+import unknownPerson from "../../assets/unknownPerson.jpg"
+
 
 function GroupMembers() {
   const { groupId } = useParams();
@@ -19,7 +22,8 @@ function GroupMembers() {
   );
 
   const { isOpen, openModal, closeModal, handleClickOutside } = useModal();
-  const [newMember, setNewMember] = useState({ name: ""});
+  const [newMember, setNewMember] = useState({ name: "", image: ""});
+  const [selectedImage, setSelectedImage] = useState("");
 
   if (!group) {
     return <div>Group not found.</div>;
@@ -34,7 +38,7 @@ function GroupMembers() {
       dispatch(removeMember({ groupId: parseInt(groupId), memberId }));
 
       // Show toast notification
-      toast.success(`${memberName} removed from the group`, {
+      toast.success(`${memberName} removed`, {
         position: "top-right",
         autoClose: 2000,
       });
@@ -57,17 +61,23 @@ function GroupMembers() {
         groupId: parseInt(groupId),
         member: {
           name: newMember.name,
+          image: selectedImage || unknownPerson
         },
       })
     );
     // Show toast notification
-    toast.success(`${newMember.name} added to the group`, {
+    toast.success(`${newMember.name} added`, {
       position: "top-right",
       autoClose: 2000,
     });
 
-    setNewMember({ name: ""});
+    setNewMember({ name: "", image: ""});
+    setSelectedImage("")
     closeModal();
+  };
+
+  const handleImageSelect = (image) => {
+    setSelectedImage(image);
   };
 
   return (
@@ -77,12 +87,12 @@ function GroupMembers() {
       </p>
 
       {/* note to self, add bg-red-500 to line under to better checking for aligments */}
-      <article className="flex flex-wrap justify-start items-centre">
+      <article className="flex flex-wrap justify-start">
 
-      <div className="bg-white dark:bg-dark-secondary rounded-2xl flex items-center flex-col ml-6">
+      <div className="bg-white dark:bg-dark-secondary rounded-2xl flex items-center flex-col pl-3 pr-3">
         <button
           onClick={openModal}
-          className="w-16 h-16 rounded-full shadow-lg  bg-primary dark:bg-dark-bg text-4xl text-white dark:text-dark-text hover:bg-primary"
+          className="w-[3.5rem] h-[3.5rem] rounded-full shadow-lg  bg-primary dark:bg-dark-bg text-4xl text-white dark:text-dark-text hover:bg-primary"
         >
           +
         </button>
@@ -92,13 +102,13 @@ function GroupMembers() {
           <div
             key={member.id}
             // note to self, add bg-red-200 to line under to better checking for aligments
-            className="hover:bg-slate-100 flex flex-col items-center m-1 rounded-md"
+            className="hover:bg-slate-100 flex flex-col items-center  rounded-md"
           >
             <Link to={`/friends/${member.name}`} className="hover:bg-slate-100 transition-colors rounded-xl">
               <GroupsEachMember
                 member={{
                   name: member.name,
-                  img: "https://img.freepik.com/free-photo/young-bearded-man-with-striped-shirt_273609-5677.jpg",
+                  img: member.image,
                 }}
               />
             </Link>
@@ -132,6 +142,21 @@ function GroupMembers() {
                   required
                   style={{ fontSize: "14px" }}
                 />
+              </div>
+
+              <h2 className="text-2xl font-bold">Select an Image</h2>
+              <div className="flex space-x-2 flex-wrap gap-3">
+                {imagesPeople.map((image, index) => (
+                  <img
+                    key={index}
+                    src={image}
+                    alt={`image-${index}`}
+                    className={`w-[4.3rem] h-[4.3rem] object-cover !m-0 rounded-full cursor-pointer ${
+                      selectedImage === image ? "ring-[3px] ring-primary" : ""
+                    }`}
+                    onClick={() => handleImageSelect(image)}
+                  />
+                ))}
               </div>
 
               <button
