@@ -1,4 +1,7 @@
-# voyage-tasks
+
+# 🔗 [Live Preview](https://development--dev-expense-splitter.netlify.app/)
+
+## voyage-tasks
 
 Your project's `readme` is as important to success as your code. For 
 this reason you should put as much care into its creation and maintenance
@@ -38,5 +41,6 @@ coding!
 - Predrag (Peter), Developer: [GitHub](https://github.com/Predrag-Jandric) / [LinkedIn](https://www.linkedin.com/in/predrag-jandric/)
 - Mandla (Cash), Developer: [GitHub](https://github.com/Mandla-tech) / [LinkedIn](https://www.linkedin.com/in/mandla-m/)
 - Jordi, Developer: [GitHub](https://github.com/cluster28) / [LinkedIn](https://www.linkedin.com/in/jordi-rejas-b1319bb1/)
+- Farzaneh, UX/UI Designer: [GitHub](https://github.com/farzaneh-falakrou) / [LinkedIn](https://www.linkedin.com/in/farzaneh-falakrou/)
    ...
-- Teammate name #n: [GitHub](https://github.com/ghaccountname) / [LinkedIn](https://linkedin.com/in/liaccountname)
+- Afrah, Scrum Master: [GitHub](https://github.com/afbaf) / [LinkedIn](https://www.linkedin.com/feed/)
