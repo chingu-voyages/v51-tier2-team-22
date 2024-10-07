@@ -19,7 +19,7 @@ function GroupMembers() {
   );
 
   const { isOpen, openModal, closeModal, handleClickOutside } = useModal();
-  const [newMember, setNewMember] = useState({ name: ""});
+  const [newMember, setNewMember] = useState({ name: "", image: ""});
 
   if (!group) {
     return <div>Group not found.</div>;
@@ -57,6 +57,7 @@ function GroupMembers() {
         groupId: parseInt(groupId),
         member: {
           name: newMember.name,
+       
         },
       })
     );
@@ -98,7 +99,7 @@ function GroupMembers() {
               <GroupsEachMember
                 member={{
                   name: member.name,
-                  img: "https://img.freepik.com/free-photo/young-bearded-man-with-striped-shirt_273609-5677.jpg",
+                  img: member.image,
                 }}
               />
             </Link>

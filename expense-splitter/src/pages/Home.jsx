@@ -51,7 +51,7 @@ function Home() {
 
     dispatch(
       addGroup({
-        id: groups.length + 1,
+        id: Date.now(),
         name: newGroup.name,
         image: getRandomImage(),
         description: newGroup.description,

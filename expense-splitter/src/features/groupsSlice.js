@@ -9,6 +9,11 @@
 
 import { createSlice } from "@reduxjs/toolkit";
 import group from "../assets/group.png";
+import unknownPerson from "../assets/unknownPerson.jpg";
+
+// default images for the users of default group. pictures need change to those of humans
+import image1 from "../assets/image1.jpg";
+import image2 from "../assets/image2.jpg";
 
 const calculateContributions = (group) => {
   const memberCount = group.members.length;
@@ -30,9 +35,9 @@ const initialState = {
       totalBudget: 500,
       totalExpense: 300,
       members: [
-        { id: 1, name: "Conan", contribution: 0 },
-        { id: 2, name: "Markus", contribution: 0 },
-        { id: 3134532523, name: "Jason", contribution: 0 },
+        { id: 346235, name: "Conan", contribution: 0, image: image1 },
+        { id: 255436, name: "Markus", contribution: 0, image: image2 },
+        // { id: 3134532523, name: "Jason", contribution: 0 },
       ],
     },
   ],
@@ -57,6 +62,7 @@ const groupsSlice = createSlice({
         group.members.push({
           id: Date.now(),
           ...member,
+          image: member.image || unknownPerson,
         });
         calculateContributions(group);
       }
@@ -109,7 +115,7 @@ const groupsSlice = createSlice({
       if (group) {
         group.image = newImage;
       }
-    }
+    },
   },
 });
 
