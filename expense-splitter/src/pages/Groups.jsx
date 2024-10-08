@@ -9,7 +9,7 @@ import Modal from "../components/Utils/Modal";
 // components
 import GroupChart from "../components/Groups/GroupChart";
 import ExpenseBar from "../components/Groups/GroupExpenseBar";
-// import GroupExpenseTable from "../components/Groups/GroupExpenseTable";
+import GroupExpenseTable from "../components/Groups/GroupExpenseTable";
 import GroupMembers from "../components/Groups/GroupMembers";
 import GroupName from "../components/Groups/GroupName";
 import GroupSmallExpenseCard from "../components/Groups/GroupSmallExpenseCard";
@@ -126,7 +126,7 @@ function Groups() {
         </div>
       </div>
 
-      {/* <GroupExpenseTable /> */}
+      <GroupExpenseTable />
       <GroupBarChart group={group} />
 
       {isOpen && (
