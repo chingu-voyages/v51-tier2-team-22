@@ -81,7 +81,8 @@ function GroupMembers() {
   };
 
   return (
-    <section className="bg-white dark:bg-dark-secondary dark:border p-6 ml-8 rounded-lg shadow w-custom-width">
+    <section className="bg-white dark:bg-dark-secondary dark:border p-4 ml-8 lg:ml-8 rounded-lg shadow
+      w-full gap-y-1 mb-6">
       <p className="ml-3 mb-6 text-groupComponentHeader font-bold text-secondary dark:text-primary">
         Members
       </p>
@@ -102,9 +103,9 @@ function GroupMembers() {
           <div
             key={member.id}
             // note to self, add bg-red-200 to line under to better checking for aligments
-            className="hover:bg-slate-100 flex flex-col items-center  rounded-md"
+            className="hover:bg-dark-bg flex flex-col items-center m-1 rounded-md"
           >
-            <Link to={`/friends/${member.name}`} className="hover:bg-slate-100 transition-colors rounded-xl">
+            <Link to={`/friends/${member.name}`} className="hover:bg-dark-bg transition-colors rounded-xl">
               <GroupsEachMember
                 member={{
                   name: member.name,

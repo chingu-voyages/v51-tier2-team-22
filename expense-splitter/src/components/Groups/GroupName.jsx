@@ -26,7 +26,7 @@ function GroupName({ group }) {
   const handleEditToggle = () => {
     setIsEditing(!isEditing);
     dispatch(updateGroupName({ groupId: group.id, newName: groupName }));
-   
+
   };
 
   const handleImageSelect = (image) => {
@@ -73,21 +73,22 @@ function GroupName({ group }) {
           style={{ width: `${Math.max(groupName.length * 20, 200)}px` }}
         />
       ) : (
-        <div>
+        <>
+        <div className="flex flex-col">
         <h1 className="text-header font-bold text-secondary dark:text-dark-text">
           {groupName}
         </h1>
         <p className="text-body dark:text-dark-text">
         {group.description}
-      </p> 
+      </p>
       </div>
-      
+      </>
       )}
       <button
         onClick={handleEditToggle}
-        className="rounded-full hover:bg-white p-3 relative right-8 border border-transparent hover:border hover:border-black"
+        className="rounded-full  hover:bg-white p-3 relative right-8 border border-transparent hover:border hover:border-black"
       >
-        <MdEdit className="w-6 h-6 " />
+        <MdEdit className="w-6 h-6 dark:text-dark-text dark:hover:text-black"  />
       </button>
 
       {isOpen && (

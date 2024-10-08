@@ -18,17 +18,21 @@ function Sidebar() {
   const groups = useSelector((state) => state.groups.groups);
 
   return (
-    <div className="w-16 md:w-56 fixed left-0 top-0 z-10 h-screen border-r pt-8 px-4 bg-white dark:bg-dark-bg">
-      <NavLink
-        to="/"
-        className="flex cursor-pointer justify-center hover:bg-slate-100"
-      >
-        <img
-          src="./src/assets/logo.png"
-          alt="logo"
-          className="hidden md:flex"
-        />
-      </NavLink>
+    <div className="w-16 md:w-56 fixed left-0 top-0 z-10 h-screen border-r pt-8 px-4 bg-white dark:bg-dark-primary">
+      <div className="mb-8 flex justify-center">
+        <NavLink to="/" className="flex cursor-pointer">
+          <img
+            src="./src/assets/logo.png"
+            alt="logo"
+            className="mr-1 flex md:hidden"
+          />
+          <img
+            src="./src/assets/logo.png"
+            alt="logo"
+            className="hidden md:flex"
+          />
+        </NavLink>
+      </div>
 
       {/* Navigation */}
       <nav>
@@ -50,24 +54,22 @@ function Sidebar() {
                   </span>
                 </NavLink>
 
-                {/* Listing the created groups directly below the "Groups" link */}
-                <div>
-                  {/*display the first 3 groups in sidebar*/}
-                  {groups.slice(0, 2).map((group) => (
-                    <NavLink
-                      key={group.id}
-                      to={`/groups/${group.id}`} //Hooking from routes for each group
-                      className={({ isActive }) =>
-                        `flex items-center px-8 py-2 space-x-5 text-base font-medium ${
-                          isActive ? "text-primary" : "text-title"
-                        }`
-                      }
-                    >
-                      <span className="text-sm truncate hover:text-black dark:hover:text-primary w-full">
-                        {group.name}
-                      </span>
-                    </NavLink>
-                  ))}
+            {/* Listing the created groups directly below the "Groups" link */}
+            <div>
+              {/*display the first 2 groups in sidebar*/}
+              {groups.slice(0,2).map((group) => (
+                <NavLink
+                  key={group.id}
+                  to={`/groups/${group.id}`} //Hooking from routes for each group
+                  className={({ isActive }) =>
+                    `flex items-center px-8 py-2 space-x-5 text-base font-medium ${
+                      isActive ? "text-primary" : "text-title"
+                    }`
+                  }
+                >
+                <span className="text-sm truncate hover:text-black dark:hover:text-primary w-full">{group.name}</span>
+                </NavLink>
+              ))}
 
                   {/* Expansion Logic, I set this to slice at 2 groups for now */}
                   {expanded &&

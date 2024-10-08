@@ -7,7 +7,7 @@ function GroupsEachMember({ member }) {
         alt={member.name}
       />
 
-      <p className="font-bold text-legend dark:text-dark-text dark:hover:text-black">{member.name}</p>
+      <p className="font-bold text-legend dark:text-dark-text">{member.name}</p>
     </section>
   );
 }

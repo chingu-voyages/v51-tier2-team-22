@@ -2,7 +2,8 @@
 
 function GroupSmallExpenseCard({ icon: Icon, label, value, button, onClick }) {
   return (
-    <section className="bg-white dark:bg-dark-secondary border p-8 mt-8 ml-8 space-x-6  rounded-global  flex items-start w-custom-card">
+    <section className="bg-white dark:bg-dark-secondary border p-8 mt-8 ml-8 space-x-6  rounded-global
+      flex items-start w-custom-card">
       <div className="flex items-start space-x-4 flex-grow">
         <Icon className="bg-blizzard-blue dark:bg-dark-primary rounded-full w-14 h-14 p-3 text-primary" />
         <span>

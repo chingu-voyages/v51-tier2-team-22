@@ -151,8 +151,9 @@ function GroupChart({ groupId }) {
           content={
             <form onSubmit={handleSubmit} className="space-y-3">
               {group.members.map((member) => (
-                <div key={member.id}>
+                <div key={member.id} className="grid grid-cols-[152px_auto] items-center"  >
                   <label>{member.name} Contribution</label>
+                  <div className="flex items-center">
                   <input
                     type="number"
                     value={customContributions[member.id]}
@@ -162,7 +163,8 @@ function GroupChart({ groupId }) {
                     className="border mr-3 p-2 w-[10rem] dark:bg-dark-input"
                     required
                   />
-                  %
+                 <span> % </span>
+                 </div>
                 </div>
               ))}
               <p className="text-md">
@@ -208,8 +210,8 @@ function GroupChart({ groupId }) {
               ))}
             </Pie>
           </PieChart>
-          <article className="p-3 ml-3 flex rounded-lg shadow-custom flex-wrap justify-start">
-            {group.members.map((entry, index) => (
+          <article className="p-3 w-full flex rounded-lg shadow-custom flex-wrap justify-start gap-2">
+            {group.members.map((member, index) => (
               <div
                 key={index}
                 className="flex my-2 items-center mx-2  p-1"
@@ -218,9 +220,11 @@ function GroupChart({ groupId }) {
                   className="w-3 h-3 rounded-full"
                   style={{ backgroundColor: COLORS[index] }}
                 ></span>
-                <span className="ml-2 font-bold text-legend">{entry.name}</span>
-                <span className="text-sm ml-1 text-secondary"> - {((entry.contribution / 100) * group.totalExpense).toFixed(1)}$
-                </span>
+                <span className="ml-2 font-bold text-legend">{member.name}</span>
+                {/* <span className="text-sm ml-1 text-secondary"> - {((entry.contribution / 100) * group.totalExpense).toFixed(1)}$
+                </span> */}
+                 <span className="text-sm ml-1 text-secondary"> - {(group.totalExpense / 100) * member.contribution} $
+                 </span>
               </div>
             ))}
           </article>
