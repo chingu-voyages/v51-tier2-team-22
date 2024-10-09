@@ -39,16 +39,16 @@ function HomeIndividualGroup({ group }) {
 
       <div className="flex justify-between w-full mt-auto">
         <Link
-          className="bg-blizzard-blue hover:shadow-custom-hover text-xl text-primary
-            font-bold rounded-lg w-32 h-10 flex items-center justify-center ml-4"
+          className="bg-blizzard-blue hover:shadow-custom-hover text-xl text-primary dark:bg-dark-primary dark:border dark:text-dark-text
+             dark:hover:bg-dark-text dark:hover:text-primary dark:hover:border-primary font-bold rounded-lg w-32 h-10 flex items-center justify-center ml-4"
           to={`/groups/${group.id}`}
         >
           Details
         </Link>
         <button
           onClick={confirmRemove}
-          className="bg-blizzard-blue hover:shadow-custom-hover text-xl text-primary
-          font-bold rounded-lg w-32 h-10 mb-4 flex items-center justify-center mr-4"
+          className="bg-blizzard-blue hover:shadow-custom-hover text-xl text-primary dark:bg-dark-primary dark:border dark:text-dark-text
+          dark:hover:bg-dark-text dark:hover:text-primary dark:hover:border-primary  font-bold rounded-lg w-32 h-10 mb-4 flex items-center justify-center mr-4"
         >
           Remove
         </button>

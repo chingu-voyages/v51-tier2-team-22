@@ -139,7 +139,7 @@ function GroupChart({ groupId }) {
         {hasMembers && (
           <button
             className="px-3 transition rounded-md text-primary bg-blizzard-blue dark:bg-dark-primary dark:border hover:bg-primary
-            hover:text-white text-primary dark:text-dark-text font-medium"
+            hover:text-white text-primary dark:text-dark-text dark:hover:bg-dark-text dark:hover:text-primary dark:hover:border-primary font-medium"
             onClick={openModal}
           >
             Edit Contributions
@@ -174,7 +174,7 @@ function GroupChart({ groupId }) {
               <button
                 type="submit"
                 className="rounded-xl px-4 py-2 bg-blizzard-blue dark:bg-dark-primary dark:border
-                 hover:bg-primary hover:text-white text-primary dark:text-dark-text"
+                 hover:bg-primary hover:text-white text-primary dark:text-dark-text dark:hover:bg-dark-text dark:hover:text-primary dark:hover:border-primary"
                 disabled={remainingPercentage !== 0}
               >
                 Update Contributions

@@ -162,7 +162,8 @@ function GroupMembers() {
 
               <button
                 type="submit"
-                className="px-4 py-2 bg-primary text-white rounded-xl dark:bg-dark-primary"
+                className="px-4 py-2 rounded-xl bg-blizzard-blue hover:bg-primary hover:text-white text-primary
+                dark:bg-dark-primary dark:border dark:text-dark-text dark:hover:bg-dark-text dark:hover:text-primary dark:hover:border-primary"
               >
                 Add Member
               </button>

@@ -18,8 +18,8 @@ function GroupSmallExpenseCard({ icon: Icon, label, value, button, onClick }) {
       {button && (
         <button
           onClick={onClick}
-          className="w-[67px] h-8 py-1 px-3 bg-blizzard-blue dark:bg-dark-primary dark:border hover:bg-primary
-            hover:text-white text-primary dark:text-dark-text font-medium rounded-lg text-base ml-auto"
+          className="w-[67px] h-8 py-1 px-3 bg-blizzard-blue hover:bg-primary hover:text-white text-primary
+           dark:bg-dark-primary dark:border dark:text-dark-text dark:hover:bg-dark-text dark:hover:text-primary dark:hover:border-primary font-medium rounded-lg text-base ml-auto"
         >
           {button}
         </button>
