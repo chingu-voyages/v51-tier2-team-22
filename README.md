@@ -9,7 +9,7 @@
 
 ## About Project 👋
 
-This app was developed as a part of the 6-week Chingu Voyage 51 around September 2024. The purpose of the app is to solve the problem of splitting expenses with a group of friends or any number of people. In this app, the user is supposed to be able to create groups, input expenses/budget, add/remove friends, and many more functionalities. However, the team did not manage to fully implement all the features and finish the app, therefore it remains unfinished.
+This app was developed as a part of the 6-week Chingu Voyage 51 around September 2024. The purpose of the app is to solve the problem of splitting expenses with a group of friends or any number of people. In this app, the user is supposed to be able to create groups, input expenses/budget, add/remove friends, and many more functionalities. However, due to the complexity of the app logic and time constraints, the team did not manage to fully implement all the features, therefore it remains to be revisited and completed post voyage.
 
 ---
 
