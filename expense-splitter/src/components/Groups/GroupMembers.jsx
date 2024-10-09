@@ -81,19 +81,19 @@ function GroupMembers() {
   };
 
   return (
-    <section className="bg-white dark:bg-dark-secondary dark:border p-4 ml-8 rounded-lg shadow
-      w-custom-width gap-y-1 mt-6 lg:-mt-24 mb-6">
-      <p className="ml-3 mb-6 text-groupComponentHeader font-bold text-secondary dark:text-primary">
+    <section className="bg-white dark:bg-dark-primary p-4 ml-8 lg:ml-8 rounded-lg shadow
+      w-full gap-y-1 mb-6">
+      <p className="ml-3 mb-6 text-subheader font-bold text-secondary dark:text-dark-text">
         Members
       </p>
 
       {/* note to self, add bg-red-500 to line under to better checking for aligments */}
       <article className="flex flex-wrap justify-start">
 
-      <div className="bg-white dark:bg-dark-secondary rounded-2xl flex items-center flex-col pl-3 pr-3">
+      <div className="rounded-2xl flex items-center flex-col pl-3 pr-3">
         <button
           onClick={openModal}
-          className="w-[3.5rem] h-[3.5rem] rounded-full shadow-lg  bg-primary dark:bg-dark-bg text-4xl text-white dark:text-dark-text hover:bg-primary"
+          className="w-[3.5rem] h-[3.5rem] rounded-full shadow-lg  bg-primary primary-dark-mode text-4xl text-white dark:text-dark-text hover:bg-primary"
         >
           +
         </button>
