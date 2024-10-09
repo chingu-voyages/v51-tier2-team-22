@@ -26,12 +26,12 @@ import person14 from "../../assets/person14.jpg";
 import person15 from "../../assets/person15.jpg";
 
 export const imagesPeople = [
-  person1,
   person2,
   person3,
   person4,
   person5,
   person6,
+  person1,
   person7,
   person8,
   person9,
