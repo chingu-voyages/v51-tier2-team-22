@@ -130,14 +130,16 @@ function GroupChart({ groupId }) {
   };
 
   return (
-    <section className="flex flex-col items-center justify-center w-custom-wide-chart bg-white dark:bg-dark-secondary dark:border p-6 ml-8 rounded-lg shadow">
+    <section className="flex flex-col items-center justify-center w-custom-wide-chart bg-white
+    dark:bg-dark-primary p-6 ml-8 rounded-lg shadow">
       <div className="w-full flex items-stretch justify-end">
-        <p className="text-groupComponentHeader mr-auto font-bold text-secondary ml-3 dark:text-primary ">
+        <p className="text-subheader mr-auto font-bold text-secondary ml-3 dark:text-dark-text ">
           Budget Split
         </p>
         {hasMembers && (
           <button
-            className="hover:bg-primary px-3 transition rounded-md border border-primary text-primary font-bold hover:text-white"
+            className="px-3 transition rounded-md text-primary bg-blizzard-blue dark:bg-dark-primary dark:border hover:bg-primary
+            hover:text-white text-primary dark:text-dark-text font-medium"
             onClick={openModal}
           >
             Edit Contributions
@@ -151,7 +153,7 @@ function GroupChart({ groupId }) {
             <form onSubmit={handleSubmit} className="space-y-3">
               {group.members.map((member) => (
                 <div key={member.id} className="grid grid-cols-[152px_auto] items-center"  >
-                  <label>{member.name} Contribution</label>
+                  <label className="text-body dark:text-dark-text">{member.name} Contribution</label>
                   <div className="flex items-center">
                   <input
                     type="number"
@@ -162,16 +164,17 @@ function GroupChart({ groupId }) {
                     className="border mr-3 p-2 w-[10rem] dark:bg-dark-input"
                     required
                   />
-                 <span> % </span>
+                 <span className="text-body dark:text-dark-text"> % </span>
                  </div>
                 </div>
               ))}
-              <p className="text-md">
+              <p className="text-md dark:text-dark-text">
                 Percentage left to divide: {remainingPercentage}%
               </p>
               <button
                 type="submit"
-                className="rounded-xl px-4 py-2 bg-primary text-white"
+                className="rounded-xl px-4 py-2 bg-blizzard-blue dark:bg-dark-primary dark:border
+                 hover:bg-primary hover:text-white text-primary dark:text-dark-text"
                 disabled={remainingPercentage !== 0}
               >
                 Update Contributions
@@ -209,7 +212,7 @@ function GroupChart({ groupId }) {
               ))}
             </Pie>
           </PieChart>
-          <article className="p-3 w-full flex rounded-lg shadow-custom flex-wrap justify-start gap-2">
+          <article className="p-3 w-full flex rounded-lg dark:border shadow-custom flex-wrap justify-start gap-2">
             {group.members.map((entry, index) => (
               <div
                 key={index}

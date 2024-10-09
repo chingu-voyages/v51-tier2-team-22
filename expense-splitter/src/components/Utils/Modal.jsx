@@ -5,9 +5,9 @@ const Modal = ({ content, onClose, handleClickOutside }) => {
       className="!m-0 fixed z-50 inset-0 bg-black bg-opacity-20 flex justify-center items-center"
       onClick={handleClickOutside}
     >
-      <article className="bg-white dark:bg-dark-secondary p-10 rounded-lg w-[30rem]">
+      <article className="bg-white dark:bg-dark-primary p-10 rounded-lg w-[30rem]">
         <div className="flex justify-between items-center">
-        <h2 className="text-2xl mb-4 font-bold dark:text-primary">Create New</h2>
+        <h2 className="text-secondary text-2xl mb-4 font-bold dark:text-dark-text">Create New</h2>
 
           <button
             className="bg-white shadow rounded-full w-8 h-8 text-red-500"

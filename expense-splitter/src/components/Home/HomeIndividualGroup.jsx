@@ -22,24 +22,24 @@ function HomeIndividualGroup({ group }) {
   };
 
   return (
-    <section className="p-4 border bg-white dark:bg-dark-secondary rounded-xl  w-custom-card h-custom-card-height flex flex-col items-center">
+    <section className="p-4 bg-white dark:bg-dark-primary rounded-xl  w-custom-card h-custom-card-height flex flex-col items-center">
       <img
         className="w-20 h-20 mb-2 rounded-full object-cover flex justify-center"
         src={group.image}
         alt="group-logo"
       />
 
-      <p className="text-body font-medium text-title dark:text-dark-text">
+      <p className="text-body font-medium text-title dark:text-dark-text-secondary">
         {group.members.length} members
       </p>
 
-      <h2 className="font-bold text-center text-secondary dark:text-primary">
+      <h2 className="font-bold text-center text-secondary dark:text-dark-text">
         {group.name}
       </h2>
 
       <div className="flex justify-between w-full mt-auto">
         <Link
-          className="border border-primary bg-blizzard-blue hover:bg-white text-xl text-primary
+          className="bg-blizzard-blue hover:shadow-custom-hover text-xl text-primary
             font-bold rounded-lg w-32 h-10 flex items-center justify-center ml-4"
           to={`/groups/${group.id}`}
         >
@@ -47,7 +47,7 @@ function HomeIndividualGroup({ group }) {
         </Link>
         <button
           onClick={confirmRemove}
-          className=" border border-primary bg-blizzard-blue hover:bg-white text-xl text-primary
+          className="bg-blizzard-blue hover:shadow-custom-hover text-xl text-primary
           font-bold rounded-lg w-32 h-10 mb-4 flex items-center justify-center mr-4"
         >
           Remove

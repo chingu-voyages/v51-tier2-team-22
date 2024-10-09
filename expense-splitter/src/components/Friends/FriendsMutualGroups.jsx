@@ -2,9 +2,9 @@ import FriendsEachMutualGroup from "./FriendsEachMutualGroup";
 
 function FriendsMutualGroups() {
   return (
-    <article className="p-8 pt-4 ml-8  w-custom-friend-width h-custom-friend-height bg-white dark:bg-dark-secondary rounded-2xl">
+    <article className="p-8 pt-4 ml-8  w-custom-friend-width h-custom-friend-height bg-white dark:bg-dark-primary rounded-2xl">
       <div className="py-3 px-4 flex justify-between">
-        <p className="text-lg font-bold text-secondary dark:text-primary">4 Mutual groups</p>
+        <p className="text-lg font-bold text-secondary dark:text-dark-text">4 Mutual groups</p>
         <button className="w-20 h-8 rounded-lg text-body font-medium
         bg-blizzard-blue text-primary  duration-300">View all</button>
       </div>

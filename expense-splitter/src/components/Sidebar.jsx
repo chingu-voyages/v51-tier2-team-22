@@ -18,7 +18,7 @@ function Sidebar() {
   const groups = useSelector((state) => state.groups.groups);
 
   return (
-    <div className="w-16 md:w-56 fixed left-0 top-0 z-10 h-screen border-r pt-8 px-4 bg-white dark:bg-dark-primary">
+    <div className="w-16 md:w-56 fixed left-0 top-0 z-10 h-screen pt-8 px-4 bg-white dark:bg-dark-primary">
       <div className="mb-8 flex justify-center">
         <NavLink to="/" className="flex cursor-pointer">
           <img
@@ -43,13 +43,13 @@ function Sidebar() {
             <NavLink
               to={link.path}
               className={({ isActive }) =>
-                `flex items-center px-4 py-5 space-x-5 text-xl font-extrabold ${
+                `flex items-center px-4 py-5 space-x-5 text-xl font-extrabold dark:text-dark-text ${
                   isActive ? "text-primary" : "text-title"
                 }`
               }
             >
               <span>{link.icon()}</span>
-              <span className="text-body font-medium text-title hidden md:flex">
+              <span className="text-body font-medium text-title dark:text-dark-text hidden md:flex">
                 {link.name}
               </span>
             </NavLink>
@@ -62,12 +62,12 @@ function Sidebar() {
                   key={group.id}
                   to={`/groups/${group.id}`} //Hooking from routes for each group
                   className={({ isActive }) =>
-                    `flex items-center px-8 py-2 space-x-5 text-base font-medium ${
+                    `flex items-center px-8 py-2 space-x-5 text-base font-medium dark:text-dark-text ${
                       isActive ? "text-primary" : "text-title"
                     }`
                   }
                 >
-                <span className="text-sm truncate hover:text-black dark:hover:text-primary w-full">{group.name}</span>
+                <span className="text-sm truncate hover:text-black dark:text-dark-text dark:hover:text-primary w-full">{group.name}</span>
                 </NavLink>
               ))}
 
@@ -77,7 +77,7 @@ function Sidebar() {
                   key={group.id}
                   to={`/groups/${group.id}`} // Hooking from routes for each group
                   className={({ isActive }) =>
-                    `flex items-center px-8 py-2 space-x-2 text-base font-medium ${
+                    `flex items-center px-8 py-2 space-x-2 text-base font-medium dark:text-dark-text ${
                       isActive ? "text-primary" : "text-title"
                     }`
                   }
@@ -104,13 +104,13 @@ function Sidebar() {
           key={index}
           to={link.path}
           className={({ isActive }) =>
-            `flex items-center px-4 py-5 space-x-5 text-xl font-extrabold ${
+            `flex items-center px-4 py-5 space-x-5 text-xl font-extrabold  ${
               isActive ? "text-primary" : "text-title"
             }`
           }
         >
           <span>{link.icon()}</span>
-          <span className="text-body font-medium text-title hidden md:flex">
+          <span className="text-body font-medium text-title dark:text-dark-text hidden md:flex">
             {link.name}
           </span>
         </NavLink>
