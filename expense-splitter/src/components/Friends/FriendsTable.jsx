@@ -20,7 +20,7 @@ function FriendsTable() {
   return (
     <section className="overflow-x-auto rounded-lg">
       <table className="table-auto text-left">
-        <thead className="uppercase bg-highlight dark:bg-dark-input text-body font-medium text-legend dark:text-black">
+        <thead className="uppercase bg-highlight  dark:bg-black text-body font-medium text-legend dark:text-dark-text">
           <tr>
             <th scope="col" className="px-6 py-3">
               Type
@@ -43,21 +43,21 @@ function FriendsTable() {
         </thead>
         <tbody>
           {friendsData.map((el, index) => (
-            <tr key={index} className="bg-white border-b border-gray-100">
-              <td className="px-6 py-4 text-body font-bold text-secondary  whitespace-nowrap">
+            <tr key={index} className="bg-white dark:bg-dark-primary border-b border-gray-100">
+              <td className="px-6 py-4 text-body font-bold text-secondary dark:text-dark-icon-bg  whitespace-nowrap">
                 {el.type}
               </td>
-              <td className="px-6 py-4 text-body font-bold text-secondary">
+              <td className="px-6 py-4 text-body font-bold text-secondary dark:text-dark-icon-bg">
                 {el.date}
               </td>
-              <td className="px-6 py-4 text-body font-bold text-secondary">
+              <td className="px-6 py-4 text-body font-bold text-secondary dark:text-dark-icon-bg">
                 {el.group}
               </td>
-              <td className="px-6 py-4 text-body font-bold text-secondary">
+              <td className="px-6 py-4 text-body font-bold text-secondary dark:text-dark-icon-bg">
                 {el.amount}
               </td>
 
-              <td className="px-6 py-4 text-sm font-normal text-secondary">
+              <td className="px-6 py-4 text-sm font-normal text-secondary dark:text-dark-icon-bg">
                 {el.note}
               </td>
 

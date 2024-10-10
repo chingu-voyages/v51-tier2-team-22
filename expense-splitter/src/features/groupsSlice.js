@@ -8,7 +8,14 @@
 // { id: 3453654712, name: "Liam", contribution: 0 },
 
 import { createSlice } from "@reduxjs/toolkit";
-import group from "../assets/group.png";
+import groupDefault from "../assets/groupDefault.png";
+import unknownPerson from "../assets/unknownPerson.jpg";
+
+// default images for the users of default group. pictures need change to those of humans
+import person10 from "../assets/person10.jpg";
+import person2 from "../assets/person2.jpg";
+// import person9 from "../assets/person9.jpg";
+
 
 const calculateContributions = (group) => {
   const memberCount = group.members.length;
@@ -23,19 +30,44 @@ const calculateContributions = (group) => {
 const initialState = {
   groups: [
     {
-      id: 1,
+      id: 45674,
       name: "Picnic Holiday",
-      image: group,
+      image: groupDefault,
+      description: "This is our group description 🙌",
       totalBudget: 500,
       totalExpense: 300,
       members: [
-        { id: 1, name: "Mark 2nd", contribution: 0 },
-        { id: 2, name: "Markus", contribution: 0 },
-        { id: 3134532523, name: "jasson", contribution: 0 },
-
-
+        { id: 255436, name: "Markus", contribution: 1, image: person2 },
+        { id: 346235, name: "Maria", contribution: 1, image: person10 },
       ],
     },
+    // {
+    //   id: 3453,
+    //   name: "Beach party",
+    //   image: group4,
+    //   description: "This is our group description 🙌",
+    //   totalBudget: 950,
+    //   totalExpense: 780,
+    //   members: [
+    //     { id: 25455436, name: "John", contribution: 0, image: person3 },
+    //     { id: 34626335, name: "Ali", contribution: 0, image: person4 },
+    //     { id: 97867035, name: "Buba", contribution: 0, image: person5 },
+    //     { id: 978675678035, name: "Nick", contribution: 0, image: person6 },
+
+    //   ],
+    // },
+    // {
+    //   id: 456,
+    //   name: "Nightout party",
+    //   image: group1,
+    //   description: "This is our group description 🙌",
+    //   totalBudget: 300,
+    //   totalExpense: 170,
+    //   members: [
+    //     { id: 2540890436, name: "Mia", contribution: 0, image: person13 },
+    //     { id: 3456786335, name: "Eli", contribution: 0, image: person14 },
+    //   ],
+    // },
   ],
 };
 
@@ -58,6 +90,7 @@ const groupsSlice = createSlice({
         group.members.push({
           id: Date.now(),
           ...member,
+          image: member.image || unknownPerson,
         });
         calculateContributions(group);
       }
@@ -110,7 +143,7 @@ const groupsSlice = createSlice({
       if (group) {
         group.image = newImage;
       }
-    }
+    },
   },
 });
 

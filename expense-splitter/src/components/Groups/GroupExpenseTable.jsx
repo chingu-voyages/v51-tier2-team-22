@@ -51,7 +51,7 @@ function GroupExpenseTable() {
   return (
     <section className="overflow-x-auto ml-8 rounded-lg">
       <table className="table-auto text-left">
-        <thead className="uppercase bg-highlight dark:bg-dark-input text-body font-medium text-legend dark:text-black ">
+        <thead className="uppercase bg-highlight dark:bg-black text-body font-medium text-legend dark:text-dark-text ">
           <tr>
             <th scope="col" className="px-6 py-3">
               Expense
@@ -88,24 +88,24 @@ function GroupExpenseTable() {
         </thead>
         <tbody>
           {expenses.map((expense, index) => (
-            <tr key={index} className="bg-white border-b border-gray-100">
-              <td className="px-6 py-4 text-body font-bold text-secondary  whitespace-nowrap">
+            <tr key={index} className="bg-white dark:bg-dark-primary  border-b border-gray-100">
+              <td className="px-6 py-4 text-body font-bold text-secondary dark:text-dark-icon-bg whitespace-nowrap">
                 {expense.expense}
               </td>
-              <td className="px-6 py-4 text-sm font-normal text-secondary whitespace-nowrap">
+              <td className="px-6 py-4 text-sm font-normal text-secondary dark:text-dark-icon-bg whitespace-nowrap">
                 {expense.description}
               </td>
-              <td className="px-6 py-4 text-body font-bold text-secondary">
+              <td className="px-6 py-4 text-body font-bold text-secondary dark:text-dark-icon-bg">
                 {expense.category}
               </td>
-              <td className="px-6 py-4 text-body font-bold text-secondary">
+              <td className="px-6 py-4 text-body font-bold text-secondary dark:text-dark-icon-bg">
                 {expense.date}
               </td>
-              <td className="px-6 py-4 text-body font-bold text-secondary">
+              <td className="px-6 py-4 text-body font-bold text-secondary dark:text-dark-icon-bg">
                 {expense.totalAmount}
               </td>
 
-              <td className="px-6 py-4 text-body font-bold text-secondary">
+              <td className="px-6 py-4 text-body font-bold text-secondary dark:text-dark-icon-bg">
                 {expense.participants.map((participant, pindex) => (
                   <div key={pindex} className="flex flex-col">
                     <span>{participant.name}</span>
@@ -113,7 +113,7 @@ function GroupExpenseTable() {
                 ))}
               </td>
 
-              <td className="px-6 py-4 text-body font-bold text-secondary">
+              <td className="px-6 py-4 text-body font-bold text-secondary dark:text-dark-icon-bg">
                 {expense.participants.map((participant, pindex) => (
                   <div key={pindex} className="flex flex-col">
                     <span>{participant.contribution}</span>
@@ -121,7 +121,7 @@ function GroupExpenseTable() {
                 ))}
               </td>
 
-              <td className="px-6 py-4 text-body font-bold text-secondary">
+              <td className="px-6 py-4 text-body font-bold text-secondary dark:text-dark-icon-bg">
                 {expense.participants.map((participant, pindex) => (
                   <div key={pindex} className="flex flex-col">
                     <span>{participant.split}</span>
@@ -129,7 +129,7 @@ function GroupExpenseTable() {
                 ))}
               </td>
 
-              <td className="px-6 py-4 text-body font-bold text-secondary">
+              <td className="px-6 py-4 text-body font-bold text-secondary dark:text-dark-icon-bg">
                 {expense.participants.map((participant, pindex) => (
                   <div key={pindex} className="flex flex-col">
                     <span>{participant.due}</span>
@@ -138,7 +138,7 @@ function GroupExpenseTable() {
               </td>
 
               <td className="px-6 py-4">
-                <button className="text-blue-600 hover:text-primary">
+                <button className="text-red-600 hover:text-primary">
                   View Receipt
                 </button>
               </td>

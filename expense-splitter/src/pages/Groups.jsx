@@ -19,6 +19,7 @@ import { MdOutlineShoppingCart } from "react-icons/md";
 import { LiaMoneyBillWaveAltSolid } from "react-icons/lia";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import GroupBarChart from "../components/Groups/GroupBarChart";
 
 function Groups() {
   const { groupId } = useParams();
@@ -87,10 +88,9 @@ function Groups() {
 
   return (
     <section className="flex flex-col gap-8 m-6">
-      <GroupName group={group}/>
+      <GroupName group={group} />
 
       <div className="flex gap-6 flex-col xl:flex-row">
-
         <GroupSmallExpenseCard
           icon={GiMoneyStack}
           label="Total budget"
@@ -110,20 +110,24 @@ function Groups() {
         />
       </div>
 
+      
+
       {/* Flex container for ExpenseBar and GroupChart styling */}
-      <div className="flex gap-6 flex-col xl:flex-row">
-        <div className="flex-1"> {/* The ExpenseBar should take the available width */}
+      <div className="flex flex-col lg:flex-row w-full gap-6 ">
+        {/* Left column container */}
+        <div className="flex flex-col gap-6 lg:w-1/2 min-w-0">
           <ExpenseBar expense={totalExpense} budget={totalBudget} />
+          <GroupMembers members={group.members} />
         </div>
-        <div className="flex-1 ml-8"> {/* GroupChart will take the available width */}
+        <div className="lg:w-1/2 min-w-0">
+          {" "}
+          {/* GroupChart will take the available width */}
           <GroupChart groupId={groupId} />
         </div>
       </div>
-      <div className="-mt-20">
-          <GroupMembers members={group.members} />
-      </div>
 
       <GroupExpenseTable />
+      <GroupBarChart group={group} />
 
       {isOpen && (
         <Modal
@@ -163,7 +167,8 @@ function Groups() {
 
               <button
                 type="submit"
-                className="px-4 py-2 bg-primary text-white rounded-xl dark:bg-dark-primary"
+                className="px-4 py-2 rounded-xl bg-blizzard-blue dark:bg-dark-primary dark:border hover:bg-primary
+                    hover:text-white text-primary dark:text-dark-text dark:hover:bg-dark-text dark:hover:text-primary dark:hover:border-primary font-medium"
               >
                 Update
               </button>

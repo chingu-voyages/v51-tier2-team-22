@@ -9,6 +9,9 @@ import Modal from "../Utils/Modal";
 import useModal from "../Utils/useModal";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { imagesPeople } from "../Utils/images";
+import unknownPerson from "../../assets/unknownPerson.jpg"
+
 
 function GroupMembers() {
   const { groupId } = useParams();
@@ -19,7 +22,8 @@ function GroupMembers() {
   );
 
   const { isOpen, openModal, closeModal, handleClickOutside } = useModal();
-  const [newMember, setNewMember] = useState({ name: ""});
+  const [newMember, setNewMember] = useState({ name: "", image: ""});
+  const [selectedImage, setSelectedImage] = useState("");
 
   if (!group) {
     return <div>Group not found.</div>;
@@ -34,7 +38,7 @@ function GroupMembers() {
       dispatch(removeMember({ groupId: parseInt(groupId), memberId }));
 
       // Show toast notification
-      toast.success(`${memberName} removed from the group`, {
+      toast.success(`${memberName} removed`, {
         position: "top-right",
         autoClose: 2000,
       });
@@ -57,33 +61,39 @@ function GroupMembers() {
         groupId: parseInt(groupId),
         member: {
           name: newMember.name,
+          image: selectedImage || unknownPerson
         },
       })
     );
     // Show toast notification
-    toast.success(`${newMember.name} added to the group`, {
+    toast.success(`${newMember.name} added`, {
       position: "top-right",
       autoClose: 2000,
     });
 
-    setNewMember({ name: ""});
+    setNewMember({ name: "", image: ""});
+    setSelectedImage("")
     closeModal();
   };
 
+  const handleImageSelect = (image) => {
+    setSelectedImage(image);
+  };
+
   return (
-    <section className="bg-white dark:bg-dark-secondary dark:border p-4 ml-8 rounded-lg shadow
-      w-custom-width gap-y-1 mt-6 lg:-mt-24 mb-6">
-      <p className="ml-3 mb-6 text-groupComponentHeader font-bold text-secondary dark:text-primary">
+    <section className="bg-white dark:bg-dark-primary p-4 ml-8 lg:ml-8 rounded-lg shadow
+      w-full gap-y-1 mb-6">
+      <p className="ml-3 mb-6 text-subheader font-bold text-secondary dark:text-dark-text">
         Members
       </p>
 
       {/* note to self, add bg-red-500 to line under to better checking for aligments */}
-      <article className="flex flex-wrap justify-start items-centre">
+      <article className="flex flex-wrap justify-start">
 
-      <div className="bg-white dark:bg-dark-secondary rounded-2xl flex items-center flex-col ml-4 mr-2">
+      <div className="rounded-2xl flex items-center flex-col pl-3 pr-3">
         <button
           onClick={openModal}
-          className="w-16 h-16 rounded-full shadow-lg  bg-primary dark:bg-dark-bg text-4xl text-white dark:text-dark-text hover:bg-primary"
+          className="w-[3.5rem] h-[3.5rem] rounded-full shadow-lg  bg-primary primary-dark-mode text-4xl text-white dark:text-dark-text hover:bg-primary"
         >
           +
         </button>
@@ -99,7 +109,7 @@ function GroupMembers() {
               <GroupsEachMember
                 member={{
                   name: member.name,
-                  img: "https://img.freepik.com/free-photo/young-bearded-man-with-striped-shirt_273609-5677.jpg",
+                  img: member.image,
                 }}
               />
             </Link>
@@ -135,9 +145,25 @@ function GroupMembers() {
                 />
               </div>
 
+              <h2 className="text-2xl font-bold">Select an Image</h2>
+              <div className="flex space-x-2 flex-wrap gap-3">
+                {imagesPeople.map((image, index) => (
+                  <img
+                    key={index}
+                    src={image}
+                    alt={`image-${index}`}
+                    className={`w-[4.3rem] h-[4.3rem] object-cover !m-0 rounded-full cursor-pointer ${
+                      selectedImage === image ? "ring-[3px] ring-primary" : ""
+                    }`}
+                    onClick={() => handleImageSelect(image)}
+                  />
+                ))}
+              </div>
+
               <button
                 type="submit"
-                className="px-4 py-2 bg-primary text-white rounded-xl dark:bg-dark-primary"
+                className="px-4 py-2 rounded-xl bg-blizzard-blue hover:bg-primary hover:text-white text-primary
+                dark:bg-dark-primary dark:border dark:text-dark-text dark:hover:bg-dark-text dark:hover:text-primary dark:hover:border-primary"
               >
                 Add Member
               </button>

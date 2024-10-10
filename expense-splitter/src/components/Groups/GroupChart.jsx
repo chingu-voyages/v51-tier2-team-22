@@ -68,64 +68,39 @@ function GroupChart({ groupId }) {
 
   const hasMembers = group.members && group.members.length > 0;
 
-  const data = hasMembers
-    ? group.members.map((member) => ({
-        name: member.name,
-        value: member.contribution || 1,
-      }))
-    : [];
-
   const dispatch = useDispatch();
   const { isOpen, openModal, closeModal, handleClickOutside } = useModal();
 
   const [customContributions, setCustomContributions] = useState({});
+  const [remainingPercentage, setRemainingPercentage] = useState(100);
 
   useEffect(() => {
     if (hasMembers) {
-      const equalContribution = (100 / group.members.length).toFixed(1);
+      // Initialize contributions as empty fields
       const initialContributions = group.members.reduce((acc, member) => {
-        acc[member.id] = equalContribution;
+        acc[member.id] = "";
         return acc;
       }, {});
       setCustomContributions(initialContributions);
+      setRemainingPercentage(100);
     }
   }, [group.members, hasMembers]);
 
-  const openModalWithCurrentContributions = () => {
-    if (hasMembers) {
-      const currentContributions = group.members.reduce((acc, member) => {
-        acc[member.id] = member.contribution
-          ? member.contribution.toFixed(1)
-          : (100 / group.members.length).toFixed(1);
-        return acc;
-      }, {});
-      setCustomContributions(currentContributions);
-    }
-    openModal();
-  };
-
   const handleContributionChange = (memberId, newContribution) => {
-    let newContributionValue = parseFloat(newContribution);
-
-    if (newContributionValue > 100 || newContributionValue < 0) return;
-
-    const remainingContribution = 100 - newContributionValue;
-    const otherMembers = group.members.filter(
-      (member) => member.id !== memberId
-    );
-    const otherMembersCount = otherMembers.length;
-
-    const equalContribution = remainingContribution / otherMembersCount;
+    const newValue = parseFloat(newContribution);
 
     setCustomContributions((prevContributions) => {
-      const updatedContributions = { ...prevContributions };
-      updatedContributions[memberId] = newContributionValue;
+      const updatedContributions = {
+        ...prevContributions,
+        [memberId]: newValue || "",
+      };
 
-      otherMembers.forEach((member) => {
-        updatedContributions[member.id] = parseFloat(
-          equalContribution.toFixed(2)
-        );
-      });
+      // Calculate remaining percentage
+      const totalContributions = Object.values(updatedContributions).reduce(
+        (acc, val) => acc + (parseFloat(val) || 0),
+        0
+      );
+      setRemainingPercentage(100 - totalContributions);
 
       return updatedContributions;
     });
@@ -134,11 +109,12 @@ function GroupChart({ groupId }) {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // Validate total contributions before submission
+    // Ensure all fields are filled and total equals 100%
     const totalContributions = Object.values(customContributions).reduce(
-      (acc, val) => acc + val,
+      (acc, val) => acc + (parseFloat(val) || 0),
       0
     );
+
     if (totalContributions !== 100) {
       alert("Total contributions must equal 100%");
       return;
@@ -153,43 +129,54 @@ function GroupChart({ groupId }) {
     closeModal();
   };
 
+
   return (
-    <section className="flex flex-col items-center justify-center w-custom-wide-chart bg-white dark:bg-dark-secondary dark:border p-6 ml-8 rounded-lg shadow">
+    <section className="flex flex-col items-center justify-center w-custom-wide-chart bg-white
+    dark:bg-dark-primary p-6 ml-8 rounded-lg shadow">
       <div className="w-full flex items-stretch justify-end">
-        <p className="text-groupComponentHeader mr-auto font-bold text-secondary ml-3 dark:text-primary ">
+        <p className="text-subheader mr-auto font-bold text-secondary ml-3 dark:text-dark-text ">
           Budget Split
         </p>
-        <button
-          className="hover:bg-primary px-3 transition rounded-md border border-primary text-primary font-bold hover:text-white"
-          onClick={openModalWithCurrentContributions}
-        >
-          Edit Contributions
-        </button>
+        {hasMembers && (
+          <button
+            className="px-3 transition rounded-md text-primary bg-blizzard-blue dark:bg-dark-primary dark:border hover:bg-primary
+            hover:text-white text-primary dark:text-dark-text dark:hover:bg-dark-text dark:hover:text-primary dark:hover:border-primary font-medium"
+            onClick={openModal}
+          >
+            Edit Contributions
+          </button>
+        )}
       </div>
 
-      {/* contribution change */}
       {isOpen && (
         <Modal
           content={
             <form onSubmit={handleSubmit} className="space-y-3">
               {group.members.map((member) => (
-                <div key={member.id}>
-                  <label>{member.name}'s Contribution</label>
+                <div key={member.id} className="grid grid-cols-[152px_auto] items-center"  >
+                  <label className="text-body dark:text-dark-text">{member.name} Contribution</label>
+                  <div className="flex items-center">
                   <input
                     type="number"
-                    value={Math.floor(customContributions[member.id])}
+                    value={customContributions[member.id]}
                     onChange={(e) =>
                       handleContributionChange(member.id, e.target.value)
                     }
-                    className="border mr-3 p-2 w-[90%] dark:bg-dark-input"
+                    className="border mr-3 p-2 w-[10rem] dark:bg-dark-input"
                     required
-                  />{" "}
-                  %
+                  />
+                 <span className="text-body dark:text-dark-text"> % </span>
+                 </div>
                 </div>
               ))}
+              <p className="text-md dark:text-dark-text">
+                Percentage left to divide: {remainingPercentage}%
+              </p>
               <button
                 type="submit"
-                className="rounded-xl px-4 py-2 bg-primary text-white"
+                className="rounded-xl px-4 py-2 bg-blizzard-blue dark:bg-dark-primary dark:border
+                 hover:bg-primary hover:text-white text-primary dark:text-dark-text dark:hover:bg-dark-text dark:hover:text-primary dark:hover:border-primary"
+                disabled={remainingPercentage !== 0}
               >
                 Update Contributions
               </button>
@@ -204,7 +191,10 @@ function GroupChart({ groupId }) {
         <>
           <PieChart className="my-6" width={250} height={250}>
             <Pie
-              data={data}
+              data={group.members.map((member) => ({
+                name: member.name,
+                value: member.contribution || 1,
+              }))}
               cx={120}
               cy={120}
               innerRadius={35.5}
@@ -215,7 +205,7 @@ function GroupChart({ groupId }) {
               labelLine={false}
               label={renderCustomizedLabel}
             >
-              {data.map((entry, index) => (
+              {group.members.map((_, index) => (
                 <Cell
                   key={`cell-${index}`}
                   fill={COLORS[index % COLORS.length]}
@@ -224,18 +214,21 @@ function GroupChart({ groupId }) {
             </Pie>
           </PieChart>
 
-          {/* custom legend */}
-          <article className="p-3 ml-3 flex rounded-lg shadow-custom flex-wrap justify-start">
-            {data.map((entry, index) => (
+          <article className="p-3 w-full flex rounded-lg dark:border shadow-custom flex-wrap justify-start gap-2">
+            {group.members.map((entry, index) => (
               <div
                 key={index}
-                className="flex my-2  items-center mx-2 space-x-3 p-1 "
+                className="flex my-2 items-center mx-2  p-1"
               >
                 <span
                   className="w-3 h-3 rounded-full"
                   style={{ backgroundColor: COLORS[index] }}
                 ></span>
-                <span className="font-bold text-legend">{entry.name}</span>
+                <span className="ml-2 font-bold text-legend">{member.name}</span>
+                {/* <span className="text-sm ml-1 text-secondary"> - {((entry.contribution / 100) * group.totalExpense).toFixed(1)}$
+                </span> */}
+                 <span className="text-sm ml-1 text-secondary"> - {(group.totalExpense / 100) * member.contribution} $
+                 </span>
               </div>
             ))}
           </article>
@@ -250,20 +243,3 @@ function GroupChart({ groupId }) {
 }
 
 export default GroupChart;
-
-// CHART EXPLANATION CODE, "RECHARTS" PACKAGE IS USED FOR CHARTS
-// ----------------------------------------------------
-// <PieChart>: Defines the overall chart's width and height.
-
-// <Pie>:
-// -This component takes data and builds a donut chart based on the value field of each entry.
-// -cx and cy control the center of the pie chart.
-// -innerRadius and outerRadius control the donut's thickness.
-// -paddingAngle adds space between the slices.
-// -dataKey="value" is the key used to calculate the size of the pie slices (in this case, the value field).
-// -label shows the percentage labels inside the pie slices, using the renderCustomizedLabel function.
-// ----------------------
-// <Cell>:
-// -Each slice of the pie is rendered as a Cell, and each cell gets a color from the COLORS array.
-// -fill={COLORS[index % COLORS.length]} dynamically applies the color based on the index of each slice.
-// ----------------------

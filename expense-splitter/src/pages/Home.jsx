@@ -15,6 +15,15 @@ import { getRandomImage } from "../components/Utils/images";
 function Home() {
   const groups = useSelector((state) => state.groups.groups);
 
+  const resetNewGroupState = () => {
+    setNewGroup({
+      name: "",
+      description: "",
+      totalBudget: "",
+      totalExpense: "",
+    });
+  };
+
   // Search bar functionality
   const [filteredGroups, setFilteredGroups] = useState(groups);
 
@@ -27,13 +36,14 @@ function Home() {
     );
   };
 
-  const { isOpen, openModal, closeModal, handleClickOutside } = useModal();
+  const { isOpen, openModal, closeModal, handleClickOutside } =
+    useModal(resetNewGroupState);
 
   const dispatch = useDispatch();
 
   const [newGroup, setNewGroup] = useState({
     name: "",
-    description:"",
+    description: "",
     totalBudget: "",
     totalExpense: "",
   });
@@ -51,10 +61,10 @@ function Home() {
 
     dispatch(
       addGroup({
-        id: groups.length + 1,
+        id: Date.now(),
         name: newGroup.name,
         image: getRandomImage(),
-        description:newGroup.description,
+        description: newGroup.description,
         totalBudget: newGroup.totalBudget,
         totalExpense: newGroup.totalExpense,
         members: [], // empty for now
@@ -63,7 +73,7 @@ function Home() {
 
     setNewGroup({
       name: "",
-      description:"",
+      description: "",
       totalBudget: "",
       totalExpense: "",
     });
@@ -80,8 +90,8 @@ function Home() {
   }, [groups]);
 
   return (
-    <section className="text-xl text-secondary p-5 space-y-5">
-      <article className="flex items-center justify-between">
+    <section className="text-xl text-secondary  p-5 space-y-5 h-screen ">
+      <article className="flex items-center justify-between ">
         <div>
           <h1 className="text-header font-bold text-secondary dark:text-dark-text ml-8 mt-8">
             Welcome to SplitSmart!
@@ -94,25 +104,27 @@ function Home() {
         <SearchBar onSearch={handleSearch} />
       </article>
 
-      <div className="border bg-white dark:bg-dark-secondary rounded-2xl w-custom-card h-custom-card-height ml-8 shadow flex items-center justify-center flex-col">
-        <button
-          onClick={openModal} // Use openModal from the custom hook
-          className="hover:animate-ping rounded-full bg-primary dark:bg-dark-bg dark:border w-16 h-16 text-5xl text-white dark:text-dark-text hover:bg-primary"
-        >
-          +
-        </button>
-        <p className="text-2xl mt-4 font-bold dark:text-dark-text">Add Group</p>
-      </div>
+      <article className="flex flex-wrap gap-10 mx-8">
+        <div className="bg-white dark:bg-dark-primary rounded-2xl w-custom-card h-custom-card-height shadow flex items-center justify-center flex-col">
+          <button
+            onClick={openModal} // Use openModal from the custom hook
+            className="hover:animate-ping rounded-full bg-primary primary-dark-mode w-16 h-16 text-5xl text-white dark:text-dark-text hover:bg-primary"
+          >
+            +
+          </button>
+          <p className="text-2xl mt-4 font-bold dark:text-dark-text">
+            Add Group
+          </p>
+        </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-      {filteredGroups.length > 0 ? (
-        filteredGroups.map((group) => (
-          <HomeIndividualGroup key={group.id} group={group} />
-        ))
-      ) : (
-        <p className="ml-8">No groups found</p>
-      )}
-      </div>
+        {filteredGroups.length > 0 ? (
+          filteredGroups.map((group) => (
+            <HomeIndividualGroup key={group.id} group={group} />
+          ))
+        ) : (
+          <p className="ml-8 place-content-center">No groups found</p>
+        )}
+      </article>
 
       {isOpen && ( // Use isOpen from the custom hook
         <Modal
@@ -135,7 +147,7 @@ function Home() {
               </div>
 
               <div>
-              <label className="text-body font-semibold dark:text-dark-text">
+                <label className="text-body font-semibold dark:text-dark-text">
                   Description
                 </label>
                 <input
@@ -144,13 +156,10 @@ function Home() {
                   onChange={handleInputChange}
                   className="border p-2 w-full dark:bg-dark-input"
                   placeholder="Enter group description"
-                  required
                   maxLength={70}
                   style={{ fontSize: "14px" }}
                 />
               </div>
-
-
 
               <div>
                 <label className="text-body font-semibold dark:text-dark-text">
@@ -187,8 +196,7 @@ function Home() {
               <button
                 type="submit"
                 className="px-4 py-2 bg-primary text-white rounded-xl dark:bg-dark-primary"
-
->
+              >
                 Add Group
               </button>
             </form>

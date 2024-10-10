@@ -21,7 +21,7 @@ const data = [
 
 function FriendsChart() {
   return (
-    <div className="bg-white dark:bg-dark-secondary p-4 ml-8 rounded-lg shadow-md w-custom-friend-width h-custom-friend-height">
+    <div className="bg-white dark:bg-dark-primary p-4 ml-8 rounded-lg shadow-md w-custom-friend-width h-custom-friend-height">
       <ResponsiveContainer width="100%" height={335}>
         <LineChart
           data={data}
