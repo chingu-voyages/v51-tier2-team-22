@@ -22,14 +22,9 @@ function Sidebar() {
       <div className="mb-8 flex justify-center">
         <NavLink to="/" className="flex cursor-pointer">
           <img
-            src="./src/assets/logo.png"
+            src="../src/assets/logo.png"
             alt="logo"
-            className="mr-1 flex md:hidden"
-          />
-          <img
-            src="./src/assets/logo.png"
-            alt="logo"
-            className="hidden md:flex"
+            className="mr-1 flex "
           />
         </NavLink>
       </div>
@@ -119,24 +114,6 @@ function Sidebar() {
         </NavLink>
       );
     })}
-
-          return (
-            <NavLink
-              key={index}
-              to={link.path}
-              className={({ isActive }) =>
-                `flex items-center px-4 py-5 space-x-5 text-xl font-extrabold ${
-                  isActive ? "text-primary" : "text-title"
-                }`
-              }
-            >
-              <span>{link.icon()}</span>
-              <span className="text-body font-medium text-title hidden md:flex">
-                {link.name}
-              </span>
-            </NavLink>
-          );
-        })}
       </nav>
 
       <div className="w-full absolute bottom-5 left-0 px-4 py-2 cursor-pointer text-center">
