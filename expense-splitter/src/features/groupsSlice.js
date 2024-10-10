@@ -16,18 +16,6 @@ import person10 from "../assets/person10.jpg";
 import person2 from "../assets/person2.jpg";
 // import person9 from "../assets/person9.jpg";
 
-// PREVIEW ONLY, DELETE AFTER SPRING PLANNING
-import person3 from "../assets/person3.jpg";
-import person4 from "../assets/person4.jpg";
-import person5 from "../assets/person5.jpg";
-import person6 from "../assets/person6.jpg";
-import group4 from "../assets/group4.jpg"
-import person14 from "../assets/person14.jpg";
-import person13 from "../assets/person13.jpg";
-import group1 from "../assets/group1.jpg"
-
-
-
 
 const calculateContributions = (group) => {
   const memberCount = group.members.length;
@@ -49,37 +37,37 @@ const initialState = {
       totalBudget: 500,
       totalExpense: 300,
       members: [
-        { id: 255436, name: "Markus", contribution: 0, image: person2 },
-        { id: 346235, name: "Maria", contribution: 0, image: person10 },
+        { id: 255436, name: "Markus", contribution: 1, image: person2 },
+        { id: 346235, name: "Maria", contribution: 1, image: person10 },
       ],
     },
-    {
-      id: 3453,
-      name: "Beach party",
-      image: group4,
-      description: "This is our group description 🙌",
-      totalBudget: 950,
-      totalExpense: 780,
-      members: [
-        { id: 25455436, name: "John", contribution: 0, image: person3 },
-        { id: 34626335, name: "Ali", contribution: 0, image: person4 },
-        { id: 97867035, name: "Buba", contribution: 0, image: person5 },
-        { id: 978675678035, name: "Nick", contribution: 0, image: person6 },
+    // {
+    //   id: 3453,
+    //   name: "Beach party",
+    //   image: group4,
+    //   description: "This is our group description 🙌",
+    //   totalBudget: 950,
+    //   totalExpense: 780,
+    //   members: [
+    //     { id: 25455436, name: "John", contribution: 0, image: person3 },
+    //     { id: 34626335, name: "Ali", contribution: 0, image: person4 },
+    //     { id: 97867035, name: "Buba", contribution: 0, image: person5 },
+    //     { id: 978675678035, name: "Nick", contribution: 0, image: person6 },
 
-      ],
-    },
-    {
-      id: 456,
-      name: "Nightout party",
-      image: group1,
-      description: "This is our group description 🙌",
-      totalBudget: 300,
-      totalExpense: 170,
-      members: [
-        { id: 2540890436, name: "Mia", contribution: 0, image: person13 },
-        { id: 3456786335, name: "Eli", contribution: 0, image: person14 },
-      ],
-    },
+    //   ],
+    // },
+    // {
+    //   id: 456,
+    //   name: "Nightout party",
+    //   image: group1,
+    //   description: "This is our group description 🙌",
+    //   totalBudget: 300,
+    //   totalExpense: 170,
+    //   members: [
+    //     { id: 2540890436, name: "Mia", contribution: 0, image: person13 },
+    //     { id: 3456786335, name: "Eli", contribution: 0, image: person14 },
+    //   ],
+    // },
   ],
 };
 
