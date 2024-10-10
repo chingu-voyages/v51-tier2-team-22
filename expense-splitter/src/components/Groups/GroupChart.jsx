@@ -215,7 +215,7 @@ function GroupChart({ groupId }) {
           </PieChart>
 
           <article className="p-3 w-full flex rounded-lg dark:border shadow-custom flex-wrap justify-start gap-2">
-            {group.members.map((entry, index) => (
+            {group.members.map((member, index) => (
               <div
                 key={index}
                 className="flex my-2 items-center mx-2  p-1"

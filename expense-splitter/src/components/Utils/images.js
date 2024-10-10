@@ -24,6 +24,9 @@ import person12 from "../../assets/person12.jpg";
 import person13 from "../../assets/person13.jpg";
 import person14 from "../../assets/person14.jpg";
 import person15 from "../../assets/person15.jpg";
+import ourLogo from "../../assets/ourLogo.png"
+
+export const special = ourLogo
 
 export const imagesPeople = [
   person2,
