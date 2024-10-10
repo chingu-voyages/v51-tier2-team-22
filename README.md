@@ -1,6 +1,6 @@
 # Split Wise
 
-# 🔗 [Live Preview](https://luminous-lebkuchen-51bdab.netlify.app/)
+# 🔗 [Live Preview](https://gentle-kringle-dec3a4.netlify.app/)
 
 ![Design preview](/expense-splitter/src/assets/prev1.png)
 ![Design preview](/expense-splitter/src/assets/prev2.png)
