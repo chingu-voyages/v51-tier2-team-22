@@ -1,6 +1,6 @@
 function FriendsEachMutualGroup() {
     return (
-          <article className="p-3  flex items-center justify-between border-b border-separator ml-2 mr-2">
+          <article className="p-3 flex md:flex-row items-center justify-between border-b border-separator mx-2">
             <div className="flex items-center space-x-4">
               <img
                 className="w-14 h-14 rounded-full object-cover"
@@ -8,12 +8,12 @@ function FriendsEachMutualGroup() {
                 alt=""
               />
               <span>
-                <p className="text-sm font-bold text-secondary dark:text-primary">Group 1</p>
+                <p className="text-sm font-bold text-secondary dark:text-dark-text">Group 1</p>
                 <p className="text-xs font-medium dark:text-dark-text">You owe</p>
               </span>
-              <p className="text-2xl font-bold text-secondary pl-6 dark:text-primary">20$</p>
+              <p className="text-2xl font-bold text-secondary pl-6 dark:text-dark-text">20$</p>
             </div>
-            <button className="w-46 h-10 px-5 rounded-lg text-body font-bold bg-blizzard-blue text-primary duration-300">
+            <button className="w-48 h-10 px-5 mt-2 md:mt-0 rounded-lg text-body font-bold bg-blizzard-blue text-primary duration-300">
               Send a reminder
             </button>
           </article>
